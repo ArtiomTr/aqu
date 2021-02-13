@@ -11,6 +11,14 @@
     },
     "author": "Artiom Tretjakovas",
     "license": "MIT",
+    "homepage": "https://github.com/ArtiomTr/trwl",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ArtiomTr/trwl.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ArtiomTr/trwl/issues"
+    },
     "dependencies": {
         "commander": "^7.0.0"
     },
