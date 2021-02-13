@@ -1,0 +1,27 @@
+{
+    "name": "trwl",
+    "version": "0.0.0",
+    "description": "Develop TypeScript packages with no configuration",
+    "main": "./dist/trwl.js",
+    "scripts": {
+        "build": "node ./scripts/build.js",
+        "start": "node ./scripts/watch.js",
+        "lint": "eslint .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Artiom Tretjakovas",
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^7.0.0"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.15.0",
+        "@typescript-eslint/parser": "^4.15.0",
+        "esbuild": "^0.8.45",
+        "eslint": "^7.20.0",
+        "eslint-config-prettier": "^7.2.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-simple-import-sort": "^7.0.0",
+        "prettier": "^2.2.1"
+    }
+}
