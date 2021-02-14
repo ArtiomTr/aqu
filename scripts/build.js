@@ -5,6 +5,7 @@ var buildOptions = {
     bundle: true,
     target: "node10.16.0",
     platform: "node",
+    banner: "#!/usr/bin/env node\n",
     external: ["commander", "esbuild"],
 };
 

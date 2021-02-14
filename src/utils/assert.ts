@@ -1,4 +1,4 @@
-import { red } from "chalk";
+import logger, { ErrorLevel } from "../logger";
 
 export default function assert(condition: unknown, message: string): asserts condition {
     if (condition) {
@@ -6,8 +6,6 @@ export default function assert(condition: unknown, message: string): asserts con
     }
 
     if (!condition) {
-        console.error(red(`Invariant: ${message}`));
-
-        process.exit(1);
+        logger.error(ErrorLevel.FATAL, "Assertion error:", message);
     }
 }

@@ -2,7 +2,12 @@
     "name": "trwl",
     "version": "0.0.0",
     "description": "Develop TypeScript packages with no configuration",
-    "main": "./dist/trwl.js",
+    "bin": {
+        "trwl": "./dist/trwl.js"
+    },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "node ./scripts/build.js",
         "start": "node ./scripts/watch.js",
@@ -23,7 +28,9 @@
         "commander": "^7.0.0"
     },
     "devDependencies": {
+        "@types/lodash": "^4.14.168",
         "@types/node": "^14.14.27",
+        "@types/rimraf": "^3.0.0",
         "@typescript-eslint/eslint-plugin": "^4.15.0",
         "@typescript-eslint/parser": "^4.15.0",
         "chalk": "^4.1.0",
@@ -33,7 +40,14 @@
         "eslint-plugin-prettier": "^3.3.1",
         "eslint-plugin-simple-import-sort": "^7.0.0",
         "jest": "^26.6.3",
+        "lodash": "^4.17.20",
         "prettier": "^2.2.1",
-        "ts-jest": "^26.5.1"
+        "rimraf": "^3.0.2",
+        "ts-jest": "^26.5.1",
+        "webpack-merge": "^5.7.3",
+        "yup": "^0.32.8"
+    },
+    "engines": {
+        "node": "^10.12.0 || >=12.0.0"
     }
 }

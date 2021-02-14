@@ -9,7 +9,8 @@
         "rootDir": "src",
         "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "resolveJsonModule": true
     },
     "include": ["src"],
     "exclude": ["node_modules", "tests", "example"]

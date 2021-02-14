@@ -16,7 +16,7 @@ export const transpileAndGetRawConfig = async (path: string): Promise<RawTrwlOpt
         entryPoints: [path],
         platform: "node",
         format: "cjs",
-        outdir: "./",
+        outdir: "__unique__folder",
         bundle: true,
         write: false,
         stdin: {
