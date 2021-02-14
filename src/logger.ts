@@ -1,5 +1,8 @@
 import chalk from "chalk";
+import createProgressEstimator from "progress-estimator";
 
+import { ensureFolder } from "./utils/ensureFolder";
+import { PROGRESS_CACHE } from "./constants";
 import { name } from "../package.json";
 
 export enum ErrorLevel {
@@ -12,7 +15,10 @@ interface Logger {
     error(level: ErrorLevel.FATAL, ...parts: unknown[]): never;
     warn(...parts: unknown[]): void;
     info(...parts: unknown[]): void;
+    progress<T>(promise: Promise<T>, label: string): Promise<T>;
 }
+
+let estimator: createProgressEstimator.ProgressEstimator | undefined = undefined;
 
 const logger: Logger = {
     error: (level: ErrorLevel, ...args: unknown[]): never => {
@@ -27,6 +33,17 @@ const logger: Logger = {
     },
     info: (...args) => {
         console.log(`[${name}]:`, ...args);
+    },
+    progress: async (promise, label) => {
+        if (!estimator) {
+            await ensureFolder(PROGRESS_CACHE);
+
+            estimator = createProgressEstimator({
+                storagePath: PROGRESS_CACHE,
+            });
+        }
+
+        return estimator(promise, label);
     },
 };
 

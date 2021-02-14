@@ -12,6 +12,7 @@
     "author": "Artiom Tretjakovas",
     "license": "ISC",
     "devDependencies": {
-        "trwl": "file:.."
+        "trwl": "file:..",
+        "typescript": "^4.1.5"
     }
 }
