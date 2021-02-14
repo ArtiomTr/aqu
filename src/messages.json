@@ -1,0 +1,5 @@
+{
+    "requiredField": "${path} is required - ${path} was not found in package.json, config file or cli arguments",
+    "requiredInputField": "${path} is required - \"source\" field not found in package.json, attempt to select the default ./src/index or ./lib/index also failed",
+    "unexpectedlyMissingField": "${path} is missing - suddenly, default value of ${path} is not load. This is probably trwl issue, please report about it."
+}

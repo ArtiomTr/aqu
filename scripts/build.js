@@ -3,8 +3,10 @@ var buildOptions = {
     entryPoints: ["./src/index.ts"],
     outfile: "./dist/trwl.js",
     bundle: true,
+    target: "node10.16.0",
     platform: "node",
-    external: ["commander"],
+    banner: "#!/usr/bin/env node\n",
+    external: ["commander", "esbuild", "dts-bundle-generator", "typescript"],
 };
 
 require("esbuild")
