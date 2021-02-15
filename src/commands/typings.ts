@@ -10,9 +10,10 @@ export type TrwlCommand<T> = {
 export type TrwlCommandOptions = {
     flag: {
         full: string;
-        short: string;
+        short?: string;
         placeholder?: string;
     };
+    multiple?: boolean;
     defaultValue?: string | boolean;
     description: string;
 };

@@ -6,7 +6,7 @@ import { BuildOptions } from "esbuild";
 
 import { defaultEmitDeclarations } from "./utils/defaultEmitDeclarations";
 import { safeWriteFile } from "./utils/safeWriteFile";
-import logger from "./logger";
+import { Progress } from "./logger";
 import { VerifiedTrwlOptions } from "./typings";
 
 const cjsMixedEntrypoint = `'use strict'
@@ -70,13 +70,17 @@ export const buildFromConfig = async (config: VerifiedTrwlOptions, service: Serv
         });
     }
 
-    const buildPromise = Promise.all(normalConfigs.map((config) => service.build(config)));
+    const esbuildProgress = new Progress("Building using esbuild");
 
-    await logger.progress(buildPromise, "Bundling using esbuild");
+    await Promise.all(normalConfigs.map((config) => service.build(config)));
+
+    esbuildProgress.stop();
 
     if (input.some(canHaveDeclarations)) {
         if (declaration === "bundle") {
-            const bundleGeneration = Promise.all(
+            const dtsProgress = new Progress("Generating declaration bundle");
+
+            await Promise.all(
                 generateDtsBundle(
                     input.filter(canHaveDeclarations).map((entry) => ({
                         filePath: entry,
@@ -92,9 +96,13 @@ export const buildFromConfig = async (config: VerifiedTrwlOptions, service: Serv
                 })
             );
 
-            await logger.progress(bundleGeneration, "Generating declaration bundle");
+            dtsProgress.stop();
         } else if (declaration === "normal") {
+            const dtsProgress = new Progress("Emitting declarations");
+
             defaultEmitDeclarations(input, outdir);
+
+            dtsProgress.stop();
         }
     }
 };

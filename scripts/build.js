@@ -6,7 +6,7 @@ var buildOptions = {
     target: "node10.16.0",
     platform: "node",
     banner: "#!/usr/bin/env node\n",
-    external: ["commander", "esbuild", "dts-bundle-generator", "typescript"],
+    external: ["commander", "esbuild", "dts-bundle-generator", "typescript", "chokidar"],
 };
 
 require("esbuild")

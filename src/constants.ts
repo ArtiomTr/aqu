@@ -1,5 +1,3 @@
-import { join } from "path";
-
 import type { TrwlOptions } from "./typings";
 
 export const CONFIG_EXTENSIONS = ["ts", "js", "mjs", "cjs", "json"];
@@ -18,6 +16,8 @@ export const DEFAULT_OPTIONS: Partial<TrwlOptions> = {
     outdir: "dist",
     declaration: "bundle",
     check: true,
+    watchOptions: {
+        ignored: ["node_modules/**", "dist/**", "build/**", "out/**"],
+        followSymlinks: false,
+    },
 };
-
-export const PROGRESS_CACHE = join(process.cwd(), "node_modules", ".cache", ".progress-estimator");

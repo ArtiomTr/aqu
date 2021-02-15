@@ -1,12 +1,9 @@
-import { resolve } from "path";
-
-import uniq from "lodash/uniq";
 import { startService } from "esbuild";
-import rimraf from "rimraf";
 
 import { TrwlCommand } from "./typings";
 import { buildFromConfig } from "../buildFromConfig";
 import logger, { ErrorLevel } from "../logger";
+import { deleteBuildDirs } from "../utils/deleteBuildDirs";
 
 type BuildOptions = {};
 
@@ -15,21 +12,7 @@ const buildCommand: TrwlCommand<BuildOptions> = {
     description: "Build project",
     options: [],
     action: async (options, config) => {
-        const folders = uniq(config.map((value) => resolve(value.outdir)));
-
-        await Promise.all(
-            folders.map(
-                (folder) =>
-                    new Promise<void>((resolve) =>
-                        rimraf(folder, (error) => {
-                            if (error) {
-                                logger.error(ErrorLevel.ERROR, error);
-                            }
-                            resolve();
-                        })
-                    )
-            )
-        );
+        await deleteBuildDirs(config);
 
         const service = await startService();
 

@@ -11,8 +11,6 @@ import { canReadFile } from "../utils/canReadFile";
 import { deepMerge } from "../utils/deepMerge";
 import { existsFileWithExtension } from "../utils/existsFileWithExtension";
 
-// const overwriteMerge = (destinationArray: unknown[], sourceArray: unknown[]) => sourceArray;
-
 export const loadAndResolveConfig = async (configPath?: string): Promise<Array<TrwlOptions> | undefined> => {
     if (configPath !== undefined) {
         configPath = resolve(configPath);
