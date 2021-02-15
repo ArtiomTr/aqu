@@ -1,6 +1,7 @@
 import { build } from "esbuild";
 
 import { getDefaultFromCjs } from "./getDefaultFromCjs";
+import logger, { ErrorLevel } from "../logger";
 import { RawTrwlOptions } from "../typings";
 
 function evaluateCommonjsModule(module: string) {
@@ -19,19 +20,16 @@ export const transpileAndGetRawConfig = async (path: string): Promise<RawTrwlOpt
         outdir: "__unique__folder",
         bundle: true,
         write: false,
-        stdin: {
-            contents: "",
-        },
     });
 
-    if (bundle.outputFiles.length > 1) {
-        const outputFile = bundle.outputFiles[1];
+    if (bundle.outputFiles.length > 0) {
+        const outputFile = bundle.outputFiles[0];
 
         try {
             const config = getDefaultFromCjs(evaluateCommonjsModule(outputFile.text));
             return config as RawTrwlOptions;
         } catch (error) {
-            console.error(error);
+            logger.error(ErrorLevel.FATAL, error);
         }
     }
 

@@ -1,4 +1,5 @@
 import { getDefaultFromCjs } from "./getDefaultFromCjs";
+import logger, { ErrorLevel } from "../logger";
 import { RawTrwlOptions } from "../typings";
 
 export const getRawConfigFromCjs = (path: string): RawTrwlOptions => {
@@ -7,6 +8,6 @@ export const getRawConfigFromCjs = (path: string): RawTrwlOptions => {
         const config = require(path);
         return getDefaultFromCjs(config) as RawTrwlOptions;
     } catch (err) {
-        throw new Error();
+        logger.error(ErrorLevel.FATAL, err);
     }
 };

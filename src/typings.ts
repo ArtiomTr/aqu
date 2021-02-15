@@ -1,3 +1,4 @@
+import { WatchOptions } from "chokidar";
 import { Format } from "esbuild";
 
 export type TrwlOptions = {
@@ -17,6 +18,8 @@ export type TrwlOptions = {
     declaration?: DeclarationType;
     /** Should do typescript check? */
     check?: boolean;
+    /** Custom watch options. @see https://github.com/paulmillr/chokidar#readme */
+    watchOptions?: WatchOptions;
 };
 
 export type VerifiedTrwlOptions = Omit<Required<TrwlOptions>, "input" | "format"> & {

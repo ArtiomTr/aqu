@@ -12,15 +12,26 @@ export const initializeCommand = (
     const command = new Command(trwlCommand.name);
     command.description(trwlCommand.description);
 
-    [...trwlCommand.options, ...sharedOptions].forEach((commandOption) =>
-        command.option(
-            `-${commandOption.flag.short}, --${commandOption.flag.full} ${
+    [...trwlCommand.options, ...sharedOptions].forEach((commandOption) => {
+        const option = command.createOption(
+            `${commandOption.flag.short ? `-${commandOption.flag.short}, ` : ""}--${commandOption.flag.full} ${
                 commandOption.flag.placeholder ? `<${commandOption.flag.placeholder}>` : ""
             }`,
-            commandOption.description,
-            commandOption.defaultValue
-        )
-    );
+            commandOption.description
+        );
+
+        if (commandOption.defaultValue) {
+            option.default(commandOption.defaultValue);
+        }
+
+        if (commandOption.multiple) {
+            option.argParser((value, previous: unknown[]) =>
+                previous ? [...previous, ...value.split(",")] : value.split(",")
+            );
+        }
+
+        command.addOption(option);
+    });
 
     command.action(async (options) => {
         if (preload) {

@@ -6,6 +6,12 @@ import * as Yup from "yup";
 import { AVAILABLE_CJS_MODES, AVAILABLE_DECLARATION_MODES, AVAILABLE_OUTPUT_FORMATS } from "../constants";
 import logger, { ErrorLevel } from "../logger";
 import { requiredField, requiredInputField, unexpectedlyMissingField } from "../messages.json";
+import {
+    cannotSpecifyMultipleEntrypoints,
+    noOutputPathSpecified,
+    outfileCannotBeSpecified,
+    schemaValidationError,
+} from "../messages.json";
 import { TrwlOptions, VerifiedTrwlOptions } from "../typings";
 
 const optionSchema = Yup.object()
@@ -26,10 +32,11 @@ const optionSchema = Yup.object()
         cjsMode: Yup.string().required(unexpectedlyMissingField).oneOf(AVAILABLE_CJS_MODES),
         declaration: Yup.string().required(unexpectedlyMissingField).oneOf(AVAILABLE_DECLARATION_MODES),
         check: Yup.bool().required(unexpectedlyMissingField),
+        watchOptions: Yup.mixed().required(unexpectedlyMissingField),
     })
     .test((values, options) => {
         if (!values.outdir && !values.outfile) {
-            return options.createError({ path: "outdir", message: "No output path specified." });
+            return options.createError({ path: "outdir", message: noOutputPathSpecified });
         }
         return true;
     })
@@ -42,7 +49,7 @@ const optionSchema = Yup.object()
         ) {
             return options.createError({
                 path: "outfile",
-                message: "Cannot specify outfile because more than one entrypoint will be generated",
+                message: outfileCannotBeSpecified,
             });
         }
 
@@ -57,8 +64,7 @@ const optionSchema = Yup.object()
         ) {
             return options.createError({
                 path: "input",
-                message:
-                    "Cannot use mixed cjsMode with multiple entrypoints. Please use 1 entrypoint or switch to other cjsMode.",
+                message: cannotSpecifyMultipleEntrypoints,
             });
         }
 
@@ -81,7 +87,7 @@ export const verifyConfig = async (config: TrwlOptions): Promise<VerifiedTrwlOpt
         return verifiedConfig;
     } catch (err) {
         if (err instanceof Yup.ValidationError) {
-            logger.error(ErrorLevel.FATAL, "Schema validation failed:", err.message);
+            logger.error(ErrorLevel.FATAL, schemaValidationError, err.message);
         }
         logger.error(ErrorLevel.FATAL, err);
     }
