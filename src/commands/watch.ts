@@ -1,6 +1,3 @@
-import { parse } from "path";
-
-import uniq from "lodash/uniq";
 import chalk from "chalk";
 import chokidar, { WatchOptions as ChokidarWatchOptions } from "chokidar";
 import { startService } from "esbuild";
@@ -19,6 +16,7 @@ import {
 import { clearConsole } from "../utils/clearConsole";
 import { deepMerge } from "../utils/deepMerge";
 import { deleteBuildDirs } from "../utils/deleteBuildDirs";
+import { getInputDirs } from "../utils/getInputDirs";
 import { gracefulShutdown } from "../utils/gracefulShutdown";
 
 export type WatchOptions = {
@@ -59,12 +57,12 @@ export const watchCommand: TrwlCommand<WatchOptions> = {
     action: async (options, configs) => {
         await deleteBuildDirs(configs);
 
-        const folders: string[] = [];
+        let dirs: string[] = [];
 
         if (options.watchdir) {
-            folders.push(...options.watchdir);
+            dirs = options.watchdir;
         } else {
-            configs.forEach(({ input }) => folders.push(...input.map((entry) => parse(entry).dir)));
+            dirs = getInputDirs(configs);
         }
 
         const service = await startService();
@@ -79,7 +77,7 @@ export const watchCommand: TrwlCommand<WatchOptions> = {
             ].filter(Boolean)
         );
 
-        const watcher = chokidar.watch(uniq(folders), mergedWatchOptions);
+        const watcher = chokidar.watch(dirs, mergedWatchOptions);
 
         gracefulShutdown(() => {
             service.stop();

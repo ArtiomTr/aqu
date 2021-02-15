@@ -2,6 +2,8 @@ import type { TrwlOptions } from "./typings";
 
 export const CONFIG_EXTENSIONS = ["ts", "js", "mjs", "cjs", "json"];
 
+export const CONFIG_NAMES = [...CONFIG_EXTENSIONS.map((ext) => `trwl.config.${ext}`), ".trwlrc"];
+
 export const ENTRYPOINT_EXTENSIONS = ["ts", "tsx", "js", "jsx", "cjs", "mjs"];
 
 export const AVAILABLE_OUTPUT_FORMATS = ["iife", "cjs", "esm"];

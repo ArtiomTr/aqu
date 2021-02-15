@@ -5,7 +5,7 @@ import logger from "../logger";
 import { packageNotFound } from "../messages.json";
 import { TrwlOptions } from "../typings";
 
-export const tryGetConfigFromPackage = async (): Promise<TrwlOptions | undefined> => {
+export const getTrwlOptionsFromPackage = async (): Promise<TrwlOptions | undefined> => {
     const packageJsonPath = resolve("package.json");
 
     return new Promise((resolve) => {

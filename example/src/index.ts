@@ -1,3 +1,8 @@
-import { asdf } from "./asdf";
+import { ensureNumber } from "./ensureNumber";
 
-export const hello = () => console.log(asdf());
+export const sum = (a: unknown, b: unknown) => {
+    ensureNumber(a);
+    ensureNumber(b);
+
+    return a + b;
+};

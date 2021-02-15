@@ -4,7 +4,7 @@
     "unexpectedlyMissingField": "${path} is missing - suddenly, default value of ${path} is not load. This is probably trwl issue, please report about it.",
     "gracefulShutdownMessage": "✨ Shutting down gracefully",
     "gracefulShutdownDetails": "   Stopping esbuild service and closing watcher",
-    "configNotFound": "Cannot read config at path {{ path }}",
+    "configNotFound": "Cannot read config at path ${path}",
     "packageNotFound": "package.json not not found (could miss some configuration options)",
     "outfileCannotBeSpecified": "Cannot specify outfile because more than one entrypoint will be generated",
     "cannotSpecifyMultipleEntrypoints": "Cannot use mixed cjsMode with multiple entrypoints. Please use 1 entrypoint or switch to other cjsMode.",

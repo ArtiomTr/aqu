@@ -10,7 +10,7 @@ export const initializeCommand = (
     preload?: (options: Record<string, unknown>) => Promise<Array<VerifiedTrwlOptions>>
 ) => {
     const command = new Command(trwlCommand.name);
-    command.description(trwlCommand.description);
+    command.description(trwlCommand.description).allowUnknownOption(true);
 
     [...trwlCommand.options, ...sharedOptions].forEach((commandOption) => {
         const option = command.createOption(

@@ -2,7 +2,6 @@ import { build } from "esbuild";
 
 import { getDefaultFromCjs } from "./getDefaultFromCjs";
 import logger, { ErrorLevel } from "../logger";
-import { RawTrwlOptions } from "../typings";
 
 function evaluateCommonjsModule(module: string) {
     const exports = {};
@@ -12,7 +11,7 @@ function evaluateCommonjsModule(module: string) {
     return exports;
 }
 
-export const transpileAndGetRawConfig = async (path: string): Promise<RawTrwlOptions> => {
+export const transpileAndGetRawConfig = async <T>(path: string): Promise<T> => {
     const bundle = await build({
         entryPoints: [path],
         platform: "node",
@@ -27,7 +26,7 @@ export const transpileAndGetRawConfig = async (path: string): Promise<RawTrwlOpt
 
         try {
             const config = getDefaultFromCjs(evaluateCommonjsModule(outputFile.text));
-            return config as RawTrwlOptions;
+            return config as T;
         } catch (error) {
             logger.error(ErrorLevel.FATAL, error);
         }
