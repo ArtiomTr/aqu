@@ -1,3 +1,5 @@
+const NodeResolve = require("@esbuild-plugins/node-resolve").default;
+
 /** @type {import('esbuild').BuildOptions} */
 var buildOptions = {
     entryPoints: ["./src/index.ts"],
@@ -6,7 +8,20 @@ var buildOptions = {
     target: "node10.16.0",
     platform: "node",
     banner: "#!/usr/bin/env node\n",
-    external: ["commander", "esbuild", "dts-bundle-generator", "typescript", "chokidar"],
+    plugins: [
+        NodeResolve({
+            extensions: [".ts", ".js", ".tsx", ".jsx", ".cjs", ".mjs"],
+            onResolved: (resolved) => {
+                if (resolved.includes("node_modules")) {
+                    return {
+                        external: true,
+                    };
+                }
+                return resolved;
+            },
+        }),
+    ],
+    external: ["jest-watch-typeahead/testname", "jest-watch-typeahead/filename"],
 };
 
 require("esbuild")

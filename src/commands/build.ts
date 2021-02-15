@@ -1,9 +1,9 @@
 import { startService } from "esbuild";
 
-import { TrwlCommand } from "./typings";
 import { buildFromConfig } from "../build-utils/buildFromConfig";
 import logger, { ErrorLevel } from "../logger";
 import { commands } from "../messages.json";
+import { TrwlCommand } from "../typings";
 import { deleteBuildDirs } from "../utils/deleteBuildDirs";
 
 type BuildOptions = {};

@@ -1,11 +1,12 @@
 import { Command } from "commander";
 
 import buildCommand from "./commands/build";
-import { TrwlCommand, TrwlCommandOptions } from "./commands/typings";
+import testCommand from "./commands/test";
 import { watchCommand } from "./commands/watch";
 import { loadConfigFromArguments } from "./config/loadConfigFromArguments";
 import { initializeCommand } from "./utils/initializeCommand";
 import { options } from "./messages.json";
+import { TrwlCommand, TrwlCommandOptions } from "./typings";
 import { description, name, version } from "../package.json";
 
 const main = async () => {
@@ -21,7 +22,7 @@ const main = async () => {
             description: options.config,
         },
     ];
-    const commandsRequiringConfig = [buildCommand, watchCommand];
+    const commandsRequiringConfig = [buildCommand, watchCommand, testCommand];
 
     commandsRequiringConfig.forEach((command) =>
         initializeCommand(program as Command, command as TrwlCommand<unknown>, sharedOptions, loadConfigFromArguments)
