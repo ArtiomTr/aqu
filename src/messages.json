@@ -1,5 +1,32 @@
 {
     "requiredField": "${path} is required - ${path} was not found in package.json, config file or cli arguments",
     "requiredInputField": "${path} is required - \"source\" field not found in package.json, attempt to select the default ./src/index or ./lib/index also failed",
-    "unexpectedlyMissingField": "${path} is missing - suddenly, default value of ${path} is not load. This is probably trwl issue, please report about it."
+    "unexpectedlyMissingField": "${path} is missing - suddenly, default value of ${path} is not load. This is probably trwl issue, please report about it.",
+    "gracefulShutdownMessage": "✨ Shutting down gracefully",
+    "gracefulShutdownDetails": "   Stopping esbuild service and closing watcher",
+    "configNotFound": "Cannot read config at path {{ path }}",
+    "packageNotFound": "package.json not not found (could miss some configuration options)",
+    "outfileCannotBeSpecified": "Cannot specify outfile because more than one entrypoint will be generated",
+    "cannotSpecifyMultipleEntrypoints": "Cannot use mixed cjsMode with multiple entrypoints. Please use 1 entrypoint or switch to other cjsMode.",
+    "noOutputPathSpecified": "No output path specified.",
+    "schemaValidationError": "Schema validation failed:",
+    "compilationStart": "Compilation started.",
+    "compilationSuccess": "Successfully compiled!",
+    "compilationFailed": "Errors during compilation",
+    "watchIdle": "⌚ Waiting for changes...",
+    "steps": {
+        "esbuild": "Bundling using esbuild",
+        "dtsBundle": "Generating declaration bundle",
+        "dtsStandard": "Emitting declarations"
+    },
+    "commands": {
+        "watch": "Watch project",
+        "build": "Build project"
+    },
+    "options": {
+        "watchdir": "specify custom watching directories",
+        "nosym": "do not follow symlinks",
+        "ignore": "specify paths which will be ignored while watching",
+        "config": "specify path to configuration"
+    }
 }

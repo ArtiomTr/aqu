@@ -1,9 +1,10 @@
 import logger from "../logger";
+import { gracefulShutdownDetails, gracefulShutdownMessage } from "../messages.json";
 
 export const gracefulShutdown = (cleanup: () => void) => {
     const onShutdown = () => {
-        logger.info("✨ Shutting down gracefully");
-        logger.info("   Stopping esbuild service and closing watcher");
+        logger.info(gracefulShutdownMessage);
+        logger.info(gracefulShutdownDetails);
         cleanup();
     };
 

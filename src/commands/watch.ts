@@ -6,37 +6,45 @@ import chokidar, { WatchOptions as ChokidarWatchOptions } from "chokidar";
 import { startService } from "esbuild";
 
 import { TrwlCommand } from "./typings";
-import { buildFromConfig } from "../buildFromConfig";
+import { buildFromConfig } from "../build-utils/buildFromConfig";
 import logger, { ErrorLevel } from "../logger";
+import {
+    commands,
+    compilationFailed,
+    compilationStart,
+    compilationSuccess,
+    options,
+    watchIdle,
+} from "../messages.json";
 import { clearConsole } from "../utils/clearConsole";
 import { deepMerge } from "../utils/deepMerge";
 import { deleteBuildDirs } from "../utils/deleteBuildDirs";
 import { gracefulShutdown } from "../utils/gracefulShutdown";
 
 export type WatchOptions = {
-    dir: string[];
+    watchdir: string[];
     ignore: string[];
     Nosym: boolean;
 };
 
 export const watchCommand: TrwlCommand<WatchOptions> = {
     name: "watch",
-    description: "Watch project",
+    description: commands.watch,
     options: [
         {
             flag: {
-                short: "d",
-                full: "dir",
+                short: "wd",
+                full: "watchdir",
                 placeholder: "path",
             },
             multiple: true,
-            description: "specify custom watch dir.",
+            description: options.watchdir,
         },
         {
             flag: {
                 full: "nosym",
             },
-            description: "do not follow symlinks",
+            description: options.nosym,
         },
         {
             flag: {
@@ -44,7 +52,7 @@ export const watchCommand: TrwlCommand<WatchOptions> = {
                 full: "ignore",
                 placeholder: "path",
             },
-            description: "ignore paths",
+            description: options.ignore,
             multiple: true,
         },
     ],
@@ -53,8 +61,8 @@ export const watchCommand: TrwlCommand<WatchOptions> = {
 
         const folders: string[] = [];
 
-        if (options.dir) {
-            folders.push(...options.dir);
+        if (options.watchdir) {
+            folders.push(...options.watchdir);
         } else {
             configs.forEach(({ input }) => folders.push(...input.map((entry) => parse(entry).dir)));
         }
@@ -87,17 +95,17 @@ export const watchCommand: TrwlCommand<WatchOptions> = {
                 clearConsole();
 
                 try {
-                    console.log(chalk.cyan("\nCompilation started.\n"));
+                    console.log("\n", chalk.cyan(compilationStart), "\n");
 
                     await Promise.all(configs.map((config) => buildFromConfig(config, service)));
 
                     clearConsole();
 
-                    console.log("\n", chalk.bold.green("Successfully compiled!"), "\n");
+                    console.log("\n", chalk.bold.green(compilationSuccess), "\n");
 
-                    console.log("⌚", chalk.gray("Waiting for changes..."), "\n");
+                    console.log(chalk.gray(watchIdle), "\n");
                 } catch (err) {
-                    console.log("\n", chalk.bold.red("Errors during compilation"), "\n");
+                    console.log("\n", chalk.bold.red(compilationFailed), "\n");
                     logger.error(ErrorLevel.ERROR, err);
                 } finally {
                     isBuilding = false;
