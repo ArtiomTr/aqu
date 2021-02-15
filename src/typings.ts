@@ -1,4 +1,6 @@
+import { Config } from "@jest/types";
 import { WatchOptions } from "chokidar";
+import { BuildOptions } from "esbuild";
 import { Format } from "esbuild";
 
 export type TrwlOptions = {
@@ -18,8 +20,12 @@ export type TrwlOptions = {
     declaration?: DeclarationType;
     /** Should do typescript check? */
     check?: boolean;
+    /** Esbuild options @see https://esbuild.github.io/api/#simple-options */
+    buildOptions?: BuildOptions;
     /** Custom watch options. @see https://github.com/paulmillr/chokidar#readme */
     watchOptions?: WatchOptions;
+    /** Jest options. @see https://jestjs.io/docs/en/configuration */
+    jestOptions?: Config.InitialOptions;
 };
 
 export type VerifiedTrwlOptions = Omit<Required<TrwlOptions>, "input" | "format"> & {
@@ -32,3 +38,22 @@ export type DeclarationType = "bundle" | "normal" | "none";
 export type Mode = "production" | "development" | "mixed";
 
 export type RawTrwlOptions = TrwlOptions | Array<TrwlOptions>;
+
+export type TrwlCommand<T> = {
+    name: string;
+    description: string;
+    action: (options: T, config: Array<VerifiedTrwlOptions>) => void | Promise<void>;
+    options: Array<TrwlCommandOptions>;
+    allowUnknownOptions?: boolean;
+};
+
+export type TrwlCommandOptions = {
+    flag: {
+        full: string;
+        short?: string;
+        placeholder?: string;
+    };
+    multiple?: boolean;
+    defaultValue?: string | boolean;
+    description: string;
+};

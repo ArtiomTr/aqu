@@ -2,15 +2,15 @@ import { Command } from "commander";
 
 import buildCommand from "./commands/build";
 import testCommand from "./commands/test";
-import { TrwlCommand, TrwlCommandOptions } from "./commands/typings";
 import { watchCommand } from "./commands/watch";
 import { loadConfigFromArguments } from "./config/loadConfigFromArguments";
 import { initializeCommand } from "./utils/initializeCommand";
 import { options } from "./messages.json";
+import { TrwlCommand, TrwlCommandOptions } from "./typings";
 import { description, name, version } from "../package.json";
 
 const main = async () => {
-    const program = new Command(name).description(description).version(version).allowUnknownOption(true);
+    const program = new Command(name).description(description).version(version);
 
     const sharedOptions: Array<TrwlCommandOptions> = [
         {

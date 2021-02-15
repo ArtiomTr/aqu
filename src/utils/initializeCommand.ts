@@ -1,7 +1,6 @@
 import { Command } from "commander";
 
-import { TrwlCommand, TrwlCommandOptions } from "../commands/typings";
-import type { VerifiedTrwlOptions } from "../typings";
+import { TrwlCommand, TrwlCommandOptions, VerifiedTrwlOptions } from "../typings";
 
 export const initializeCommand = (
     program: Command,
@@ -10,7 +9,11 @@ export const initializeCommand = (
     preload?: (options: Record<string, unknown>) => Promise<Array<VerifiedTrwlOptions>>
 ) => {
     const command = new Command(trwlCommand.name);
-    command.description(trwlCommand.description).allowUnknownOption(true);
+    command.description(trwlCommand.description);
+
+    if (trwlCommand.allowUnknownOptions) {
+        command.allowUnknownOption(true);
+    }
 
     [...trwlCommand.options, ...sharedOptions].forEach((commandOption) => {
         const option = command.createOption(

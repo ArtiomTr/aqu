@@ -21,7 +21,8 @@
     },
     "commands": {
         "watch": "Watch project",
-        "build": "Build project"
+        "build": "Build project",
+        "test": "Run jest"
     },
     "options": {
         "watchdir": "specify custom watching directories",

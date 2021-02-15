@@ -1,10 +1,11 @@
 import { Config as JestConfig } from "@jest/types";
 import { run } from "jest";
 
-import { TrwlCommand } from "./typings";
 import { createJestConfig } from "../config/createJestConfig";
 import { loadAndResolveConfig } from "../config/loadAndResolveConfig";
 import { CONFIG_EXTENSIONS } from "../constants";
+import { commands } from "../messages.json";
+import { TrwlCommand } from "../typings";
 import { deepMerge } from "../utils/deepMerge";
 import { getRestArgv } from "../utils/getRestArgv";
 
@@ -16,8 +17,9 @@ const availableJestConfigNames = [
 
 const testCommand: TrwlCommand<{}> = {
     name: "test",
-    description: "Run jest",
+    description: commands.test,
     options: [],
+    allowUnknownOptions: true,
     action: async (_, configs) => {
         const defaultConfig = createJestConfig(configs);
 
@@ -26,7 +28,7 @@ const testCommand: TrwlCommand<{}> = {
             packageJsonProp: "jest",
         });
 
-        const jestConfig = deepMerge(defaultConfig, ...jestConfigFiles);
+        const jestConfig = deepMerge(defaultConfig, ...configs.map((config) => config.jestOptions), ...jestConfigFiles);
 
         const argv = getRestArgv();
 

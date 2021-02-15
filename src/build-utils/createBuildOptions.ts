@@ -5,15 +5,16 @@ import { BuildOptions } from "esbuild";
 import { VerifiedTrwlOptions } from "../typings";
 
 export const createBuildOptions = async (config: VerifiedTrwlOptions) => {
-    const { format, name, cjsMode, input, outdir, outfile } = config;
+    const { format, name, cjsMode, input, outdir, outfile, buildOptions } = config;
 
     const normalConfigs: Array<BuildOptions> = [];
 
     const sharedOpts: Partial<BuildOptions> = {
         keepNames: true,
         bundle: true,
-        entryPoints: input,
         sourcemap: "external",
+        ...buildOptions,
+        entryPoints: input,
     };
 
     if (format.includes("cjs")) {

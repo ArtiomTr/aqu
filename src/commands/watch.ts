@@ -2,7 +2,6 @@ import chalk from "chalk";
 import chokidar, { WatchOptions as ChokidarWatchOptions } from "chokidar";
 import { startService } from "esbuild";
 
-import { TrwlCommand } from "./typings";
 import { buildFromConfig } from "../build-utils/buildFromConfig";
 import logger, { ErrorLevel } from "../logger";
 import {
@@ -13,6 +12,7 @@ import {
     options,
     watchIdle,
 } from "../messages.json";
+import { TrwlCommand } from "../typings";
 import { clearConsole } from "../utils/clearConsole";
 import { deepMerge } from "../utils/deepMerge";
 import { deleteBuildDirs } from "../utils/deleteBuildDirs";
