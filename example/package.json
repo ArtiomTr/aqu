@@ -5,6 +5,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "build": "trwl build",
         "test": "trwl test",
         "start": "trwl watch",
         "lint": "trwl lint"

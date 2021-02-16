@@ -18,8 +18,12 @@ export class Progress {
         this.beginPoint = new Date();
     }
 
-    stop() {
+    succeed() {
         this.spinner.succeed(this.label + " " + chalk.gray(timeFrom(this.beginPoint)));
+    }
+
+    fail() {
+        this.spinner.fail();
     }
 }
 
@@ -33,7 +37,7 @@ export interface Logger {
 
 const logger: Logger = {
     error: (level: ErrorLevel, ...args: unknown[]): never => {
-        console.error(chalk.red(`[${name}]`, ...args));
+        console.error(chalk.red(`[${name}]`), ...args);
         if (level === ErrorLevel.FATAL) {
             return process.exit(1);
         }

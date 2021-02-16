@@ -3,7 +3,7 @@ import { Service } from "esbuild";
 import { createBuildOptions } from "./createBuildOptions";
 import { createMixedCjsEntrypoint } from "./createMixedCjsEntrypoint";
 import { emitDeclarations } from "./emitDeclarations";
-import { Progress } from "../logger";
+import logger, { ErrorLevel, Progress } from "../logger";
 import { steps } from "../messages.json";
 import { VerifiedTrwlOptions } from "../typings";
 
@@ -18,9 +18,14 @@ export const buildFromConfig = async (config: VerifiedTrwlOptions, service: Serv
 
     const esbuildProgress = new Progress(steps.esbuild);
 
-    await Promise.all(buildConfigs.map((config) => service.build(config)));
+    try {
+        await Promise.all(buildConfigs.map((config) => service.build(config)));
 
-    esbuildProgress.stop();
+        esbuildProgress.succeed();
 
-    await emitDeclarations(config);
+        await emitDeclarations(config);
+    } catch (err) {
+        esbuildProgress.fail();
+        logger.error(ErrorLevel.ERROR, err);
+    }
 };
