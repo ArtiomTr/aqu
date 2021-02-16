@@ -6,7 +6,6 @@
         "strict": true,
         "esModuleInterop": true,
         "lib": ["ES2015"],
-        "rootDir": "src",
         "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",

@@ -6,7 +6,8 @@
     "main": "index.js",
     "scripts": {
         "test": "trwl test",
-        "start": "trwl watch"
+        "start": "trwl watch",
+        "lint": "trwl lint"
     },
     "keywords": [],
     "author": "Artiom Tretjakovas",

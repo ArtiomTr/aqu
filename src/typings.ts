@@ -1,5 +1,6 @@
 import { Config } from "@jest/types";
 import { WatchOptions } from "chokidar";
+import { Command } from "commander";
 import { BuildOptions } from "esbuild";
 import { Format } from "esbuild";
 
@@ -42,7 +43,7 @@ export type RawTrwlOptions = TrwlOptions | Array<TrwlOptions>;
 export type TrwlCommand<T> = {
     name: string;
     description: string;
-    action: (options: T, config: Array<VerifiedTrwlOptions>) => void | Promise<void>;
+    action: (options: T, config: Array<VerifiedTrwlOptions>, command: Command) => void | Promise<void>;
     options: Array<TrwlCommandOptions>;
     allowUnknownOptions?: boolean;
 };

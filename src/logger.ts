@@ -28,6 +28,7 @@ export interface Logger {
     error(level: ErrorLevel.FATAL, ...parts: unknown[]): never;
     warn(...parts: unknown[]): void;
     info(...parts: unknown[]): void;
+    success(...parts: unknown[]): void;
 }
 
 const logger: Logger = {
@@ -39,10 +40,13 @@ const logger: Logger = {
         return void 0 as never;
     },
     warn: (...args) => {
-        console.warn(chalk.yellow(`[${name}] WARNING:`, ...args));
+        console.warn(chalk.yellow(`[${name}] WARNING:`), ...args);
     },
     info: (...args) => {
         console.log(chalk.gray(`[${name}]:`), ...args);
+    },
+    success: (...args) => {
+        console.log(chalk.green(`[${name}]:`, ...args));
     },
 };
 
