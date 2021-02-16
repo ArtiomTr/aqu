@@ -1,4 +1,3 @@
-import { Config } from "@jest/types";
 import { WatchOptions } from "chokidar";
 import { Command } from "commander";
 import { BuildOptions } from "esbuild";
@@ -13,20 +12,22 @@ export type TrwlOptions = {
     outdir?: string;
     /** Output file. Could not use when multiple entrypoints specified */
     outfile?: string;
-    /** Output format. Generates multiple outputs, each for format. */
+    /** Output format. Generates multiple outputs, each for format */
     format?: Format | Format[];
-    /** How cjs should be generated - in production or development? If mixed is specified, will generate both with one entrypoint. */
+    /** How cjs should be generated - in production or development? If mixed is specified, will generate both with one entrypoint */
     cjsMode?: Mode;
     /** Should declarations be generated and bundled? */
     declaration?: DeclarationType;
-    /** Should do typescript check? */
-    check?: boolean;
+    /** Path to typescript config */
+    tsconfig?: string;
+    /** Incremental build */
+    incremental?: boolean;
+    /** Mark all node_modules as external */
+    externalNodeModules?: boolean;
     /** Esbuild options @see https://esbuild.github.io/api/#simple-options */
     buildOptions?: BuildOptions;
-    /** Custom watch options. @see https://github.com/paulmillr/chokidar#readme */
+    /** Custom watch options @see https://github.com/paulmillr/chokidar#readme */
     watchOptions?: WatchOptions;
-    /** Jest options. @see https://jestjs.io/docs/en/configuration */
-    jestOptions?: Config.InitialOptions;
 };
 
 export type VerifiedTrwlOptions = Omit<Required<TrwlOptions>, "input" | "format"> & {

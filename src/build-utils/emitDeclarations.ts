@@ -3,7 +3,7 @@ import { extname, join } from "path";
 import { generateDtsBundle } from "dts-bundle-generator";
 
 import { defaultEmitDeclarations } from "./defaultEmitDeclarations";
-import logger, { Progress } from "../logger";
+import { Progress } from "../logger";
 import { steps } from "../messages.json";
 import { VerifiedTrwlOptions } from "../typings";
 import { safeWriteFile } from "../utils/safeWriteFile";
@@ -11,7 +11,7 @@ import { safeWriteFile } from "../utils/safeWriteFile";
 const canHaveDeclarations = (filePath: string) => [".ts", ".tsx"].includes(extname(filePath));
 
 export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
-    const { input, declaration, outfile, outdir, name } = config;
+    const { input, declaration, outfile, outdir, name, tsconfig } = config;
 
     if (input.some(canHaveDeclarations)) {
         if (declaration === "bundle") {
@@ -24,7 +24,7 @@ export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
                             filePath: entry,
                         })),
                         {
-                            preferredConfigPath: join(process.cwd(), "tsconfig.json"),
+                            preferredConfigPath: tsconfig,
                         }
                     ).map((bundle) => {
                         return safeWriteFile(
@@ -39,18 +39,18 @@ export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
                 dtsProgress.succeed();
             } catch (err) {
                 dtsProgress.fail();
-                logger.error(err);
+                throw err;
             }
         } else if (declaration === "normal") {
             const dtsProgress = new Progress(steps.dtsStandard);
 
             try {
-                defaultEmitDeclarations(input, outdir);
+                await defaultEmitDeclarations(config);
 
                 dtsProgress.succeed();
             } catch (err) {
                 dtsProgress.fail();
-                logger.error(err);
+                throw err;
             }
         }
     }
