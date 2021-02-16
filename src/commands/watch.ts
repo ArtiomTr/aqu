@@ -3,7 +3,7 @@ import chokidar, { WatchOptions as ChokidarWatchOptions } from "chokidar";
 import { startService } from "esbuild";
 
 import { buildFromConfig } from "../build-utils/buildFromConfig";
-import logger, { ErrorLevel } from "../logger";
+import logger from "../logger";
 import {
     commands,
     compilationFailed,
@@ -104,7 +104,7 @@ export const watchCommand: TrwlCommand<WatchOptions> = {
                     console.log(chalk.gray(watchIdle), "\n");
                 } catch (err) {
                     console.log("\n", chalk.bold.red(compilationFailed), "\n");
-                    logger.error(ErrorLevel.ERROR, err);
+                    logger.error(err);
                 } finally {
                     isBuilding = false;
                 }

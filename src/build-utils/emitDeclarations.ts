@@ -3,7 +3,7 @@ import { extname, join } from "path";
 import { generateDtsBundle } from "dts-bundle-generator";
 
 import { defaultEmitDeclarations } from "./defaultEmitDeclarations";
-import logger, { ErrorLevel, Progress } from "../logger";
+import logger, { Progress } from "../logger";
 import { steps } from "../messages.json";
 import { VerifiedTrwlOptions } from "../typings";
 import { safeWriteFile } from "../utils/safeWriteFile";
@@ -39,7 +39,7 @@ export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
                 dtsProgress.succeed();
             } catch (err) {
                 dtsProgress.fail();
-                logger.error(ErrorLevel.ERROR, err);
+                logger.error(err);
             }
         } else if (declaration === "normal") {
             const dtsProgress = new Progress(steps.dtsStandard);
@@ -50,7 +50,7 @@ export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
                 dtsProgress.succeed();
             } catch (err) {
                 dtsProgress.fail();
-                logger.error(ErrorLevel.ERROR, err);
+                logger.error(err);
             }
         }
     }
