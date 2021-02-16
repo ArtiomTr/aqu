@@ -6,10 +6,19 @@ import { createEslintConfig } from "../config/createEslintConfig";
 import { loadAndResolveConfig } from "../config/loadAndResolveConfig";
 import { CONFIG_EXTENSIONS } from "../constants";
 import logger, { ErrorLevel } from "../logger";
+import {
+    commands,
+    lintSuccess,
+    maxWarningsError,
+    noLintDirsSpecifiedError,
+    notNumberError,
+    options,
+} from "../messages.json";
 import { TrwlCommand } from "../typings";
 import assert from "../utils/assert";
 import { deepMerge } from "../utils/deepMerge";
 import { getInputDirs } from "../utils/getInputDirs";
+import { insertArgs } from "../utils/insertArgs";
 import { safeWriteFile } from "../utils/safeWriteFile";
 
 const availableConfigNames = [...CONFIG_EXTENSIONS.map((ext) => `.eslintrc.${ext}`), ".eslintrc"];
@@ -26,46 +35,46 @@ export type LintOptions = {
 
 const lintCommand: TrwlCommand<LintOptions> = {
     name: "lint",
-    description: "Lint using eslint",
+    description: commands.lint,
     options: [
         {
             flag: {
                 full: "max-warnings",
                 placeholder: "count",
             },
-            description: "Number of warnings to trigger nonzero exit code. Default: infinity",
+            description: options.maxWarnings,
         },
         {
             flag: {
                 full: "fix",
             },
-            description: "Automatically fix problems",
+            description: options.fix,
         },
         {
             flag: {
                 full: "fix-dry-run",
             },
-            description: "Automatically fix problems without saving the changes to the file system",
+            description: options.fixDryRun,
         },
         {
             flag: {
                 full: "cache",
             },
-            description: "Only check changed files - default: false",
+            description: options.cache,
         },
         {
             flag: {
                 full: "cache-location",
                 placeholder: "path",
             },
-            description: "Path to the cache file or directory",
+            description: options.cacheLocation,
         },
         {
             flag: {
                 full: "report-file",
                 placeholder: "path",
             },
-            description: "Specify file to write report to",
+            description: options.reportFile,
         },
     ],
     action: async (options, configs, command) => {
@@ -76,7 +85,7 @@ const lintCommand: TrwlCommand<LintOptions> = {
 
             assert(
                 !Number.isNaN(maxWarnings),
-                `Specified argument for "maxWarnings" ${options.maxWarnings} is not of number type`
+                insertArgs(notNumberError, { value: options.maxWarnings, name: "maxWarnings" })
             );
         }
 
@@ -96,9 +105,9 @@ const lintCommand: TrwlCommand<LintOptions> = {
             defaultDirs.push("test");
 
             logger.warn(
-                `No directories specified. Defaulting to "trwl lint ${defaultDirs.join(
-                    " "
-                )}" (entrypoint directories + test dir)`
+                insertArgs(noLintDirsSpecifiedError, {
+                    dirs: defaultDirs.join(" "),
+                })
             );
 
             dirs = defaultDirs;
@@ -122,7 +131,7 @@ const lintCommand: TrwlCommand<LintOptions> = {
         if (report.some((result) => result.messages.length > 0)) {
             logger.info((await eslintInstance.loadFormatter()).format(report));
         } else {
-            logger.success("Successful lint");
+            logger.success(lintSuccess);
         }
 
         if (options.reportFile) {
@@ -135,10 +144,7 @@ const lintCommand: TrwlCommand<LintOptions> = {
         if (errorCount > 0) {
             process.exit(1);
         } else if (warningCount > maxWarnings) {
-            logger.error(
-                ErrorLevel.FATAL,
-                `Received ${warningCount} warnings, which is more than specified threshold - ${maxWarnings}. Exiting with code 1.`
-            );
+            logger.error(ErrorLevel.FATAL, insertArgs(maxWarningsError, { warningCount, maxWarnings }));
         }
     },
 };
