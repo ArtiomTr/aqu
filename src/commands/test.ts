@@ -7,7 +7,6 @@ import { CONFIG_EXTENSIONS } from "../constants";
 import { commands } from "../messages.json";
 import { TrwlCommand } from "../typings";
 import { deepMerge } from "../utils/deepMerge";
-import { getRestArgv } from "../utils/getRestArgv";
 
 const availableJestConfigNames = [
     ...CONFIG_EXTENSIONS.map((ext) => `jest.config.${ext}`),
@@ -20,7 +19,7 @@ const testCommand: TrwlCommand<{}> = {
     description: commands.test,
     options: [],
     allowUnknownOptions: true,
-    action: async (_, configs) => {
+    action: async (_, configs, command) => {
         const defaultConfig = createJestConfig(configs);
 
         const jestConfigFiles = await loadAndResolveConfig<JestConfig.InitialOptions>({
@@ -30,7 +29,7 @@ const testCommand: TrwlCommand<{}> = {
 
         const jestConfig = deepMerge(defaultConfig, ...configs.map((config) => config.jestOptions), ...jestConfigFiles);
 
-        const argv = getRestArgv();
+        const argv = command.args;
 
         argv.push("--config", JSON.stringify(jestConfig));
 

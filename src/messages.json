@@ -14,6 +14,10 @@
     "compilationSuccess": "Successfully compiled!",
     "compilationFailed": "Errors during compilation",
     "watchIdle": "⌚ Waiting for changes...",
+    "notNumberError": "Specified argument for ${name} - \"${value}\" is not number",
+    "noLintDirsSpecifiedError": "No directories specified. Defaulting to \"trwl lint ${dirs}\" (entrypoint directories + test dir)",
+    "lintSuccess": "Successful lint",
+    "maxWarningsError": "Received ${warningCount} warnings, which is more than specified threshold - ${maxWarnings}. Exiting with code 1.",
     "steps": {
         "esbuild": "Bundling using esbuild",
         "dtsBundle": "Generating declaration bundle",
@@ -22,12 +26,19 @@
     "commands": {
         "watch": "Watch project",
         "build": "Build project",
-        "test": "Run jest"
+        "test": "Run jest",
+        "lint": "Lint using eslint"
     },
     "options": {
         "watchdir": "specify custom watching directories",
         "nosym": "do not follow symlinks",
         "ignore": "specify paths which will be ignored while watching",
-        "config": "specify path to configuration"
+        "config": "specify path to configuration",
+        "maxWarnings": "Number of warnings to trigger nonzero exit code. Default: infinity",
+        "fix": "Automatically fix problems",
+        "fixDryRun": "Automatically fix problems without saving the changes to the file system",
+        "cache": "Only check changed files - default: false",
+        "cacheLocation": "Path to the cache file or directory",
+        "reportFile": "Specify file to write report to"
     }
 }

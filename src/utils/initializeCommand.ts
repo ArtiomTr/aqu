@@ -28,19 +28,17 @@ export const initializeCommand = (
         }
 
         if (commandOption.multiple) {
-            option.argParser((value, previous: unknown[]) =>
-                previous ? [...previous, ...value.split(",")] : value.split(",")
-            );
+            option.argParser((value, previous: unknown[]) => (previous ? [...previous, value] : [value]));
         }
 
         command.addOption(option);
     });
 
-    command.action(async (options) => {
+    command.action(async (options, command) => {
         if (preload) {
-            trwlCommand.action(options, await preload(options));
+            trwlCommand.action(options, await preload(options), command);
         } else {
-            trwlCommand.action(options, []);
+            trwlCommand.action(options, [], command);
         }
     });
 
