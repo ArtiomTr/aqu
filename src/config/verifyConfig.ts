@@ -4,7 +4,7 @@ import uniq from "lodash/uniq";
 import * as Yup from "yup";
 
 import { AVAILABLE_CJS_MODES, AVAILABLE_DECLARATION_MODES, AVAILABLE_OUTPUT_FORMATS } from "../constants";
-import logger, { ErrorLevel } from "../logger";
+import logger from "../logger";
 import { requiredField, requiredInputField, unexpectedlyMissingField } from "../messages.json";
 import {
     cannotSpecifyMultipleEntrypoints,
@@ -89,8 +89,8 @@ export const verifyConfig = async (config: TrwlOptions): Promise<VerifiedTrwlOpt
         return verifiedConfig;
     } catch (err) {
         if (err instanceof Yup.ValidationError) {
-            logger.error(ErrorLevel.FATAL, schemaValidationError, err.message);
+            logger.fatal(schemaValidationError, err.message);
         }
-        logger.error(ErrorLevel.FATAL, err);
+        logger.fatal(err);
     }
 };

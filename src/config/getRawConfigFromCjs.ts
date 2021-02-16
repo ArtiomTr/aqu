@@ -1,5 +1,5 @@
 import { getDefaultFromCjs } from "./getDefaultFromCjs";
-import logger, { ErrorLevel } from "../logger";
+import logger from "../logger";
 
 export const getRawConfigFromCjs = <T>(path: string): T => {
     try {
@@ -7,6 +7,6 @@ export const getRawConfigFromCjs = <T>(path: string): T => {
         const config = require(path);
         return getDefaultFromCjs(config) as T;
     } catch (err) {
-        logger.error(ErrorLevel.FATAL, err);
+        logger.fatal(err);
     }
 };

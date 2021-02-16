@@ -15,6 +15,7 @@ export const createBuildOptions = async (config: VerifiedTrwlOptions) => {
         sourcemap: "external",
         ...buildOptions,
         entryPoints: input,
+        logLevel: "silent",
     };
 
     if (format.includes("cjs")) {

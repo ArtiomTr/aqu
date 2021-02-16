@@ -4,11 +4,6 @@ import ora from "ora";
 import { timeFrom } from "./utils/timeFrom";
 import { name } from "../package.json";
 
-export enum ErrorLevel {
-    FATAL,
-    ERROR,
-}
-
 export class Progress {
     private spinner;
     private beginPoint;
@@ -18,26 +13,30 @@ export class Progress {
         this.beginPoint = new Date();
     }
 
-    stop() {
+    succeed() {
         this.spinner.succeed(this.label + " " + chalk.gray(timeFrom(this.beginPoint)));
+    }
+
+    fail() {
+        this.spinner.fail();
     }
 }
 
 export interface Logger {
-    error(level: ErrorLevel.ERROR, ...parts: unknown[]): void;
-    error(level: ErrorLevel.FATAL, ...parts: unknown[]): never;
+    error(...parts: unknown[]): void;
+    fatal(...parts: unknown[]): never;
     warn(...parts: unknown[]): void;
     info(...parts: unknown[]): void;
     success(...parts: unknown[]): void;
 }
 
 const logger: Logger = {
-    error: (level: ErrorLevel, ...args: unknown[]): never => {
-        console.error(chalk.red(`[${name}]`, ...args));
-        if (level === ErrorLevel.FATAL) {
-            return process.exit(1);
-        }
-        return void 0 as never;
+    error: (...args: unknown[]) => {
+        console.error(chalk.red(`[${name}]`), ...args);
+    },
+    fatal: (...args: unknown[]) => {
+        logger.error(...args);
+        process.exit(1);
     },
     warn: (...args) => {
         console.warn(chalk.yellow(`[${name}] WARNING:`), ...args);

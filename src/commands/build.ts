@@ -1,7 +1,7 @@
 import { startService } from "esbuild";
 
 import { buildFromConfig } from "../build-utils/buildFromConfig";
-import logger, { ErrorLevel } from "../logger";
+import logger from "../logger";
 import { commands } from "../messages.json";
 import { TrwlCommand } from "../typings";
 import { deleteBuildDirs } from "../utils/deleteBuildDirs";
@@ -20,7 +20,7 @@ const buildCommand: TrwlCommand<BuildOptions> = {
         try {
             await Promise.all(config.map((config) => buildFromConfig(config, service)));
         } catch (err) {
-            logger.error(ErrorLevel.FATAL, err);
+            logger.fatal(err);
         } finally {
             service.stop();
         }

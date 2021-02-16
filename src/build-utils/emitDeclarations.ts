@@ -3,7 +3,7 @@ import { extname, join } from "path";
 import { generateDtsBundle } from "dts-bundle-generator";
 
 import { defaultEmitDeclarations } from "./defaultEmitDeclarations";
-import { Progress } from "../logger";
+import logger, { Progress } from "../logger";
 import { steps } from "../messages.json";
 import { VerifiedTrwlOptions } from "../typings";
 import { safeWriteFile } from "../utils/safeWriteFile";
@@ -17,29 +17,41 @@ export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
         if (declaration === "bundle") {
             const dtsProgress = new Progress(steps.dtsBundle);
 
-            await Promise.all(
-                generateDtsBundle(
-                    input.filter(canHaveDeclarations).map((entry) => ({
-                        filePath: entry,
-                    })),
-                    {
-                        preferredConfigPath: join(process.cwd(), "tsconfig.json"),
-                    }
-                ).map((bundle) => {
-                    return safeWriteFile(
-                        outfile ? `${outfile.substring(outfile.lastIndexOf("."))}.d.ts` : join(outdir, `${name}.d.ts`),
-                        bundle
-                    );
-                })
-            );
+            try {
+                await Promise.all(
+                    generateDtsBundle(
+                        input.filter(canHaveDeclarations).map((entry) => ({
+                            filePath: entry,
+                        })),
+                        {
+                            preferredConfigPath: join(process.cwd(), "tsconfig.json"),
+                        }
+                    ).map((bundle) => {
+                        return safeWriteFile(
+                            outfile
+                                ? `${outfile.substring(outfile.lastIndexOf("."))}.d.ts`
+                                : join(outdir, `${name}.d.ts`),
+                            bundle
+                        );
+                    })
+                );
 
-            dtsProgress.stop();
+                dtsProgress.succeed();
+            } catch (err) {
+                dtsProgress.fail();
+                logger.error(err);
+            }
         } else if (declaration === "normal") {
             const dtsProgress = new Progress(steps.dtsStandard);
 
-            defaultEmitDeclarations(input, outdir);
+            try {
+                defaultEmitDeclarations(input, outdir);
 
-            dtsProgress.stop();
+                dtsProgress.succeed();
+            } catch (err) {
+                dtsProgress.fail();
+                logger.error(err);
+            }
         }
     }
 };

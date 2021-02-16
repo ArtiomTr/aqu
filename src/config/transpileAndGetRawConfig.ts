@@ -1,7 +1,7 @@
 import { build } from "esbuild";
 
 import { getDefaultFromCjs } from "./getDefaultFromCjs";
-import logger, { ErrorLevel } from "../logger";
+import logger from "../logger";
 
 function evaluateCommonjsModule(module: string) {
     const exports = {};
@@ -28,7 +28,7 @@ export const transpileAndGetRawConfig = async <T>(path: string): Promise<T> => {
             const config = getDefaultFromCjs(evaluateCommonjsModule(outputFile.text));
             return config as T;
         } catch (error) {
-            logger.error(ErrorLevel.FATAL, error);
+            logger.fatal(error);
         }
     }
 

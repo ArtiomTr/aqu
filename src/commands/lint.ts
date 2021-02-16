@@ -5,7 +5,7 @@ import { ESLint, Linter } from "eslint";
 import { createEslintConfig } from "../config/createEslintConfig";
 import { loadAndResolveConfig } from "../config/loadAndResolveConfig";
 import { CONFIG_EXTENSIONS } from "../constants";
-import logger, { ErrorLevel } from "../logger";
+import logger from "../logger";
 import {
     commands,
     lintSuccess,
@@ -144,7 +144,7 @@ const lintCommand: TrwlCommand<LintOptions> = {
         if (errorCount > 0) {
             process.exit(1);
         } else if (warningCount > maxWarnings) {
-            logger.error(ErrorLevel.FATAL, insertArgs(maxWarningsError, { warningCount, maxWarnings }));
+            logger.fatal(insertArgs(maxWarningsError, { warningCount, maxWarnings }));
         }
     },
 };

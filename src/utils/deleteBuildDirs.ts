@@ -3,7 +3,7 @@ import { resolve } from "path";
 import uniq from "lodash/uniq";
 import rimraf from "rimraf";
 
-import logger, { ErrorLevel } from "../logger";
+import logger from "../logger";
 import { VerifiedTrwlOptions } from "../typings";
 
 export const deleteBuildDirs = (configs: VerifiedTrwlOptions[]) => {
@@ -15,7 +15,7 @@ export const deleteBuildDirs = (configs: VerifiedTrwlOptions[]) => {
                 new Promise<void>((resolve) =>
                     rimraf(folder, (error) => {
                         if (error) {
-                            logger.error(ErrorLevel.ERROR, error);
+                            logger.error(error);
                         }
                         resolve();
                     })
