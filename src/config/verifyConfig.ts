@@ -31,10 +31,11 @@ const optionSchema = Yup.object()
         }),
         cjsMode: Yup.string().required(unexpectedlyMissingField).oneOf(AVAILABLE_CJS_MODES),
         declaration: Yup.string().required(unexpectedlyMissingField).oneOf(AVAILABLE_DECLARATION_MODES),
-        check: Yup.bool().required(unexpectedlyMissingField),
+        tsconfig: Yup.string().required(unexpectedlyMissingField),
+        incremental: Yup.bool().required(unexpectedlyMissingField),
+        externalNodeModules: Yup.bool().required(unexpectedlyMissingField),
         watchOptions: Yup.mixed().required(unexpectedlyMissingField),
         buildOptions: Yup.mixed(),
-        jestOptions: Yup.mixed(),
     })
     .test((values, options) => {
         if (!values.outdir && !values.outfile) {

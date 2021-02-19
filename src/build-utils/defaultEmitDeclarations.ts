@@ -1,11 +1,54 @@
-import { CompilerOptions, createCompilerHost, createProgram } from "typescript";
+import { dirname, resolve } from "path";
+import {
+    CompilerOptions,
+    createCompilerHost,
+    createProgram,
+    parseJsonConfigFileContent,
+    readConfigFile,
+    sys,
+} from "typescript";
+import { ParseConfigHost } from "typescript";
 
-export const defaultEmitDeclarations = (input: string[], dir: string) => {
+import { VerifiedTrwlOptions } from "../typings";
+
+const parseConfigHost: ParseConfigHost = {
+    useCaseSensitiveFileNames: sys.useCaseSensitiveFileNames,
+    readDirectory: sys.readDirectory,
+    fileExists: sys.fileExists,
+    readFile: sys.readFile,
+};
+
+export const defaultEmitDeclarations = async (config: VerifiedTrwlOptions): Promise<void> => {
+    const { outdir, input, tsconfig, incremental } = config;
+
+    // const specifiedTsconfig = await new Promise<{ compilerOptions: CompilerOptions } | undefined>((resolve) =>
+    //     readFile(tsconfig, (err, data) => {
+    //         if (err) {
+    //             resolve(undefined);
+    //         } else {
+    //             parseJsonSourceFileConfigFileContent().options
+    //             resolve(parseConfigFileTextToJson(tsconfig, data.toString()).config);
+    //         }
+    //     })
+    // );
+
+    const rawConfig = readConfigFile(tsconfig, sys.readFile);
+
+    const specifiedTsconfig = parseJsonConfigFileContent(
+        rawConfig.config,
+        parseConfigHost,
+        resolve(dirname(tsconfig)),
+        undefined,
+        tsconfig
+    );
+
     const options: CompilerOptions = {
-        allowJs: true,
+        ...specifiedTsconfig.options,
+        incremental,
         declaration: true,
         emitDeclarationOnly: true,
-        outDir: dir,
+        outDir: outdir,
+        noEmit: false,
     };
 
     const host = createCompilerHost(options);

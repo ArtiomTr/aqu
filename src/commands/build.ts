@@ -23,6 +23,7 @@ const buildCommand: TrwlCommand<BuildOptions> = {
             logger.fatal(err);
         } finally {
             service.stop();
+            process.exit();
         }
     },
 };

@@ -27,7 +27,7 @@ const testCommand: TrwlCommand<{}> = {
             packageJsonProp: "jest",
         });
 
-        const jestConfig = deepMerge(defaultConfig, ...configs.map((config) => config.jestOptions), ...jestConfigFiles);
+        const jestConfig = deepMerge(defaultConfig, ...jestConfigFiles);
 
         const argv = command.args;
 

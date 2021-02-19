@@ -18,7 +18,7 @@ export class Progress {
     }
 
     fail() {
-        this.spinner.fail();
+        this.spinner.fail(this.label + " " + chalk.gray("failed"));
     }
 }
 
@@ -32,7 +32,7 @@ export interface Logger {
 
 const logger: Logger = {
     error: (...args: unknown[]) => {
-        console.error(chalk.red(`[${name}]`), ...args);
+        console.error(chalk.red(`[${name}]`, ...args));
     },
     fatal: (...args: unknown[]) => {
         logger.error(...args);

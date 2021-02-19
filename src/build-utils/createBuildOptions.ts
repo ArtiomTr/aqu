@@ -1,11 +1,23 @@
 import { join } from "path";
 
+import NodeResolve from "@esbuild-plugins/node-resolve";
 import { BuildOptions } from "esbuild";
 
 import { VerifiedTrwlOptions } from "../typings";
 
 export const createBuildOptions = async (config: VerifiedTrwlOptions) => {
-    const { format, name, cjsMode, input, outdir, outfile, buildOptions } = config;
+    const {
+        format,
+        name,
+        cjsMode,
+        input,
+        outdir,
+        outfile,
+        buildOptions,
+        incremental,
+        tsconfig,
+        externalNodeModules,
+    } = config;
 
     const normalConfigs: Array<BuildOptions> = [];
 
@@ -13,6 +25,21 @@ export const createBuildOptions = async (config: VerifiedTrwlOptions) => {
         keepNames: true,
         bundle: true,
         sourcemap: "external",
+        incremental,
+        tsconfig,
+        plugins: [
+            NodeResolve({
+                extensions: [".ts", ".js", ".tsx", ".jsx", ".cjs", ".mjs"],
+                onResolved: (resolved) => {
+                    if (externalNodeModules && resolved.includes("node_modules")) {
+                        return {
+                            external: true,
+                        };
+                    }
+                    return resolved;
+                },
+            }),
+        ],
         ...buildOptions,
         entryPoints: input,
         logLevel: "silent",

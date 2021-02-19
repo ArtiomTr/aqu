@@ -1,3 +1,5 @@
+import { join } from "path";
+
 import type { TrwlOptions } from "./typings";
 
 export const CONFIG_EXTENSIONS = ["ts", "js", "mjs", "cjs", "json"];
@@ -12,12 +14,15 @@ export const AVAILABLE_CJS_MODES = ["production", "development", "mixed"];
 
 export const AVAILABLE_DECLARATION_MODES = ["bundle", "normal", "none"];
 
-export const DEFAULT_OPTIONS: Partial<TrwlOptions> = {
+export const DEFAULT_OPTIONS: Omit<Required<TrwlOptions>, "input" | "name" | "outfile"> = {
     format: ["cjs", "esm"],
     cjsMode: "mixed",
     outdir: "dist",
     declaration: "bundle",
-    check: true,
+    externalNodeModules: true,
+    tsconfig: join(process.cwd(), "tsconfig.json"),
+    incremental: true,
+    buildOptions: {},
     watchOptions: {
         ignored: ["node_modules/**", "dist/**", "build/**", "out/**"],
         followSymlinks: false,
