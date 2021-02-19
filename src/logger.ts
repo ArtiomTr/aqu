@@ -18,7 +18,7 @@ export class Progress {
     }
 
     fail() {
-        this.spinner.fail();
+        this.spinner.fail(this.label + " " + chalk.gray("failed"));
     }
 }
 

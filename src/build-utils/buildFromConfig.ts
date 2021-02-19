@@ -3,12 +3,13 @@ import { Service } from "esbuild";
 import { createBuildOptions } from "./createBuildOptions";
 import { createMixedCjsEntrypoint } from "./createMixedCjsEntrypoint";
 import { emitDeclarations } from "./emitDeclarations";
+import { showSkippedStep } from "./showSkippedStep";
 import { Progress } from "../logger";
 import { steps } from "../messages.json";
 import { VerifiedTrwlOptions } from "../typings";
 
 export const buildFromConfig = async (config: VerifiedTrwlOptions, service: Service) => {
-    const { cjsMode, outdir, name, format } = config;
+    const { cjsMode, outdir, name, format, declaration } = config;
 
     if (format.includes("cjs") && cjsMode === "mixed") {
         createMixedCjsEntrypoint(outdir, name);
@@ -22,10 +23,11 @@ export const buildFromConfig = async (config: VerifiedTrwlOptions, service: Serv
         await Promise.all(buildConfigs.map((config) => service.build(config)));
 
         esbuildProgress.succeed();
-
-        await emitDeclarations(config);
     } catch (err) {
         esbuildProgress.fail();
+        showSkippedStep(declaration);
         throw err;
     }
+
+    await emitDeclarations(config);
 };
