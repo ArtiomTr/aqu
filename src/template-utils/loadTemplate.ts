@@ -7,6 +7,7 @@ import { templatesPath } from "../constants";
 import logger from "../logger";
 import { TemplateInitializationOptions, TemplateScript } from "../typings";
 import assert from "../utils/assert";
+import { getGithubUser } from "../utils/getGithubUser";
 
 export const loadTemplate = async (
     templateOptions: TemplateOptions,
@@ -50,5 +51,6 @@ export const loadTemplate = async (
     await copyTemplate(join(templatesPath, template), join(process.cwd(), name), options, {
         ...templateOptions,
         ...options.customArgs,
+        githubUser: await getGithubUser(),
     });
 };

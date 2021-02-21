@@ -1,25 +1,11 @@
-import exec from "execa";
-import githubUsername from "github-username";
+import { getGithubUser } from "./getGithubUser";
 
 export const getDefaultRepo = async (name: string) => {
-    const [githubUser, email] = await Promise.all([
-        exec("git", ["config", "--global", "--get", "github.user"])
-            .then((value) => value.stdout.trim())
-            .catch(() => undefined),
-        exec("git", ["config", "--global", "--get", "user.email"])
-            .then((value) => value.stdout.trim())
-            .catch(() => undefined),
-    ]);
+    const user = await getGithubUser();
 
-    let normalUser: string | undefined = undefined;
-
-    if (githubUser) {
-        normalUser = githubUser;
-    } else if (email) {
-        normalUser = await githubUsername(email);
+    if (user) {
+        return `https://github.com/${user}/${name}`;
     }
 
-    if (!normalUser) return undefined;
-
-    return `https://github.com/${normalUser}/${name}`;
+    return undefined;
 };

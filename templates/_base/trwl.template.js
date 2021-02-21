@@ -5,7 +5,7 @@ import packageVersion from "../_utils/packageVersion";
  */
 const templateScript = {
     initialize: async () => ({
-        templateFilePaths: ["package.json"],
+        templateFilePaths: ["package.json", "./example/README.md", "./example/package.json", "README.md"],
         customArgs: {
             // TODO: replace with normal when published
             ["versions.trwl"]: "file:../..",
