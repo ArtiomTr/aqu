@@ -29,7 +29,7 @@ export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
                     ).map((bundle) => {
                         return safeWriteFile(
                             outfile
-                                ? `${outfile.substring(outfile.lastIndexOf("."))}.d.ts`
+                                ? `${outfile.substring(0, outfile.lastIndexOf("."))}.d.ts`
                                 : join(outdir, `${name}.d.ts`),
                             bundle
                         );

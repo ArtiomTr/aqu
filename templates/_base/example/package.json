@@ -4,5 +4,11 @@
     "private": true,
     "dependencies": {
         "${name}": "file:.."
+    },
+    "scripts": {
+        "start": "trwl build && node ./dist/index.js"
+    },
+    "devDependencies": {
+        "trwl": "file:../node_modules/trwl"
     }
 }
