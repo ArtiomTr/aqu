@@ -1,6 +1,7 @@
 import { Command } from "commander";
 
 import buildCommand from "./commands/build";
+import createCommand from "./commands/create";
 import lintCommand from "./commands/lint";
 import testCommand from "./commands/test";
 import { watchCommand } from "./commands/watch";
@@ -23,7 +24,7 @@ const main = async () => {
             description: options.config,
         },
     ];
-    const commandsRequiringConfig = [buildCommand, watchCommand, testCommand, lintCommand];
+    const commandsRequiringConfig = [buildCommand, watchCommand, testCommand, lintCommand, createCommand];
 
     commandsRequiringConfig.forEach((command) =>
         initializeCommand(program as Command, command as TrwlCommand<unknown>, sharedOptions, loadConfigFromArguments)

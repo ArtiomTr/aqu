@@ -1,0 +1,45 @@
+{
+    "name": "${name}",
+    "version": "0.0.0",
+    "description": "${description}",
+    "main": "./dist/index.js",
+    "module": "./dist/${name}.esm.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "trwl build",
+        "start": "trwl watch",
+        "lint": "trwl lint",
+        "lint:fix": "npm run lint -- --fix",
+        "test": "trwl test --passWithNoTests",
+        "test:watch": "npm run test -- --watch",
+        "test:coverage": "npm run test -- --coverage",
+        "prepare": "npm run build",
+        "release": "np"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,ts,tsx,json}": "npm run lint:fix"
+    },
+    "author": "${author}",
+    "license": "${license}",
+    "homepage": "${repo}#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+${repo}.git"
+    },
+    "bugs": {
+        "url": "${repo}/issues"
+    },
+    "devDependencies": {
+        "trwl": "${versions.trwl}",
+        "np": "^${versions.np}",
+        "lint-staged": "^${versions.lintStaged}",
+        "husky": "^${versions.husky}"
+    }
+}

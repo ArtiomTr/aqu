@@ -1,0 +1,6 @@
+{
+    "types": "./dist/${name}.d.ts",
+    "devDependencies": {
+        "typescript": "^${versions.typescript}"
+    }
+}

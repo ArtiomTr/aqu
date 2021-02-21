@@ -25,7 +25,9 @@ export const buildFromConfig = async (config: VerifiedTrwlOptions, service: Serv
         esbuildProgress.succeed();
     } catch (err) {
         esbuildProgress.fail();
-        showSkippedStep(declaration);
+        if (declaration !== "none") {
+            showSkippedStep(declaration === "bundle" ? steps.dtsBundle : steps.dtsStandard);
+        }
         throw err;
     }
 

@@ -8,7 +8,8 @@
         "build": "trwl build",
         "test": "trwl test",
         "start": "trwl watch",
-        "lint": "trwl lint"
+        "lint": "trwl lint",
+        "create": "trwl create"
     },
     "keywords": [],
     "author": "Artiom Tretjakovas",

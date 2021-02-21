@@ -3,12 +3,14 @@ import { build } from "esbuild";
 import { getDefaultFromCjs } from "./getDefaultFromCjs";
 import logger from "../logger";
 
-function evaluateCommonjsModule(module: string) {
+function evaluateCommonjsModule(code: string) {
     const exports = {};
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const module = { exports };
 
-    eval(module);
+    eval(code);
 
-    return exports;
+    return module.exports;
 }
 
 export const transpileAndGetRawConfig = async <T>(path: string): Promise<T> => {
