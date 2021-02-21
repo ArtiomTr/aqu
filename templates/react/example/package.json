@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "react": "^${versions.react}",
+        "react-dom": "^${versions.reactDom}"
+    }
+}

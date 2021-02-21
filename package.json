@@ -25,6 +25,8 @@
         "url": "https://github.com/ArtiomTr/trwl/issues"
     },
     "dependencies": {
+        "@babel/preset-env": "^7.12.17",
+        "@babel/preset-react": "^7.12.13",
         "@esbuild-plugins/node-resolve": "^0.0.14",
         "commander": "^7.0.0",
         "execa": "^4.1.0",
