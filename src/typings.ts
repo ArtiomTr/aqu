@@ -59,3 +59,23 @@ export type TrwlCommandOptions = {
     defaultValue?: string | boolean;
     description: string;
 };
+
+export type TemplateInitializationOptions = {
+    extend?: string;
+    templateFilePaths?: string[];
+    filesToMergePaths?: string[];
+    customArgs?: Record<string, unknown>;
+};
+
+export type TemplateScript = {
+    initialize: () => TemplateInitializationOptions;
+};
+
+export type CreateOptions = {
+    name: string;
+    description: string;
+    author: string;
+    repo: string;
+    license: string;
+    template: string;
+};

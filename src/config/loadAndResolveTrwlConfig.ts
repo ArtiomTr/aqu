@@ -14,11 +14,11 @@ export const loadAndResolveTrwlConfig = async (configPath?: string): Promise<Arr
         packageJsonProp: "trwl",
     });
 
-    const configs = flatten(rawConfigs);
+    const configs = flatten(rawConfigs).filter(Boolean);
 
     const standardConfigs = await Promise.all([getDefaultTrwlConfig(), getTrwlOptionsFromPackage()]);
 
-    if (configs.filter(Boolean).length > 0) {
+    if (configs.length > 0) {
         return configs.map((config) => deepMerge(...standardConfigs, config));
     }
 

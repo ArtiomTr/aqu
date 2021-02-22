@@ -14,31 +14,64 @@
     "compilationSuccess": "Successfully compiled!",
     "compilationFailed": "Errors during compilation",
     "watchIdle": "⌚ Waiting for changes...",
-    "notNumberError": "Specified argument for ${name} - \"${value}\" is not number",
+    "notNumberError": "Specified argument for ${path} - \"${value}\" is not number",
     "noLintDirsSpecifiedError": "No directories specified. Defaulting to \"trwl lint ${dirs}\" (entrypoint directories + test dir)",
     "lintSuccess": "Successful lint",
     "maxWarningsError": "Received ${warningCount} warnings, which is more than specified threshold - ${maxWarnings}. Exiting with code 1.",
+    "licenseNotFound": "License ${license} do not exist",
+    "templateLoadLoop": "During \"${template}\" template load loop found: ${loop}",
+    "creationOptionNotSpecfied": "${path} is not specified.",
+    "creationOptionInvalid": "${value} is not valid ${path}",
+    "packageNameNotSpecified": "Package name is not specified.",
+    "packageNameInvalid": "Package name ${name} is invalid",
+    "folderAlreadyExists": "Folder ${path} already exists",
     "steps": {
         "esbuild": "Bundling using esbuild",
         "dtsBundle": "Generating declaration bundle",
-        "dtsStandard": "Emitting declarations"
+        "dtsStandard": "Emitting declarations",
+        "creating": "Creating ${package} using ${template} template...",
+        "creationSuccess": "Created ${package}",
+        "creationFail": "Create ${package}",
+        "skipInstallDeps": "Install dependencies",
+        "installingDeps": "Installing dependencies...",
+        "installDepsSuccess": "Dependencies intalled",
+        "installDepsFail": "Install dependencies",
+        "creationFinalize": "\nPackage ${package} successfully created\n\nHappy coding!"
     },
     "commands": {
         "watch": "Watch project",
         "build": "Build project",
         "test": "Run jest",
-        "lint": "Lint using eslint"
+        "lint": "Lint using eslint",
+        "create": "Create new package"
     },
     "options": {
-        "watchdir": "specify custom watching directories",
+        "watchdir": "Specify custom watching directories",
         "nosym": "do not follow symlinks",
-        "ignore": "specify paths which will be ignored while watching",
-        "config": "specify path to configuration",
+        "ignore": "Specify paths which will be ignored while watching",
+        "config": "Specify path to configuration",
         "maxWarnings": "Number of warnings to trigger nonzero exit code. Default: infinity",
         "fix": "Automatically fix problems",
         "fixDryRun": "Automatically fix problems without saving the changes to the file system",
         "cache": "Only check changed files - default: false",
         "cacheLocation": "Path to the cache file or directory",
-        "reportFile": "Specify file to write report to"
-    }
+        "reportFile": "Specify file to write report to",
+        "description": "Specify custom package description",
+        "author": "Set package author",
+        "repo": "Specify package repository",
+        "license": "Pick package license - default: MIT",
+        "template": "Pick package template - default: typescript",
+        "yes": "Yes to all - Pick all default options"
+    },
+    "createQuestions": {
+        "name": "Package name:",
+        "description": "Specify package description:",
+        "author": "Package author:",
+        "repo": "Git repository (only for package.json information):",
+        "license": "Pick license:",
+        "template": "Pick template:"
+    },
+    "requiredCli": "Please enter the value",
+    "skipped": "skipped",
+    "notValidUrl": "${value} is not valid URL."
 }

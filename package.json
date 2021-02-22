@@ -6,7 +6,9 @@
         "trwl": "./dist/trwl.js"
     },
     "files": [
-        "dist"
+        "dist",
+        "templates",
+        "licenses"
     ],
     "scripts": {
         "build": "node ./scripts/build.js",
@@ -25,14 +27,22 @@
         "url": "https://github.com/ArtiomTr/trwl/issues"
     },
     "dependencies": {
+        "@babel/preset-env": "^7.12.17",
+        "@babel/preset-react": "^7.12.13",
         "@esbuild-plugins/node-resolve": "^0.0.14",
         "commander": "^7.0.0",
+        "execa": "^4.1.0",
+        "fs-extra": "^9.1.0",
+        "github-username": "^6.0.0",
+        "inquirer": "^7.3.3",
         "jest": "^26.6.3",
         "jest-watch-typeahead": "^0.6.1",
         "ts-jest": "^26.5.1"
     },
     "devDependencies": {
         "@types/eslint": "^7.2.6",
+        "@types/fs-extra": "^9.0.7",
+        "@types/inquirer": "^7.3.1",
         "@types/lodash": "^4.14.168",
         "@types/node": "^14.14.27",
         "@types/rimraf": "^3.0.0",

@@ -1,7 +1,3 @@
-import { access, constants } from "fs";
+import { pathExists } from "fs-extra";
 
-export const canReadFile = (path: string): Promise<boolean> => {
-    return new Promise((resolve) => {
-        access(path, constants.R_OK, (err) => resolve(!err));
-    });
-};
+export const canReadFile = (path: string): Promise<boolean> => pathExists(path);

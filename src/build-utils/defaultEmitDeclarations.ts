@@ -21,17 +21,6 @@ const parseConfigHost: ParseConfigHost = {
 export const defaultEmitDeclarations = async (config: VerifiedTrwlOptions): Promise<void> => {
     const { outdir, input, tsconfig, incremental } = config;
 
-    // const specifiedTsconfig = await new Promise<{ compilerOptions: CompilerOptions } | undefined>((resolve) =>
-    //     readFile(tsconfig, (err, data) => {
-    //         if (err) {
-    //             resolve(undefined);
-    //         } else {
-    //             parseJsonSourceFileConfigFileContent().options
-    //             resolve(parseConfigFileTextToJson(tsconfig, data.toString()).config);
-    //         }
-    //     })
-    // );
-
     const rawConfig = readConfigFile(tsconfig, sys.readFile);
 
     const specifiedTsconfig = parseJsonConfigFileContent(

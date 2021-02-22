@@ -1,6 +1,7 @@
 import { Command } from "commander";
 
 import buildCommand from "./commands/build";
+import createCommand from "./commands/create";
 import lintCommand from "./commands/lint";
 import testCommand from "./commands/test";
 import { watchCommand } from "./commands/watch";
@@ -24,10 +25,13 @@ const main = async () => {
         },
     ];
     const commandsRequiringConfig = [buildCommand, watchCommand, testCommand, lintCommand];
+    const commandsWithoutConfig = [createCommand];
 
     commandsRequiringConfig.forEach((command) =>
         initializeCommand(program as Command, command as TrwlCommand<unknown>, sharedOptions, loadConfigFromArguments)
     );
+
+    commandsWithoutConfig.forEach((command) => initializeCommand(program as Command, command as TrwlCommand<unknown>));
 
     program.parse(process.argv);
 };

@@ -1,6 +1,5 @@
 {
     "name": "example",
-    "private": true,
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -8,7 +7,9 @@
         "build": "trwl build",
         "test": "trwl test",
         "start": "trwl watch",
-        "lint": "trwl lint"
+        "lint": "trwl lint",
+        "create": "trwl create",
+        "prepublishOnly": "echo \"This package is an example. It is not intended to be published.\" && exit 1"
     },
     "keywords": [],
     "author": "Artiom Tretjakovas",

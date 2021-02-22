@@ -1,4 +1,4 @@
-import { join } from "path";
+import { join, resolve } from "path";
 
 import type { TrwlOptions } from "./typings";
 
@@ -13,6 +13,8 @@ export const AVAILABLE_OUTPUT_FORMATS = ["iife", "cjs", "esm"];
 export const AVAILABLE_CJS_MODES = ["production", "development", "mixed"];
 
 export const AVAILABLE_DECLARATION_MODES = ["bundle", "normal", "none"];
+
+export const templatesPath = resolve(__dirname, "..", "templates");
 
 export const DEFAULT_OPTIONS: Omit<Required<TrwlOptions>, "input" | "name" | "outfile"> = {
     format: ["cjs", "esm"],
