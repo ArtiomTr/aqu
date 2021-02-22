@@ -1,4 +1,3 @@
-import { EOL } from "os";
 import { join } from "path";
 
 import chalk from "chalk";
@@ -9,7 +8,9 @@ import { loadTemplate } from "./loadTemplate";
 import { verifyCreateOptions } from "./verifyCreateOptions";
 import { showSkippedStep } from "../build-utils/showSkippedStep";
 import logger, { Progress } from "../logger";
+import { steps } from "../messages.json";
 import { CreateOptions } from "../typings";
+import { insertArgs } from "../utils/insertArgs";
 
 export const createFromConfig = async (
     options: CreateOptions,
@@ -22,30 +23,41 @@ export const createFromConfig = async (
     console.log();
 
     const creationProgress = new Progress(
-        `Creating ${chalk.bold.cyan(options.name)} using ${chalk.cyan(options.template)} template...`
+        insertArgs(steps.creating, {
+            package: chalk.bold.cyan(options.name),
+            template: chalk.cyan(options.template),
+        })
     );
 
     try {
         await loadTemplate(options, githubUser);
         await createLicense(options.license, join(process.cwd(), options.name, "LICENSE"), options.author);
-        creationProgress.succeed("Created " + chalk.bold.green(options.name));
+        creationProgress.succeed(
+            insertArgs(steps.creationSuccess, {
+                package: chalk.bold.green(options.name),
+            })
+        );
     } catch (err) {
-        creationProgress.fail(`Create ${chalk.bold.red(options.name)}`);
-        showSkippedStep("Install dependencies");
+        creationProgress.fail(
+            insertArgs(steps.creationFail, {
+                package: chalk.bold.red(options.name),
+            })
+        );
+        showSkippedStep(steps.skipInstallDeps);
         logger.fatal(err);
     }
 
-    const installProgress = new Progress("Installing dependencies...");
+    const installProgress = new Progress(steps.installingDeps);
 
     try {
         await installDependencies(options.name);
-        installProgress.succeed("Dependencies intalled");
+        installProgress.succeed(steps.installDepsSuccess);
     } catch (err) {
-        installProgress.fail("Install dependencies");
+        installProgress.fail(steps.installDepsFail);
         logger.fatal(err);
     }
 
-    console.log(EOL, `Package ${chalk.bold.cyan(options.name)} successfully created`, EOL, EOL, "Happy coding!");
+    console.log(steps.creationFinalize);
 
     console.log();
 };

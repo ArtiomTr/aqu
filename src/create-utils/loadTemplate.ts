@@ -1,15 +1,16 @@
 import { join, resolve } from "path";
 
 import { copyTemplate } from "./copyTemplate";
-import { TemplateOptions } from "../commands/create";
 import { transpileAndGetRawConfig } from "../config/transpileAndGetRawConfig";
 import { templatesPath } from "../constants";
 import logger from "../logger";
-import { TemplateInitializationOptions, TemplateScript } from "../typings";
+import { templateLoadLoop } from "../messages.json";
+import { CreateOptions, TemplateInitializationOptions, TemplateScript } from "../typings";
 import assert from "../utils/assert";
+import { insertArgs } from "../utils/insertArgs";
 
 export const loadTemplate = async (
-    templateOptions: TemplateOptions,
+    templateOptions: CreateOptions,
     githubUser: string | undefined,
     loadedTemplates: Set<string> = new Set<string>()
 ) => {
@@ -40,9 +41,10 @@ export const loadTemplate = async (
     if (options.extend) {
         assert(
             !loadedTemplates.has(options.extend),
-            `During "${template}" template load loop found: ${[...Array.from(loadedTemplates), options.extend].join(
-                " → "
-            )}`
+            insertArgs(templateLoadLoop, {
+                template,
+                loop: [...Array.from(loadedTemplates), options.extend].join(" → "),
+            })
         );
 
         await loadTemplate({ ...templateOptions, template: options.extend }, githubUser, loadedTemplates);

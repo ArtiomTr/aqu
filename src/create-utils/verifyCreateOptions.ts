@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 import { verifyPackageName } from "./verifyPackageName";
 import logger from "../logger";
-import { schemaValidationError } from "../messages.json";
+import { creationOptionInvalid, creationOptionNotSpecfied, schemaValidationError } from "../messages.json";
 import { CreateOptions } from "../typings";
 
 export const verifyCreateOptions = async (
@@ -13,14 +13,10 @@ export const verifyCreateOptions = async (
     const createOptionsSchema = Yup.object().shape({
         name: Yup.string().test(verifyPackageName),
         description: Yup.string().notRequired(),
-        author: Yup.string().required("${path} is not specified."),
-        repo: Yup.string().url().required("${path} is not specified."),
-        license: Yup.string()
-            .required("${path} is not specified.")
-            .oneOf(availableLicenses, "${value} is not valid ${path}"),
-        template: Yup.string()
-            .required("${path} is not specified.")
-            .oneOf(availableTemplates, "${value} is not valid ${path}"),
+        author: Yup.string().required(creationOptionNotSpecfied),
+        repo: Yup.string().url().required(creationOptionNotSpecfied),
+        license: Yup.string().required(creationOptionNotSpecfied).oneOf(availableLicenses, creationOptionInvalid),
+        template: Yup.string().required(creationOptionNotSpecfied).oneOf(availableTemplates, creationOptionInvalid),
     });
 
     try {

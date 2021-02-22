@@ -6,10 +6,12 @@ import { createFromConfig } from "../create-utils/createFromConfig";
 import { getAllLicenses } from "../create-utils/getAllLicenses";
 import { getAllTemplates } from "../create-utils/getAllTemplates";
 import { verifyPackageName } from "../create-utils/verifyPackageName";
+import { commands, createQuestions, notValidUrl, options, requiredCli } from "../messages.json";
 import { CreateOptions, TrwlCommand } from "../typings";
 import { getAuthor } from "../utils/getAuthor";
 import { getDefaultRepo } from "../utils/getDefaultRepo";
 import { getGithubUser } from "../utils/getGithubUser";
+import { insertArgs } from "../utils/insertArgs";
 
 type CreateArguments = {
     yes: boolean;
@@ -17,7 +19,7 @@ type CreateArguments = {
 
 const createCommand: TrwlCommand<CreateArguments> = {
     name: "create",
-    description: "Create new project",
+    description: commands.create,
     options: [
         {
             flag: {
@@ -25,7 +27,7 @@ const createCommand: TrwlCommand<CreateArguments> = {
                 short: "d",
                 placeholder: "value",
             },
-            description: "new package description",
+            description: options.description,
         },
         {
             flag: {
@@ -33,7 +35,7 @@ const createCommand: TrwlCommand<CreateArguments> = {
                 short: "a",
                 placeholder: "name",
             },
-            description: "package author",
+            description: options.author,
         },
         {
             flag: {
@@ -41,7 +43,7 @@ const createCommand: TrwlCommand<CreateArguments> = {
                 short: "r",
                 placeholder: "url",
             },
-            description: "repository",
+            description: options.repo,
         },
         {
             flag: {
@@ -49,7 +51,7 @@ const createCommand: TrwlCommand<CreateArguments> = {
                 short: "l",
                 placeholder: "value",
             },
-            description: "specify license",
+            description: options.license,
         },
         {
             flag: {
@@ -57,14 +59,14 @@ const createCommand: TrwlCommand<CreateArguments> = {
                 short: "t",
                 placeholder: "value",
             },
-            description: "template",
+            description: options.template,
         },
         {
             flag: {
                 full: "yes",
                 short: "y",
             },
-            description: "pick all defaults",
+            description: options.yes,
         },
     ],
     action: async (args, _, command) => {
@@ -90,7 +92,7 @@ const createCommand: TrwlCommand<CreateArguments> = {
                     {
                         type: "input",
                         name: "name",
-                        message: "What's your project name?",
+                        message: createQuestions.name,
                         validate: (input) =>
                             verifyPackageName(input).then((value) =>
                                 typeof value === "boolean" ? value : value.message
@@ -99,17 +101,17 @@ const createCommand: TrwlCommand<CreateArguments> = {
                     {
                         type: "input",
                         name: "description",
-                        message: "Specify package description",
+                        message: createQuestions.description,
                         default: defaults.description,
                     },
                     {
                         type: "input",
                         name: "author",
-                        message: "Author",
+                        message: createQuestions.author,
                         default: defaults.author,
                         validate: (input) =>
                             Yup.string()
-                                .required("Please enter the value")
+                                .required(requiredCli)
                                 .validate(input)
                                 .then(() => true)
                                 .catch((err) => err.message),
@@ -117,12 +119,16 @@ const createCommand: TrwlCommand<CreateArguments> = {
                     {
                         type: "input",
                         name: "repo",
-                        message: "Specify repository",
+                        message: createQuestions.repo,
                         default: defaults.repo,
                         validate: (input) =>
                             Yup.string()
-                                .required("Please enter the value")
-                                .url(`${chalk.bold.red("${value}")} is not valid URL.`)
+                                .required(requiredCli)
+                                .url(
+                                    insertArgs(notValidUrl, {
+                                        value: chalk.bold.red("${value}"),
+                                    })
+                                )
                                 .validate(input)
                                 .then(() => true)
                                 .catch((err) => err.message),
@@ -130,14 +136,14 @@ const createCommand: TrwlCommand<CreateArguments> = {
                     {
                         type: "list",
                         name: "license",
-                        message: "Which license to use?",
+                        message: createQuestions.license,
                         default: defaults.license,
                         choices: availableLicenses,
                     },
                     {
                         type: "list",
                         name: "template",
-                        message: "Which template to use?",
+                        message: createQuestions.template,
                         default: defaults.template,
                         choices: availableTemplates,
                     },

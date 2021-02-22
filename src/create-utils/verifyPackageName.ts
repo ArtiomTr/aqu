@@ -4,16 +4,25 @@ import chalk from "chalk";
 import { pathExists } from "fs-extra";
 import { string, ValidationError } from "yup";
 
+import { folderAlreadyExists, packageNameInvalid, packageNameNotSpecified } from "../messages.json";
+import { insertArgs } from "../utils/insertArgs";
+
 export const verifyPackageName = (name: string | undefined): Promise<boolean | ValidationError> =>
     string()
-        .required("Package name is not specified.")
+        .required(packageNameNotSpecified)
         .matches(
             /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/,
-            `Package name ${chalk.bold.red("${value}")} is invalid`
+            insertArgs(packageNameInvalid, { name: chalk.bold.red("${value}") })
         )
         .test((value, { createError }) =>
             pathExists(join(process.cwd(), value!)).then((exists) =>
-                exists ? createError({ message: `Folder ${chalk.bold.red(value)} already exists` }) : true
+                exists
+                    ? createError({
+                          message: insertArgs(folderAlreadyExists, {
+                              path: chalk.bold.red(value),
+                          }),
+                      })
+                    : true
             )
         )
         .validate(name ?? "")

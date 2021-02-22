@@ -2,6 +2,7 @@ import { join } from "path";
 
 import { pathExists, readFile, writeFile } from "fs-extra";
 
+import { licenseNotFound } from "../messages.json";
 import { insertArgs } from "../utils/insertArgs";
 
 export const createLicense = async (license: string, path: string, author: string) => {
@@ -10,7 +11,7 @@ export const createLicense = async (license: string, path: string, author: strin
     const licenseExists = await pathExists(licensePath);
 
     if (!licenseExists) {
-        throw new Error(`License "${license}" do not exist`);
+        throw new Error(insertArgs(licenseNotFound, { license }));
     }
 
     const content = await readFile(licensePath);
