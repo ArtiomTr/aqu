@@ -24,11 +24,14 @@ const main = async () => {
             description: options.config,
         },
     ];
-    const commandsRequiringConfig = [buildCommand, watchCommand, testCommand, lintCommand, createCommand];
+    const commandsRequiringConfig = [buildCommand, watchCommand, testCommand, lintCommand];
+    const commandsWithoutConfig = [createCommand];
 
     commandsRequiringConfig.forEach((command) =>
         initializeCommand(program as Command, command as TrwlCommand<unknown>, sharedOptions, loadConfigFromArguments)
     );
+
+    commandsWithoutConfig.forEach((command) => initializeCommand(program as Command, command as TrwlCommand<unknown>));
 
     program.parse(process.argv);
 };

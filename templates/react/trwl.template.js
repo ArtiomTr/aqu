@@ -11,10 +11,16 @@ const templateScript = {
             ".prettierrc",
             "./example/package.json",
         ],
-        templateFilePaths: ["package.json", "./example/package.json"],
+        templateFilePaths: [
+            "package.json",
+            "./example/package.json",
+            "./example/src/index.jsx",
+            "./example/public/index.html",
+        ],
         customArgs: {
             ["versions.reactDom"]: await packageVersion("react-dom"),
             ["versions.react"]: await packageVersion("react"),
+            ["versions.reactScripts"]: await packageVersion("react-scripts"),
         },
     }),
 };
