@@ -15,6 +15,7 @@ const templateScript = {
         ],
         customArgs: {
             ["versions.typescript"]: await packageVersion("typescript"),
+            ["versions.nodeTypes"]: await packageVersion("@types/node"),
         },
     }),
 };
