@@ -1,25 +1,25 @@
-import { resolve } from "path";
+import { resolve } from 'path';
 
-import uniq from "lodash/uniq";
-import rimraf from "rimraf";
+import uniq from 'lodash/uniq';
+import rimraf from 'rimraf';
 
-import logger from "../logger";
-import { VerifiedAquOptions } from "../typings";
+import logger from '../logger';
+import { VerifiedAquOptions } from '../typings';
 
 export const deleteBuildDirs = (configs: VerifiedAquOptions[]) => {
-    const folders = uniq(configs.map((value) => resolve(value.outdir)));
+  const folders = uniq(configs.map((value) => resolve(value.outdir)));
 
-    return Promise.all(
-        folders.map(
-            (folder) =>
-                new Promise<void>((resolve) =>
-                    rimraf(folder, (error) => {
-                        if (error) {
-                            logger.error(error);
-                        }
-                        resolve();
-                    })
-                )
-        )
-    );
+  return Promise.all(
+    folders.map(
+      (folder) =>
+        new Promise<void>((resolve) =>
+          rimraf(folder, (error) => {
+            if (error) {
+              logger.error(error);
+            }
+            resolve();
+          }),
+        ),
+    ),
+  );
 };

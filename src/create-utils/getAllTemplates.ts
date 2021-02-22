@@ -1,6 +1,8 @@
-import { readdir } from "fs-extra";
+import { readdir } from 'fs-extra';
 
-import { templatesPath } from "../constants";
+import { templatesPath } from '../constants';
 
 export const getAllTemplates = () =>
-    readdir(templatesPath).then((files) => files.filter((template) => template.charAt(0) !== "_"));
+  readdir(templatesPath).then((files) =>
+    files.filter((template) => template.charAt(0) !== '_'),
+  );

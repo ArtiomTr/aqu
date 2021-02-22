@@ -1,7 +1,7 @@
-import { join } from "path";
+import { join } from 'path';
 
-import { insertArgs } from "../utils/insertArgs";
-import { safeWriteFile } from "../utils/safeWriteFile";
+import { insertArgs } from '../utils/insertArgs';
+import { safeWriteFile } from '../utils/safeWriteFile';
 
 const cjsMixedEntrypoint = `'use strict'
 
@@ -12,6 +12,12 @@ if(process.env.NODE_ENV === 'production') {
 }
 `;
 
-export const createMixedCjsEntrypoint = async (outdir: string, name: string) => {
-    await safeWriteFile(join(outdir, "index.js"), insertArgs(cjsMixedEntrypoint, { name }));
+export const createMixedCjsEntrypoint = async (
+  outdir: string,
+  name: string,
+) => {
+  await safeWriteFile(
+    join(outdir, 'index.js'),
+    insertArgs(cjsMixedEntrypoint, { name }),
+  );
 };

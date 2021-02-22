@@ -1,67 +1,71 @@
-import { join } from "path";
+import { join } from 'path';
 
-import chalk from "chalk";
+import chalk from 'chalk';
 
-import { createLicense } from "./createLicense";
-import { installDependencies } from "./installDependencies";
-import { loadTemplate } from "./loadTemplate";
-import { verifyCreateOptions } from "./verifyCreateOptions";
-import { showSkippedStep } from "../build-utils/showSkippedStep";
-import logger, { Progress } from "../logger";
-import { steps } from "../messages.json";
-import { CreateOptions } from "../typings";
-import { insertArgs } from "../utils/insertArgs";
+import { createLicense } from './createLicense';
+import { installDependencies } from './installDependencies';
+import { loadTemplate } from './loadTemplate';
+import { verifyCreateOptions } from './verifyCreateOptions';
+import { showSkippedStep } from '../build-utils/showSkippedStep';
+import logger, { Progress } from '../logger';
+import { steps } from '../messages.json';
+import { CreateOptions } from '../typings';
+import { insertArgs } from '../utils/insertArgs';
 
 export const createFromConfig = async (
-    options: CreateOptions,
-    githubUser: string | undefined,
-    availableLicenses: string[],
-    availableTemplates: string[]
+  options: CreateOptions,
+  githubUser: string | undefined,
+  availableLicenses: string[],
+  availableTemplates: string[],
 ) => {
-    await verifyCreateOptions(options, availableLicenses, availableTemplates);
+  await verifyCreateOptions(options, availableLicenses, availableTemplates);
 
-    console.log();
+  console.log();
 
-    const creationProgress = new Progress(
-        insertArgs(steps.creating, {
-            package: chalk.bold.cyan(options.name),
-            template: chalk.cyan(options.template),
-        })
+  const creationProgress = new Progress(
+    insertArgs(steps.creating, {
+      package: chalk.bold.cyan(options.name),
+      template: chalk.cyan(options.template),
+    }),
+  );
+
+  try {
+    await loadTemplate(options, githubUser);
+    await createLicense(
+      options.license,
+      join(process.cwd(), options.name, 'LICENSE'),
+      options.author,
     );
-
-    try {
-        await loadTemplate(options, githubUser);
-        await createLicense(options.license, join(process.cwd(), options.name, "LICENSE"), options.author);
-        creationProgress.succeed(
-            insertArgs(steps.creationSuccess, {
-                package: chalk.bold.green(options.name),
-            })
-        );
-    } catch (err) {
-        creationProgress.fail(
-            insertArgs(steps.creationFail, {
-                package: chalk.bold.red(options.name),
-            })
-        );
-        showSkippedStep(steps.skipInstallDeps);
-        logger.fatal(err);
-    }
-
-    const installProgress = new Progress(steps.installingDeps);
-
-    try {
-        await installDependencies(options.name);
-        installProgress.succeed(steps.installDepsSuccess);
-    } catch (err) {
-        installProgress.fail(steps.installDepsFail);
-        logger.fatal(err);
-    }
-
-    console.log(
-        insertArgs(steps.creationFinalize, {
-            package: chalk.bold.cyan(options.name),
-        })
+    creationProgress.succeed(
+      insertArgs(steps.creationSuccess, {
+        package: chalk.bold.green(options.name),
+      }),
     );
+  } catch (err) {
+    creationProgress.fail(
+      insertArgs(steps.creationFail, {
+        package: chalk.bold.red(options.name),
+      }),
+    );
+    showSkippedStep(steps.skipInstallDeps);
+    logger.fatal(err);
+  }
 
-    console.log();
+  const installProgress = new Progress(steps.installingDeps);
+
+  try {
+    await installDependencies(options.name);
+    installProgress.succeed(steps.installDepsSuccess);
+  } catch (err) {
+    installProgress.fail(steps.installDepsFail);
+    logger.fatal(err);
+  }
+
+  console.log(
+    insertArgs(steps.creationFinalize, {
+      package: chalk.bold.cyan(options.name),
+    }),
+  );
+
+  console.log();
 };

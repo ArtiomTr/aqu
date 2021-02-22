@@ -1,26 +1,30 @@
-import { join } from "path";
+import { join } from 'path';
 
-import { pathExists, readFile, writeFile } from "fs-extra";
+import { pathExists, readFile, writeFile } from 'fs-extra';
 
-import { licenseNotFound } from "../messages.json";
-import { insertArgs } from "../utils/insertArgs";
+import { licenseNotFound } from '../messages.json';
+import { insertArgs } from '../utils/insertArgs';
 
-export const createLicense = async (license: string, path: string, author: string) => {
-    const licensePath = join(__dirname, "..", "licenses", `${license}.txt`);
+export const createLicense = async (
+  license: string,
+  path: string,
+  author: string,
+) => {
+  const licensePath = join(__dirname, '..', 'licenses', `${license}.txt`);
 
-    const licenseExists = await pathExists(licensePath);
+  const licenseExists = await pathExists(licensePath);
 
-    if (!licenseExists) {
-        throw new Error(insertArgs(licenseNotFound, { license }));
-    }
+  if (!licenseExists) {
+    throw new Error(insertArgs(licenseNotFound, { license }));
+  }
 
-    const content = await readFile(licensePath);
+  const content = await readFile(licensePath);
 
-    await writeFile(
-        path,
-        insertArgs(content.toString(), {
-            author,
-            year: new Date().getFullYear(),
-        })
-    );
+  await writeFile(
+    path,
+    insertArgs(content.toString(), {
+      author,
+      year: new Date().getFullYear(),
+    }),
+  );
 };
