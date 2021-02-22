@@ -14,7 +14,7 @@
     "compilationSuccess": "Successfully compiled!",
     "compilationFailed": "Errors during compilation",
     "watchIdle": "⌚ Waiting for changes...",
-    "notNumberError": "Specified argument for ${name} - \"${value}\" is not number",
+    "notNumberError": "Specified argument for ${path} - \"${value}\" is not number",
     "noLintDirsSpecifiedError": "No directories specified. Defaulting to \"trwl lint ${dirs}\" (entrypoint directories + test dir)",
     "lintSuccess": "Successful lint",
     "maxWarningsError": "Received ${warningCount} warnings, which is more than specified threshold - ${maxWarnings}. Exiting with code 1.",

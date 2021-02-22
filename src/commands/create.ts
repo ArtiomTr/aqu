@@ -1,115 +1,161 @@
-import { join } from "path";
-
 import chalk from "chalk";
-import { pathExists } from "fs-extra";
 import inquirer from "inquirer";
+import * as Yup from "yup";
 
-import { showSkippedStep } from "../build-utils/showSkippedStep";
-import logger, { Progress } from "../logger";
-import { createLicense } from "../template-utils/createLicense";
-import { getAllLicenses } from "../template-utils/getAllLicenses";
-import { getAllTemplates } from "../template-utils/getAllTemplates";
-import { installDependencies } from "../template-utils/installDependencies";
-import { loadTemplate } from "../template-utils/loadTemplate";
-import { TrwlCommand } from "../typings";
+import { createFromConfig } from "../create-utils/createFromConfig";
+import { getAllLicenses } from "../create-utils/getAllLicenses";
+import { getAllTemplates } from "../create-utils/getAllTemplates";
+import { verifyPackageName } from "../create-utils/verifyPackageName";
+import { CreateOptions, TrwlCommand } from "../typings";
 import { getAuthor } from "../utils/getAuthor";
 import { getDefaultRepo } from "../utils/getDefaultRepo";
+import { getGithubUser } from "../utils/getGithubUser";
 
-type CreateOptions = {};
+type CreateArguments = {
+    yes: boolean;
+} & CreateOptions;
 
-const packageNameRegex = /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/;
-
-export type TemplateOptions = {
-    name: string;
-    description: string;
-    author: string;
-    repo: string;
-    license: string;
-    template: string;
-};
-
-const createCommand: TrwlCommand<CreateOptions> = {
+const createCommand: TrwlCommand<CreateArguments> = {
     name: "create",
     description: "Create new project",
-    options: [],
-    action: async () => {
-        const prompt: TemplateOptions = await inquirer.prompt(
-            [
-                {
-                    type: "input",
-                    name: "name",
-                    message: "What's your project name?",
-                    validate: (input) => {
-                        if (!packageNameRegex.test(input)) {
-                            return "Package name is invalid";
-                        }
+    options: [
+        {
+            flag: {
+                full: "description",
+                short: "d",
+                placeholder: "value",
+            },
+            description: "new package description",
+        },
+        {
+            flag: {
+                full: "author",
+                short: "a",
+                placeholder: "name",
+            },
+            description: "package author",
+        },
+        {
+            flag: {
+                full: "repo",
+                short: "r",
+                placeholder: "url",
+            },
+            description: "repository",
+        },
+        {
+            flag: {
+                full: "license",
+                short: "l",
+                placeholder: "value",
+            },
+            description: "specify license",
+        },
+        {
+            flag: {
+                full: "template",
+                short: "t",
+                placeholder: "value",
+            },
+            description: "template",
+        },
+        {
+            flag: {
+                full: "yes",
+                short: "y",
+            },
+            description: "pick all defaults",
+        },
+    ],
+    action: async (args, _, command) => {
+        const name = command.args[0];
+        const githubUser = await getGithubUser();
+        const availableLicenses = await getAllLicenses();
+        const availableTemplates = await getAllTemplates();
 
-                        return pathExists(join(process.cwd(), input)).then((exists) =>
-                            exists ? `Folder ${chalk.bold.red(input)} already exists` : true
-                        );
+        const defaults = {
+            name,
+            description: "",
+            author: (await getAuthor()) ?? "",
+            repo: ({ name }: CreateOptions) => getDefaultRepo(name, githubUser),
+            license: "MIT",
+            template: "typescript",
+        };
+
+        let options: CreateOptions;
+
+        if (!args.yes) {
+            options = await inquirer.prompt(
+                [
+                    {
+                        type: "input",
+                        name: "name",
+                        message: "What's your project name?",
+                        validate: (input) =>
+                            verifyPackageName(input).then((value) =>
+                                typeof value === "boolean" ? value : value.message
+                            ),
                     },
-                },
+                    {
+                        type: "input",
+                        name: "description",
+                        message: "Specify package description",
+                        default: defaults.description,
+                    },
+                    {
+                        type: "input",
+                        name: "author",
+                        message: "Author",
+                        default: defaults.author,
+                        validate: (input) =>
+                            Yup.string()
+                                .required("Please enter the value")
+                                .validate(input)
+                                .then(() => true)
+                                .catch((err) => err.message),
+                    },
+                    {
+                        type: "input",
+                        name: "repo",
+                        message: "Specify repository",
+                        default: defaults.repo,
+                        validate: (input) =>
+                            Yup.string()
+                                .required("Please enter the value")
+                                .url(`${chalk.bold.red("${value}")} is not valid URL.`)
+                                .validate(input)
+                                .then(() => true)
+                                .catch((err) => err.message),
+                    },
+                    {
+                        type: "list",
+                        name: "license",
+                        message: "Which license to use?",
+                        default: defaults.license,
+                        choices: availableLicenses,
+                    },
+                    {
+                        type: "list",
+                        name: "template",
+                        message: "Which template to use?",
+                        default: defaults.template,
+                        choices: availableTemplates,
+                    },
+                ],
                 {
-                    type: "input",
-                    name: "description",
-                    message: "Specify package description",
-                    default: "",
-                },
-                {
-                    type: "input",
-                    name: "author",
-                    message: "Author",
-                    default: await getAuthor(),
-                },
-                {
-                    type: "input",
-                    name: "repo",
-                    message: "Specify repository",
-                    default: ({ name }: TemplateOptions) => getDefaultRepo(name),
-                },
-                {
-                    type: "list",
-                    name: "license",
-                    message: "Which license to use?",
-                    default: "MIT",
-                    choices: await getAllLicenses(),
-                },
-                {
-                    type: "list",
-                    name: "template",
-                    message: "Which template to use?",
-                    default: "typescript",
-                    choices: await getAllTemplates(),
-                },
-            ],
-            {}
-        );
-
-        console.log();
-
-        const creationProgress = new Progress("Creating project");
-
-        try {
-            await loadTemplate(prompt);
-            await createLicense(prompt.license, join(process.cwd(), prompt.name, "LICENSE"), prompt.author);
-            creationProgress.succeed();
-        } catch (err) {
-            creationProgress.fail();
-            showSkippedStep("Installing dependencies");
-            logger.fatal(err);
+                    ...args,
+                    name,
+                }
+            );
+        } else {
+            options = {
+                ...defaults,
+                repo: defaults.repo((defaults as unknown) as CreateOptions) ?? "",
+                ...(args as Omit<CreateOptions, "repo">),
+            };
         }
 
-        const installProgress = new Progress("Installing dependencies");
-
-        try {
-            await installDependencies(prompt.name);
-            installProgress.succeed();
-        } catch (err) {
-            installProgress.fail();
-            logger.fatal(err);
-        }
-
-        console.log();
+        await createFromConfig(options, githubUser, availableLicenses, availableTemplates);
     },
 };
 

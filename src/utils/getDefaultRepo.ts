@@ -1,8 +1,4 @@
-import { getGithubUser } from "./getGithubUser";
-
-export const getDefaultRepo = async (name: string) => {
-    const user = await getGithubUser();
-
+export const getDefaultRepo = (name: string, user: string | undefined) => {
     if (user) {
         return `https://github.com/${user}/${name}`;
     }

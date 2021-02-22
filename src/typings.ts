@@ -70,3 +70,12 @@ export type TemplateInitializationOptions = {
 export type TemplateScript = {
     initialize: () => TemplateInitializationOptions;
 };
+
+export type CreateOptions = {
+    name: string;
+    description: string;
+    author: string;
+    repo: string;
+    license: string;
+    template: string;
+};

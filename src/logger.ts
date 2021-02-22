@@ -13,12 +13,12 @@ export class Progress {
         this.beginPoint = new Date();
     }
 
-    succeed() {
-        this.spinner.succeed(this.label + " " + chalk.gray(timeFrom(this.beginPoint)));
+    succeed(label: string = this.label) {
+        this.spinner.succeed(label + " " + chalk.gray(timeFrom(this.beginPoint)));
     }
 
-    fail() {
-        this.spinner.fail(this.label + " " + chalk.gray("failed"));
+    fail(label: string = this.label) {
+        this.spinner.fail(label + " " + chalk.gray("failed"));
     }
 }
 
