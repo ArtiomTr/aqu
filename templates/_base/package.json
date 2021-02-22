@@ -7,16 +7,28 @@
     "files": [
         "dist"
     ],
+    "size-limit": [
+        {
+            "path": "dist/${name}.cjs.production.min.js",
+            "limit": "10 KB"
+        },
+        {
+            "path": "dist/${name}.esm.js",
+            "limit": "10 KB"
+        }
+    ],
     "scripts": {
         "build": "trwl build",
         "start": "trwl watch",
         "lint": "trwl lint",
-        "lint:fix": "npm run lint -- --fix",
+        "lint:fix": "trwl lint --fix",
         "test": "trwl test --passWithNoTests",
-        "test:watch": "npm run test -- --watch",
-        "test:coverage": "npm run test -- --coverage",
-        "prepare": "npm run build",
-        "release": "np"
+        "test:watch": "trwl test --passWithNoTests --watch",
+        "test:coverage": "trwl test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\"",
+        "prepare": "trwl build",
+        "release": "np",
+        "size": "size-limit",
+        "size:why": "size-limit --why"
     },
     "husky": {
         "hooks": {
@@ -40,6 +52,8 @@
         "trwl": "${versions.trwl}",
         "np": "^${versions.np}",
         "lint-staged": "^${versions.lintStaged}",
-        "husky": "^${versions.husky}"
+        "husky": "^${versions.husky}",
+        "size-limit": "^${versions.sizeLimit}",
+        "@size-limit/preset-small-lib": "^${versions.sizeLimitPresetSmallLib}"
     }
 }
