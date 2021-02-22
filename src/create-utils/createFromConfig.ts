@@ -57,7 +57,11 @@ export const createFromConfig = async (
         logger.fatal(err);
     }
 
-    console.log(steps.creationFinalize);
+    console.log(
+        insertArgs(steps.creationFinalize, {
+            package: chalk.bold.cyan(options.name),
+        })
+    );
 
     console.log();
 };
