@@ -25,6 +25,10 @@
     "packageNameNotSpecified": "Package name is not specified.",
     "packageNameInvalid": "Package name ${name} is invalid",
     "folderAlreadyExists": "Folder ${path} already exists",
+    "requiredCli": "Please enter the value",
+    "skipped": "skipped",
+    "notValidUrl": "${value} is not valid URL.",
+    "createBanner": "Creating package with aqu\n",
     "steps": {
         "esbuild": "Bundling using esbuild",
         "dtsBundle": "Generating declaration bundle",
@@ -70,8 +74,5 @@
         "repo": "Git repository (only for package.json information):",
         "license": "Pick license:",
         "template": "Pick template:"
-    },
-    "requiredCli": "Please enter the value",
-    "skipped": "skipped",
-    "notValidUrl": "${value} is not valid URL."
+    }
 }

@@ -6,7 +6,7 @@ import { createFromConfig } from "../create-utils/createFromConfig";
 import { getAllLicenses } from "../create-utils/getAllLicenses";
 import { getAllTemplates } from "../create-utils/getAllTemplates";
 import { verifyPackageName } from "../create-utils/verifyPackageName";
-import { commands, createQuestions, notValidUrl, options, requiredCli } from "../messages.json";
+import { commands, createBanner, createQuestions, notValidUrl, options, requiredCli } from "../messages.json";
 import { AquCommand, CreateOptions } from "../typings";
 import { getAuthor } from "../utils/getAuthor";
 import { getDefaultRepo } from "../utils/getDefaultRepo";
@@ -70,6 +70,8 @@ const createCommand: AquCommand<CreateArguments> = {
         },
     ],
     action: async (args, _, command) => {
+        console.log(chalk.cyan(createBanner));
+
         const name = command.args[0];
         const githubUser = await getGithubUser();
         const availableLicenses = await getAllLicenses();
