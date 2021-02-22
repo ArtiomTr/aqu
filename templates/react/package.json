@@ -1,8 +1,8 @@
 {
-    "peerDependencies": {
-        "react": ">=16"
-    },
-    "devDependencies": {
-        "react-dom": "^${versions.reactDom}"
-    }
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "devDependencies": {
+    "react-dom": "^${versions.reactDom}"
+  }
 }

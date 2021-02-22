@@ -49,7 +49,7 @@ export const copyTemplate = async (
           join(from, templateFile),
         );
 
-        let contents = JSON.stringify(file, null, 4);
+        let contents = JSON.stringify(file, null, 2);
 
         if (templateFilePaths.includes(resolvedPath)) {
           contents = insertArgs(contents, args);
