@@ -1,48 +1,50 @@
-import { dirname, resolve } from "path";
+import { dirname, resolve } from 'path';
 import {
-    CompilerOptions,
-    createCompilerHost,
-    createProgram,
-    parseJsonConfigFileContent,
-    readConfigFile,
-    sys,
-} from "typescript";
-import { ParseConfigHost } from "typescript";
+  CompilerOptions,
+  createCompilerHost,
+  createProgram,
+  parseJsonConfigFileContent,
+  readConfigFile,
+  sys,
+} from 'typescript';
+import { ParseConfigHost } from 'typescript';
 
-import { VerifiedAquOptions } from "../typings";
+import { VerifiedAquOptions } from '../typings';
 
 const parseConfigHost: ParseConfigHost = {
-    useCaseSensitiveFileNames: sys.useCaseSensitiveFileNames,
-    readDirectory: sys.readDirectory,
-    fileExists: sys.fileExists,
-    readFile: sys.readFile,
+  useCaseSensitiveFileNames: sys.useCaseSensitiveFileNames,
+  readDirectory: sys.readDirectory,
+  fileExists: sys.fileExists,
+  readFile: sys.readFile,
 };
 
-export const defaultEmitDeclarations = async (config: VerifiedAquOptions): Promise<void> => {
-    const { outdir, input, tsconfig, incremental } = config;
+export const defaultEmitDeclarations = async (
+  config: VerifiedAquOptions,
+): Promise<void> => {
+  const { outdir, input, tsconfig, incremental } = config;
 
-    const rawConfig = readConfigFile(tsconfig, sys.readFile);
+  const rawConfig = readConfigFile(tsconfig, sys.readFile);
 
-    const specifiedTsconfig = parseJsonConfigFileContent(
-        rawConfig.config,
-        parseConfigHost,
-        resolve(dirname(tsconfig)),
-        undefined,
-        tsconfig
-    );
+  const specifiedTsconfig = parseJsonConfigFileContent(
+    rawConfig.config,
+    parseConfigHost,
+    resolve(dirname(tsconfig)),
+    undefined,
+    tsconfig,
+  );
 
-    const options: CompilerOptions = {
-        ...specifiedTsconfig.options,
-        incremental,
-        declaration: true,
-        emitDeclarationOnly: true,
-        outDir: outdir,
-        noEmit: false,
-    };
+  const options: CompilerOptions = {
+    ...specifiedTsconfig.options,
+    incremental,
+    declaration: true,
+    emitDeclarationOnly: true,
+    outDir: outdir,
+    noEmit: false,
+  };
 
-    const host = createCompilerHost(options);
+  const host = createCompilerHost(options);
 
-    const program = createProgram(input, options, host);
+  const program = createProgram(input, options, host);
 
-    program.emit();
+  program.emit();
 };

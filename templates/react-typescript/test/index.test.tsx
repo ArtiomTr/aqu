@@ -8,36 +8,40 @@ import { Berries } from "../src";
 let container: HTMLDivElement | null = null;
 
 beforeEach(() => {
-    container = document.createElement("div");
-    document.body.appendChild(container);
+  container = document.createElement("div");
+  document.body.appendChild(container);
 });
 
 afterEach(() => {
-    if (container) {
-        unmountComponentAtNode(container);
-        container.remove();
-        container = null;
-    }
+  if (container) {
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  }
 });
 
 describe("Berries", () => {
-    it("renders with and without name", () => {
-        act(() => {
-            render(<Berries />, container);
-        });
-
-        expect(container?.textContent).toBe("Hello, stranger. I'm built with aqu 🌊!");
-
-        act(() => {
-            render(<Berries name="Jenny" />, container);
-        });
-
-        expect(container?.textContent).toBe("Hello, Jenny. I'm built with aqu 🌊!");
-
-        act(() => {
-            render(<Berries name="Margaret" />, container);
-        });
-
-        expect(container?.textContent).toBe("Hello, Margaret. I'm built with aqu 🌊!");
+  it("renders with and without name", () => {
+    act(() => {
+      render(<Berries />, container);
     });
+
+    expect(container?.textContent).toBe(
+      "Hello, stranger. I'm built with aqu 🌊!"
+    );
+
+    act(() => {
+      render(<Berries name="Jenny" />, container);
+    });
+
+    expect(container?.textContent).toBe("Hello, Jenny. I'm built with aqu 🌊!");
+
+    act(() => {
+      render(<Berries name="Margaret" />, container);
+    });
+
+    expect(container?.textContent).toBe(
+      "Hello, Margaret. I'm built with aqu 🌊!"
+    );
+  });
 });

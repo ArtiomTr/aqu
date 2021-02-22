@@ -1,7 +1,7 @@
-import { main } from "../src";
+import { main } from '../src';
 
-describe("main", () => {
-    it("should not throw", () => {
-        expect(() => main()).not.toThrow();
-    });
+describe('main', () => {
+  it('should not throw', () => {
+    expect(() => main()).not.toThrow();
+  });
 });

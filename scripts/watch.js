@@ -1,8 +1,8 @@
-var buildOptions = require("./build").buildOptions;
+var buildOptions = require('./build').buildOptions;
 
-require("esbuild")
-    .build({
-        ...buildOptions,
-        watch: true,
-    })
-    .catch((error) => console.error(error));
+require('esbuild')
+  .build({
+    ...buildOptions,
+    watch: true,
+  })
+  .catch((error) => console.error(error));

@@ -1,7 +1,9 @@
 import React from "react";
 
 type BerriesProps = {
-    name?: string;
+  name?: string;
 };
 
-export const Berries = ({ name = "stranger" }: BerriesProps) => <div>Hello, {name}. I'm built with aqu 🌊!</div>;
+export const Berries = ({ name = "stranger" }: BerriesProps) => (
+  <div>Hello, {name}. I'm built with aqu 🌊!</div>
+);
