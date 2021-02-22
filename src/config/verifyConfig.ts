@@ -12,7 +12,7 @@ import {
     outfileCannotBeSpecified,
     schemaValidationError,
 } from "../messages.json";
-import { TrwlOptions, VerifiedTrwlOptions } from "../typings";
+import { AquOptions, VerifiedAquOptions } from "../typings";
 
 const optionSchema = Yup.object()
     .shape({
@@ -74,7 +74,7 @@ const optionSchema = Yup.object()
         return true;
     });
 
-export const verifyConfig = async (config: TrwlOptions): Promise<VerifiedTrwlOptions> => {
+export const verifyConfig = async (config: AquOptions): Promise<VerifiedAquOptions> => {
     try {
         await optionSchema.validate(config);
 
@@ -85,7 +85,7 @@ export const verifyConfig = async (config: TrwlOptions): Promise<VerifiedTrwlOpt
             outdir,
             format: Array.isArray(config.format) ? uniq(config.format) : [config.format],
             input: Array.isArray(config.input) ? uniq(config.input) : [config.input],
-        } as VerifiedTrwlOptions;
+        } as VerifiedAquOptions;
 
         return verifiedConfig;
     } catch (err) {

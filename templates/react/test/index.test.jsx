@@ -24,7 +24,7 @@ describe("Berries", () => {
         });
 
         expect(container.textContent).toBe(
-            "Hello, stranger. I'm built with trwl!"
+            "Hello, stranger. I'm built with aqu 🌊!"
         );
 
         act(() => {
@@ -32,7 +32,7 @@ describe("Berries", () => {
         });
 
         expect(container.textContent).toBe(
-            "Hello, Jenny. I'm built with trwl!"
+            "Hello, Jenny. I'm built with aqu 🌊!"
         );
 
         act(() => {
@@ -40,7 +40,7 @@ describe("Berries", () => {
         });
 
         expect(container.textContent).toBe(
-            "Hello, Margaret. I'm built with trwl!"
+            "Hello, Margaret. I'm built with aqu 🌊!"
         );
     });
 });

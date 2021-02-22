@@ -1,21 +1,21 @@
 import { Command } from "commander";
 
-import { TrwlCommand, TrwlCommandOptions, VerifiedTrwlOptions } from "../typings";
+import { AquCommand, AquCommandOptions, VerifiedAquOptions } from "../typings";
 
 export const initializeCommand = (
     program: Command,
-    trwlCommand: TrwlCommand<unknown>,
-    sharedOptions: Array<TrwlCommandOptions> = [],
-    preload?: (options: Record<string, unknown>) => Promise<Array<VerifiedTrwlOptions>>
+    aquCommand: AquCommand<unknown>,
+    sharedOptions: Array<AquCommandOptions> = [],
+    preload?: (options: Record<string, unknown>) => Promise<Array<VerifiedAquOptions>>
 ) => {
-    const command = new Command(trwlCommand.name);
-    command.description(trwlCommand.description);
+    const command = new Command(aquCommand.name);
+    command.description(aquCommand.description);
 
-    if (trwlCommand.allowUnknownOptions) {
+    if (aquCommand.allowUnknownOptions) {
         command.allowUnknownOption(true);
     }
 
-    [...trwlCommand.options, ...sharedOptions].forEach((commandOption) => {
+    [...aquCommand.options, ...sharedOptions].forEach((commandOption) => {
         const option = command.createOption(
             `${commandOption.flag.short ? `-${commandOption.flag.short}, ` : ""}--${commandOption.flag.full} ${
                 commandOption.flag.placeholder ? `<${commandOption.flag.placeholder}>` : ""
@@ -36,9 +36,9 @@ export const initializeCommand = (
 
     command.action(async (options, command) => {
         if (preload) {
-            trwlCommand.action(options, await preload(options), command);
+            aquCommand.action(options, await preload(options), command);
         } else {
-            trwlCommand.action(options, [], command);
+            aquCommand.action(options, [], command);
         }
     });
 

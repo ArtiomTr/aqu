@@ -1,7 +1,7 @@
 {
     "requiredField": "${path} is required - ${path} was not found in package.json, config file or cli arguments",
     "requiredInputField": "${path} is required - \"source\" field not found in package.json, attempt to select the default ./src/index or ./lib/index also failed",
-    "unexpectedlyMissingField": "${path} is missing - suddenly, default value of ${path} is not load. This is probably trwl issue, please report about it.",
+    "unexpectedlyMissingField": "${path} is missing - suddenly, default value of ${path} is not load. This is probably aqu issue, please report about it.",
     "gracefulShutdownMessage": "✨ Shutting down gracefully",
     "gracefulShutdownDetails": "   Stopping esbuild service and closing watcher",
     "configNotFound": "Cannot read config at path ${path}",
@@ -15,7 +15,7 @@
     "compilationFailed": "Errors during compilation",
     "watchIdle": "⌚ Waiting for changes...",
     "notNumberError": "Specified argument for ${path} - \"${value}\" is not number",
-    "noLintDirsSpecifiedError": "No directories specified. Defaulting to \"trwl lint ${dirs}\" (entrypoint directories + test dir)",
+    "noLintDirsSpecifiedError": "No directories specified. Defaulting to \"aqu lint ${dirs}\" (entrypoint directories + test dir)",
     "lintSuccess": "Successful lint",
     "maxWarningsError": "Received ${warningCount} warnings, which is more than specified threshold - ${maxWarnings}. Exiting with code 1.",
     "licenseNotFound": "License ${license} do not exist",
@@ -25,6 +25,10 @@
     "packageNameNotSpecified": "Package name is not specified.",
     "packageNameInvalid": "Package name ${name} is invalid",
     "folderAlreadyExists": "Folder ${path} already exists",
+    "requiredCli": "Please enter the value",
+    "skipped": "skipped",
+    "notValidUrl": "${value} is not valid URL.",
+    "createBanner": "Creating package with aqu\n",
     "steps": {
         "esbuild": "Bundling using esbuild",
         "dtsBundle": "Generating declaration bundle",
@@ -70,8 +74,5 @@
         "repo": "Git repository (only for package.json information):",
         "license": "Pick license:",
         "template": "Pick template:"
-    },
-    "requiredCli": "Please enter the value",
-    "skipped": "skipped",
-    "notValidUrl": "${value} is not valid URL."
+    }
 }

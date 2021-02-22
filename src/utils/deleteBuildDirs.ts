@@ -4,9 +4,9 @@ import uniq from "lodash/uniq";
 import rimraf from "rimraf";
 
 import logger from "../logger";
-import { VerifiedTrwlOptions } from "../typings";
+import { VerifiedAquOptions } from "../typings";
 
-export const deleteBuildDirs = (configs: VerifiedTrwlOptions[]) => {
+export const deleteBuildDirs = (configs: VerifiedAquOptions[]) => {
     const folders = uniq(configs.map((value) => resolve(value.outdir)));
 
     return Promise.all(

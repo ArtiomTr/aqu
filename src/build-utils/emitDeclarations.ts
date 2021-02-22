@@ -5,12 +5,12 @@ import { generateDtsBundle } from "dts-bundle-generator";
 import { defaultEmitDeclarations } from "./defaultEmitDeclarations";
 import { Progress } from "../logger";
 import { steps } from "../messages.json";
-import { VerifiedTrwlOptions } from "../typings";
+import { VerifiedAquOptions } from "../typings";
 import { safeWriteFile } from "../utils/safeWriteFile";
 
 const canHaveDeclarations = (filePath: string) => [".ts", ".tsx"].includes(extname(filePath));
 
-export const emitDeclarations = async (config: VerifiedTrwlOptions) => {
+export const emitDeclarations = async (config: VerifiedAquOptions) => {
     const { input, declaration, outfile, outdir, name, tsconfig } = config;
 
     if (input.some(canHaveDeclarations)) {

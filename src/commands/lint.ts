@@ -14,7 +14,7 @@ import {
     notNumberError,
     options,
 } from "../messages.json";
-import { TrwlCommand } from "../typings";
+import { AquCommand } from "../typings";
 import assert from "../utils/assert";
 import { deepMerge } from "../utils/deepMerge";
 import { getInputDirs } from "../utils/getInputDirs";
@@ -33,7 +33,7 @@ export type LintOptions = {
     Cache: boolean;
 };
 
-const lintCommand: TrwlCommand<LintOptions> = {
+const lintCommand: AquCommand<LintOptions> = {
     name: "lint",
     description: commands.lint,
     options: [
