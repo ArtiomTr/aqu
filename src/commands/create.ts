@@ -7,7 +7,7 @@ import { getAllLicenses } from "../create-utils/getAllLicenses";
 import { getAllTemplates } from "../create-utils/getAllTemplates";
 import { verifyPackageName } from "../create-utils/verifyPackageName";
 import { commands, createQuestions, notValidUrl, options, requiredCli } from "../messages.json";
-import { CreateOptions, TrwlCommand } from "../typings";
+import { AquCommand, CreateOptions } from "../typings";
 import { getAuthor } from "../utils/getAuthor";
 import { getDefaultRepo } from "../utils/getDefaultRepo";
 import { getGithubUser } from "../utils/getGithubUser";
@@ -17,7 +17,7 @@ type CreateArguments = {
     yes: boolean;
 } & CreateOptions;
 
-const createCommand: TrwlCommand<CreateArguments> = {
+const createCommand: AquCommand<CreateArguments> = {
     name: "create",
     description: commands.create,
     options: [

@@ -26,18 +26,18 @@ describe("Berries", () => {
             render(<Berries />, container);
         });
 
-        expect(container?.textContent).toBe("Hello, stranger. I'm built with trwl!");
+        expect(container?.textContent).toBe("Hello, stranger. I'm built with aqu 🌊!");
 
         act(() => {
             render(<Berries name="Jenny" />, container);
         });
 
-        expect(container?.textContent).toBe("Hello, Jenny. I'm built with trwl!");
+        expect(container?.textContent).toBe("Hello, Jenny. I'm built with aqu 🌊!");
 
         act(() => {
             render(<Berries name="Margaret" />, container);
         });
 
-        expect(container?.textContent).toBe("Hello, Margaret. I'm built with trwl!");
+        expect(container?.textContent).toBe("Hello, Margaret. I'm built with aqu 🌊!");
     });
 });

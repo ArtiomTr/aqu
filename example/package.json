@@ -4,18 +4,18 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "trwl build",
-        "test": "trwl test",
-        "start": "trwl watch",
-        "lint": "trwl lint",
-        "create": "trwl create",
+        "build": "aqu build",
+        "test": "aqu test",
+        "start": "aqu watch",
+        "lint": "aqu lint",
+        "create": "aqu create",
         "prepublishOnly": "echo \"This package is an example. It is not intended to be published.\" && exit 1"
     },
     "keywords": [],
     "author": "Artiom Tretjakovas",
     "license": "ISC",
     "devDependencies": {
-        "trwl": "file:..",
+        "aqu": "file:..",
         "typescript": "^4.1.5"
     }
 }

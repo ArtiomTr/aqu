@@ -6,10 +6,10 @@
         "${name}": "file:.."
     },
     "scripts": {
-        "start": "trwl build && node ./dist/index.js",
+        "start": "aqu build && node ./dist/index.js",
         "prepublishOnly": "echo \"This package is an example. It is not intended to be published.\" && exit 1"
     },
     "devDependencies": {
-        "trwl": "file:../node_modules/trwl"
+        "aqu": "file:../node_modules/aqu"
     }
 }

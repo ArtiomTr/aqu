@@ -6,7 +6,7 @@ import { TemplateInitializationOptions } from "../typings";
 import { insertArgs } from "../utils/insertArgs";
 import { mergeFiles } from "../utils/mergeFiles";
 
-const banFiles = ["trwl.template.js"];
+const banFiles = ["aqu.template.js"];
 
 export const copyTemplate = async (
     from: string,

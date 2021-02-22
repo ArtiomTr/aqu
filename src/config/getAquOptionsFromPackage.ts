@@ -3,9 +3,9 @@ import { resolve } from "path";
 
 import logger from "../logger";
 import { packageNotFound } from "../messages.json";
-import { TrwlOptions } from "../typings";
+import { AquOptions } from "../typings";
 
-export const getTrwlOptionsFromPackage = async (): Promise<TrwlOptions | undefined> => {
+export const getAquOptionsFromPackage = async (): Promise<AquOptions | undefined> => {
     const packageJsonPath = resolve("package.json");
 
     return new Promise((resolve) => {

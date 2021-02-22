@@ -1,11 +1,11 @@
-import { loadAndResolveTrwlConfig } from "../../src/config/loadAndResolveTrwlConfig";
+import { loadAndResolveAquConfig } from "../../src/config/loadAndResolveAquConfig";
 import { DEFAULT_OPTIONS } from "../../src/constants";
 
 const singleConfig = [
     {
         ...DEFAULT_OPTIONS,
         input: "hello",
-        name: "trwl",
+        name: "aqu",
     },
 ];
 
@@ -13,30 +13,30 @@ const multipleConfig = [
     {
         ...DEFAULT_OPTIONS,
         input: "hello",
-        name: "trwl",
+        name: "aqu",
     },
     {
         ...DEFAULT_OPTIONS,
         input: "2",
-        name: "trwl",
+        name: "aqu",
     },
 ];
 
-describe("loadAndResolveTrwlConfig", () => {
+describe("loadAndResolveAquConfig", () => {
     it("should load json config", async () => {
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.single.json")).toStrictEqual(singleConfig);
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.multiple.json")).toStrictEqual(multipleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.single.json")).toStrictEqual(singleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.multiple.json")).toStrictEqual(multipleConfig);
     });
     it("should load commonjs config", async () => {
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.single.cjs")).toStrictEqual(singleConfig);
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.multiple.cjs")).toStrictEqual(multipleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.single.cjs")).toStrictEqual(singleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.multiple.cjs")).toStrictEqual(multipleConfig);
     });
     it("should transpile and load es config", async () => {
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.single.mjs")).toStrictEqual(singleConfig);
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.multiple.mjs")).toStrictEqual(multipleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.single.mjs")).toStrictEqual(singleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.multiple.mjs")).toStrictEqual(multipleConfig);
     });
     it("should transpile and load typescript config", async () => {
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.single.ts")).toStrictEqual(singleConfig);
-        expect(await loadAndResolveTrwlConfig("./tests/config/trwl.multiple.ts")).toStrictEqual(multipleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.single.ts")).toStrictEqual(singleConfig);
+        expect(await loadAndResolveAquConfig("./tests/config/aqu.multiple.ts")).toStrictEqual(multipleConfig);
     });
 });

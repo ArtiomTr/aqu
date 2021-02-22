@@ -3,7 +3,7 @@ const NodeResolve = require("@esbuild-plugins/node-resolve").default;
 /** @type {import('esbuild').BuildOptions} */
 var buildOptions = {
     entryPoints: ["./src/index.ts"],
-    outfile: "./dist/trwl.js",
+    outfile: "./dist/aqu.js",
     bundle: true,
     target: "node10.16.0",
     platform: "node",

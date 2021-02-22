@@ -1,6 +1,6 @@
-import type { TrwlOptions } from "../src/typings";
+import type { AquOptions } from "../../src/typings";
 
-const config: TrwlOptions[] = [
+const config: AquOptions[] = [
     {
         input: "hello",
     },

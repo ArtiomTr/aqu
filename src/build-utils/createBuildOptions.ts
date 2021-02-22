@@ -3,9 +3,9 @@ import { join } from "path";
 import NodeResolve from "@esbuild-plugins/node-resolve";
 import { BuildOptions } from "esbuild";
 
-import { VerifiedTrwlOptions } from "../typings";
+import { VerifiedAquOptions } from "../typings";
 
-export const createBuildOptions = async (config: VerifiedTrwlOptions) => {
+export const createBuildOptions = async (config: VerifiedAquOptions) => {
     const {
         format,
         name,

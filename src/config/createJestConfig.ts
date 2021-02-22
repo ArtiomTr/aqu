@@ -1,10 +1,10 @@
 import { Config } from "@jest/types";
 
-import { VerifiedTrwlOptions } from "../typings";
+import { VerifiedAquOptions } from "../typings";
 import { getInputDirs } from "../utils/getInputDirs";
 
 /** Taken and modified from tsdx. @see https://github.com/formium/tsdx/blob/master/src/createJestConfig.ts */
-export const createJestConfig = (configs: VerifiedTrwlOptions[]): Partial<Config.InitialOptions> => ({
+export const createJestConfig = (configs: VerifiedAquOptions[]): Partial<Config.InitialOptions> => ({
     transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(js|cjs|jsx)$'"],
     rootDir: process.cwd(),
     preset: "ts-jest/presets/js-with-babel",

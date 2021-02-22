@@ -6,9 +6,9 @@ import { emitDeclarations } from "./emitDeclarations";
 import { showSkippedStep } from "./showSkippedStep";
 import { Progress } from "../logger";
 import { steps } from "../messages.json";
-import { VerifiedTrwlOptions } from "../typings";
+import { VerifiedAquOptions } from "../typings";
 
-export const buildFromConfig = async (config: VerifiedTrwlOptions, service: Service) => {
+export const buildFromConfig = async (config: VerifiedAquOptions, service: Service) => {
     const { cjsMode, outdir, name, format, declaration } = config;
 
     if (format.includes("cjs") && cjsMode === "mixed") {

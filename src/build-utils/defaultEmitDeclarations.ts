@@ -9,7 +9,7 @@ import {
 } from "typescript";
 import { ParseConfigHost } from "typescript";
 
-import { VerifiedTrwlOptions } from "../typings";
+import { VerifiedAquOptions } from "../typings";
 
 const parseConfigHost: ParseConfigHost = {
     useCaseSensitiveFileNames: sys.useCaseSensitiveFileNames,
@@ -18,7 +18,7 @@ const parseConfigHost: ParseConfigHost = {
     readFile: sys.readFile,
 };
 
-export const defaultEmitDeclarations = async (config: VerifiedTrwlOptions): Promise<void> => {
+export const defaultEmitDeclarations = async (config: VerifiedAquOptions): Promise<void> => {
     const { outdir, input, tsconfig, incremental } = config;
 
     const rawConfig = readConfigFile(tsconfig, sys.readFile);

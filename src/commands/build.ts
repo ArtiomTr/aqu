@@ -3,12 +3,12 @@ import { startService } from "esbuild";
 import { buildFromConfig } from "../build-utils/buildFromConfig";
 import logger from "../logger";
 import { commands } from "../messages.json";
-import { TrwlCommand } from "../typings";
+import { AquCommand } from "../typings";
 import { deleteBuildDirs } from "../utils/deleteBuildDirs";
 
 type BuildOptions = {};
 
-const buildCommand: TrwlCommand<BuildOptions> = {
+const buildCommand: AquCommand<BuildOptions> = {
     name: "build",
     description: commands.build,
     options: [],

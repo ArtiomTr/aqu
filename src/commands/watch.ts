@@ -12,7 +12,7 @@ import {
     options,
     watchIdle,
 } from "../messages.json";
-import { TrwlCommand } from "../typings";
+import { AquCommand } from "../typings";
 import { clearConsole } from "../utils/clearConsole";
 import { deepMerge } from "../utils/deepMerge";
 import { deleteBuildDirs } from "../utils/deleteBuildDirs";
@@ -25,7 +25,7 @@ export type WatchOptions = {
     Nosym: boolean;
 };
 
-export const watchCommand: TrwlCommand<WatchOptions> = {
+export const watchCommand: AquCommand<WatchOptions> = {
     name: "watch",
     description: commands.watch,
     options: [

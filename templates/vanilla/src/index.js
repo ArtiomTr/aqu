@@ -1,3 +1,3 @@
 export const main = () => {
-    console.log("Hello trwl!");
+    console.log("Hello aqu 🌊!");
 };

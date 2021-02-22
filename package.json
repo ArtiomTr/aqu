@@ -1,9 +1,9 @@
 {
-    "name": "trwl",
+    "name": "aqu",
     "version": "0.0.0",
     "description": "Develop TypeScript packages with no configuration",
     "bin": {
-        "trwl": "./dist/trwl.js"
+        "aqu": "./dist/aqu.js"
     },
     "files": [
         "dist",
@@ -18,13 +18,13 @@
     },
     "author": "Artiom Tretjakovas",
     "license": "MIT",
-    "homepage": "https://github.com/ArtiomTr/trwl",
+    "homepage": "https://github.com/ArtiomTr/aqu",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ArtiomTr/trwl.git"
+        "url": "git+https://github.com/ArtiomTr/aqu.git"
     },
     "bugs": {
-        "url": "https://github.com/ArtiomTr/trwl/issues"
+        "url": "https://github.com/ArtiomTr/aqu/issues"
     },
     "dependencies": {
         "@babel/preset-env": "^7.12.17",

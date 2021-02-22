@@ -3,7 +3,7 @@ import { Command } from "commander";
 import { BuildOptions } from "esbuild";
 import { Format } from "esbuild";
 
-export type TrwlOptions = {
+export type AquOptions = {
     /** Library name */
     name?: string;
     /** Bundle entrypoints */
@@ -30,7 +30,7 @@ export type TrwlOptions = {
     watchOptions?: WatchOptions;
 };
 
-export type VerifiedTrwlOptions = Omit<Required<TrwlOptions>, "input" | "format"> & {
+export type VerifiedAquOptions = Omit<Required<AquOptions>, "input" | "format"> & {
     input: string[];
     format: Format[];
 };
@@ -39,17 +39,17 @@ export type DeclarationType = "bundle" | "normal" | "none";
 
 export type Mode = "production" | "development" | "mixed";
 
-export type RawTrwlOptions = TrwlOptions | Array<TrwlOptions>;
+export type RawAquOptions = AquOptions | Array<AquOptions>;
 
-export type TrwlCommand<T> = {
+export type AquCommand<T> = {
     name: string;
     description: string;
-    action: (options: T, config: Array<VerifiedTrwlOptions>, command: Command) => void | Promise<void>;
-    options: Array<TrwlCommandOptions>;
+    action: (options: T, config: Array<VerifiedAquOptions>, command: Command) => void | Promise<void>;
+    options: Array<AquCommandOptions>;
     allowUnknownOptions?: boolean;
 };
 
-export type TrwlCommandOptions = {
+export type AquCommandOptions = {
     flag: {
         full: string;
         short?: string;

@@ -4,4 +4,4 @@ type BerriesProps = {
     name?: string;
 };
 
-export const Berries = ({ name = "stranger" }: BerriesProps) => <div>Hello, {name}. I'm built with trwl!</div>;
+export const Berries = ({ name = "stranger" }: BerriesProps) => <div>Hello, {name}. I'm built with aqu 🌊!</div>;

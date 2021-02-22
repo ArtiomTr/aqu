@@ -18,14 +18,14 @@
         }
     ],
     "scripts": {
-        "build": "trwl build",
-        "start": "trwl watch",
-        "lint": "trwl lint",
-        "lint:fix": "trwl lint --fix",
-        "test": "trwl test --passWithNoTests",
-        "test:watch": "trwl test --passWithNoTests --watch",
-        "test:coverage": "trwl test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\"",
-        "prepare": "trwl build",
+        "build": "aqu build",
+        "start": "aqu watch",
+        "lint": "aqu lint",
+        "lint:fix": "aqu lint --fix",
+        "test": "aqu test --passWithNoTests",
+        "test:watch": "aqu test --passWithNoTests --watch",
+        "test:coverage": "aqu test --silent --ci --coverage --coverageReporters=\"text\" --coverageReporters=\"text-summary\"",
+        "prepare": "aqu build",
         "release": "np",
         "size": "size-limit",
         "size:why": "size-limit --why"
@@ -49,7 +49,7 @@
         "url": "${repo}/issues"
     },
     "devDependencies": {
-        "trwl": "${versions.trwl}",
+        "aqu": "${versions.aqu}",
         "np": "^${versions.np}",
         "lint-staged": "^${versions.lintStaged}",
         "husky": "^${versions.husky}",

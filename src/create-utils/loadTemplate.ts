@@ -18,7 +18,7 @@ export const loadTemplate = async (
 
     loadedTemplates.add(template);
 
-    const scriptPath = join(templatesPath, template, "trwl.template.js");
+    const scriptPath = join(templatesPath, template, "aqu.template.js");
 
     let options: TemplateInitializationOptions = {};
 

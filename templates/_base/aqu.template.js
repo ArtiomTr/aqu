@@ -13,8 +13,8 @@ const templateScript = {
         ],
         customArgs: {
             // TODO: replace with normal when published
-            ['versions.trwl']: 'file:../..',
-            // ["versions.trwl"]: packageVersion("trwl"),
+            ['versions.aqu']: 'file:../..',
+            // ["versions.aqu"]: packageVersion("aqu"),
             ['versions.np']: await packageVersion('np'),
             ['versions.lintStaged']: await packageVersion('lint-staged'),
             ['versions.husky']: await packageVersion('husky'),

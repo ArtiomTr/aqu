@@ -5,7 +5,7 @@ import { createJestConfig } from "../config/createJestConfig";
 import { loadAndResolveConfig } from "../config/loadAndResolveConfig";
 import { CONFIG_EXTENSIONS } from "../constants";
 import { commands } from "../messages.json";
-import { TrwlCommand } from "../typings";
+import { AquCommand } from "../typings";
 import { deepMerge } from "../utils/deepMerge";
 
 const availableJestConfigNames = [
@@ -14,7 +14,7 @@ const availableJestConfigNames = [
     ".jestrc",
 ];
 
-const testCommand: TrwlCommand<{}> = {
+const testCommand: AquCommand<{}> = {
     name: "test",
     description: commands.test,
     options: [],

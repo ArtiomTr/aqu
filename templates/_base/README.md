@@ -28,4 +28,4 @@ import { ... } from "${name}";
 
 ${license} © [${author}](https://github.com/${githubUser})
 
-[Created with trwl](https://github.com/ArtiomTr/trwl#readme)
+[Created with aqu 🌊](https://github.com/ArtiomTr/aqu#readme)
