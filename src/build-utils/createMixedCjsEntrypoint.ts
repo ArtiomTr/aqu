@@ -1,5 +1,6 @@
 import { join } from 'path';
 
+import { getFolderFromPackageName } from '../create-utils/getFolderFromPackageName';
 import { insertArgs } from '../utils/insertArgs';
 import { safeWriteFile } from '../utils/safeWriteFile';
 
@@ -18,6 +19,6 @@ export const createMixedCjsEntrypoint = async (
 ) => {
   await safeWriteFile(
     join(outdir, 'index.js'),
-    insertArgs(cjsMixedEntrypoint, { name }),
+    insertArgs(cjsMixedEntrypoint, { name: getFolderFromPackageName(name) }),
   );
 };
