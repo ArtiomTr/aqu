@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 
-export default packageVersion = (pkg) =>
+const packageVersion = (pkg) =>
   new Promise((resolve, reject) =>
     exec(`npm view ${pkg} version`, (err, stdout) => {
       if (err) {
@@ -10,3 +10,5 @@ export default packageVersion = (pkg) =>
       }
     }),
   );
+
+export default packageVersion;

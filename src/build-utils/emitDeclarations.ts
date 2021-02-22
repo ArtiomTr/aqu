@@ -3,6 +3,7 @@ import { extname, join } from 'path';
 import { generateDtsBundle } from 'dts-bundle-generator';
 
 import { defaultEmitDeclarations } from './defaultEmitDeclarations';
+import { getFolderFromPackageName } from '../create-utils/getFolderFromPackageName';
 import { Progress } from '../logger';
 import { steps } from '../messages.json';
 import { VerifiedAquOptions } from '../typings';
@@ -31,7 +32,7 @@ export const emitDeclarations = async (config: VerifiedAquOptions) => {
             return safeWriteFile(
               outfile
                 ? `${outfile.substring(0, outfile.lastIndexOf('.'))}.d.ts`
-                : join(outdir, `${name}.d.ts`),
+                : join(outdir, `${getFolderFromPackageName(name)}.d.ts`),
               bundle,
             );
           }),

@@ -3,6 +3,7 @@ import { join } from 'path';
 import chalk from 'chalk';
 
 import { createLicense } from './createLicense';
+import { getFolderFromPackageName } from './getFolderFromPackageName';
 import { installDependencies } from './installDependencies';
 import { loadTemplate } from './loadTemplate';
 import { verifyCreateOptions } from './verifyCreateOptions';
@@ -33,7 +34,7 @@ export const createFromConfig = async (
     await loadTemplate(options, githubUser);
     await createLicense(
       options.license,
-      join(process.cwd(), options.name, 'LICENSE'),
+      join(process.cwd(), getFolderFromPackageName(options.name), 'LICENSE'),
       options.author,
     );
     creationProgress.succeed(
@@ -54,7 +55,7 @@ export const createFromConfig = async (
   const installProgress = new Progress(steps.installingDeps);
 
   try {
-    await installDependencies(options.name);
+    await installDependencies(getFolderFromPackageName(options.name));
     installProgress.succeed(steps.installDepsSuccess);
   } catch (err) {
     installProgress.fail(steps.installDepsFail);

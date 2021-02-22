@@ -1,6 +1,7 @@
 import { join, resolve } from 'path';
 
 import { copyTemplate } from './copyTemplate';
+import { getFolderFromPackageName } from './getFolderFromPackageName';
 import { transpileAndGetRawConfig } from '../config/transpileAndGetRawConfig';
 import { templatesPath } from '../constants';
 import logger from '../logger';
@@ -20,6 +21,8 @@ export const loadTemplate = async (
 ) => {
   const { name, template } = templateOptions;
 
+  const folder = getFolderFromPackageName(name);
+
   loadedTemplates.add(template);
 
   const scriptPath = join(templatesPath, template, 'aqu.template.js');
@@ -35,13 +38,13 @@ export const loadTemplate = async (
 
     if (options.templateFilePaths) {
       options.templateFilePaths = options.templateFilePaths.map((path) =>
-        resolve(process.cwd(), name, path),
+        resolve(process.cwd(), folder, path),
       );
     }
 
     if (options.filesToMergePaths) {
       options.filesToMergePaths = options.filesToMergePaths.map((path) =>
-        resolve(process.cwd(), name, path),
+        resolve(process.cwd(), folder, path),
       );
     }
   } catch (err) {
@@ -66,11 +69,12 @@ export const loadTemplate = async (
 
   await copyTemplate(
     join(templatesPath, template),
-    join(process.cwd(), name),
+    join(process.cwd(), folder),
     options,
     {
       ...templateOptions,
       ...options.customArgs,
+      safeName: getFolderFromPackageName(name),
       githubUser,
     },
   );
