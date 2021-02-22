@@ -6,7 +6,9 @@
         "trwl": "./dist/trwl.js"
     },
     "files": [
-        "dist"
+        "dist",
+        "templates",
+        "licenses"
     ],
     "scripts": {
         "build": "node ./scripts/build.js",
