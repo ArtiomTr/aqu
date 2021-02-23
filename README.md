@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/usage.gif" width="540" alt="Aqu usage" />
+  <img src="./assets/usage2.gif" width="540" alt="Aqu usage" />
 </p>
 
 <h1 align="center">
