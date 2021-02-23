@@ -32,6 +32,10 @@
 
 ---
 
+## Inspiration
+
+This package highly inspired by [ESBuild](https://github.com/evanw/esbuild#readme), [TSDX](https://github.com/formium/tsdx), [Microbundle](https://github.com/developit/microbundle), [Create React Library](https://github.com/transitive-bullshit/create-react-library#readme) and [DTS Bundle generator](https://github.com/timocov/dts-bundle-generator)
+
 ## ✨ Features <a name="features"></a>
 
 - One dependency for your code bundling 📦
@@ -333,6 +337,14 @@ Or
 ```sh
 yarn publish
 ```
+
+## Related
+
+- [ESBuild](https://github.com/evanw/esbuild#readme) - An extremely fast JavaScript bundler
+- [DTS Bundle generator](https://github.com/timocov/dts-bundle-generator) - Tool to generate a single bundle of dts
+- [Microbundle](https://github.com/developit/microbundle) - Zero-configuration bundler for tiny JS libs, powered by Rollup.
+- [TSDX](https://github.com/formium/tsdx) - Zero-config TypeScript package development
+- [Create React Library](https://github.com/transitive-bullshit/create-react-library#readme) - CLI for easily bootstrapping modern react libraries
 
 ## License
 
