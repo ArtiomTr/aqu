@@ -1,7 +1,7 @@
 {
   "name": "aqu",
   "version": "0.0.0",
-  "description": "Develop TypeScript packages with no configuration",
+  "description": "Powerful tool for easy typescript/javascript package development",
   "bin": {
     "aqu": "./dist/aqu.js"
   },
@@ -9,6 +9,16 @@
     "dist",
     "templates",
     "licenses"
+  ],
+  "keywords": [
+    "bundle",
+    "typescript",
+    "cli",
+    "react",
+    "react library",
+    "microbundle",
+    "tsdx",
+    "aqu"
   ],
   "scripts": {
     "build": "node ./scripts/build.js",
@@ -19,7 +29,7 @@
   },
   "author": "Artiom Tretjakovas",
   "license": "MIT",
-  "homepage": "https://github.com/ArtiomTr/aqu",
+  "homepage": "https://github.com/ArtiomTr/aqu#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ArtiomTr/aqu.git"
