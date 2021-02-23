@@ -1,33 +1,36 @@
 <p align="center">
-    <img src="./assets/usage.gif" width="670" alt="Aqu usage" />
+  <img src="./assets/usage.gif" width="540" alt="Aqu usage" />
 </p>
 
 <h1 align="center">
-    🌊 Aqu
+  🌊 Aqu
 </h1>
 
 <p align="center">
-    Powerful tool for easy <b>typescript/javascript</b> package development powered by <a href="https://github.com/evanw/esbuild#readme">esbuild</a> and <a href="https://github.com/timocov/dts-bundle-generator#readme">DTS bundle generator</a>.
+  Powerful tool for easy <b>typescript/javascript</b> package development powered by <a href="https://github.com/evanw/esbuild#readme">esbuild</a> and <a href="https://github.com/timocov/dts-bundle-generator#readme">DTS bundle generator</a>.
 </p>
 
 <p align="center">
-    <a alt="package version" href="https://www.npmjs.com/package/aqu">
-        <img src="https://img.shields.io/npm/v/aqu">
-    </a>
-    <a alt="package downloads" href="https://www.npmjs.com/package/aqu">
-        <img src="https://img.shields.io/npm/dw/aqu" />
-    </a>
-    <a alt="vulnerabilities" href="https://www.npmjs.com/package/aqu">
-        <img src="https://img.shields.io/snyk/vulnerabilities/npm/aqu">
-    </a>
+  <a href="https://www.npmjs.com/package/aqu">
+    <img  alt="package version" src="https://img.shields.io/npm/v/aqu">
+  </a>
+  <a href="https://www.npmjs.com/package/aqu">
+    <img alt="package downloads" src="https://img.shields.io/npm/dw/aqu" />
+  </a>
+  <a href="https://www.npmjs.com/package/aqu">
+    <img alt="vulnerabilities" src="https://img.shields.io/snyk/vulnerabilities/npm/aqu">
+  </a>
+  <a  href="https://github.com/ArtiomTr/aqu/issues">
+    <img alt="issues" src="https://img.shields.io/github/issues/ArtiomTr/aqu" />
+  </a>
 </p>
 
 <p align="center">
-    <a href="#installation">Install</a> → 
-    <a href="#create">Create package</a> → 
-    <a href="#config">Customize</a> → 
-    <a href="#develop">Develop</a> → 
-    <a href="#publish">Publish</a>
+  <a href="#installation">Install</a> → 
+  <a href="#create">Create package</a> → 
+  <a href="#config">Customize</a> → 
+  <a href="#develop">Develop</a> → 
+  <a href="#publish">Publish</a>
 </p>
 
 ---
