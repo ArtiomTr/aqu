@@ -71,7 +71,7 @@
     "name": "Package name:",
     "description": "Specify package description:",
     "author": "Package author:",
-    "repo": "Git repository:",
+    "repo": "Git repository (only for package.json information):",
     "license": "Pick license:",
     "template": "Pick template:"
   }
