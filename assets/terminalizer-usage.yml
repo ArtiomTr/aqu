@@ -1,1226 +1,1621 @@
 # The configurations that used for the recording, feel free to edit them
 config:
-    # Specify a command to be executed
-    # like `/bin/bash -l`, `ls`, or any other commands
-    # the default is bash for Linux
-    # or powershell.exe for Windows
-    command: cmd.exe
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: cmd.exe
 
-    # Specify the current working directory path
-    # the default is the current working directory path
-    cwd: D:\Git\projects
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: D:\Git\projects
 
-    # Export additional ENV variables
-    env:
-        recording: true
+  # Export additional ENV variables
+  env:
+    recording: true
 
-    # Explicitly set the number of columns
-    # or use `auto` to take the current
-    # number of columns of your shell
-    cols: 120
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 80
 
-    # Explicitly set the number of rows
-    # or use `auto` to take the current
-    # number of rows of your shell
-    rows: 15
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 21
 
-    # Amount of times to repeat GIF
-    # If value is -1, play once
-    # If value is 0, loop indefinitely
-    # If value is a positive number, loop n times
-    repeat: 0
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
 
-    # Quality
-    # 1 - 100
-    quality: 100
+  # Quality
+  # 1 - 100
+  quality: 100
 
-    # Delay between frames in ms
-    # If the value is `auto` use the actual recording delays
-    frameDelay: auto
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
 
-    # Maximum delay between frames in ms
-    # Ignored if the `frameDelay` isn't set to `auto`
-    # Set to `auto` to prevent limiting the max idle time
-    maxIdleTime: 2000
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
 
-    # The surrounding frame box
-    # The `type` can be null, window, floating, or solid`
-    # To hide the title use the value null
-    # Don't forget to add a backgroundColor style with a null as type
-    frameBox:
-        type: floating
-        title: null
-        style:
-            border: 0px black solid
-            # boxShadow: none
-            # margin: 0px
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: null
+    style:
+      border: 0px black solid
+      backgroundColor: null
+      # boxShadow: none
+      # margin: 0px
 
-    # Add a watermark image to the rendered gif
-    # You need to specify an absolute path for
-    # the image on your machine or a URL, and you can also
-    # add your own CSS styles
-    watermark:
-        imagePath: null
-        style:
-            position: absolute
-            right: 15px
-            bottom: 15px
-            width: 100px
-            opacity: 0.9
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
 
-    # Cursor style can be one of
-    # `block`, `underline`, or `bar`
-    cursorStyle: block
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
 
-    # Font family
-    # You can use any font that is installed on your machine
-    # in CSS-like syntax
-    fontFamily: 'Monaco, Lucida Console, Ubuntu Mono, Monospace'
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: 'Monaco, Lucida Console, Ubuntu Mono, Monospace'
 
-    # The size of the font
-    fontSize: 12
+  # The size of the font
+  fontSize: 18
 
-    # The height of lines
-    lineHeight: 1
+  # The height of lines
+  lineHeight: 1.3
 
-    # The spacing between letters
-    letterSpacing: 0
+  # The spacing between letters
+  letterSpacing: 0
 
-    # Theme
-    theme:
-        background: 'transparent'
-        foreground: '#ABB2BF'
-        cursor: '#ABB2BF'
-        black: '#282C34'
-        red: '#E06C75'
-        green: '#98C379'
-        yellow: '#E5C07B'
-        blue: '#61AFEF'
-        magenta: '#C678DD'
-        cyan: '#56B6C2'
-        white: '#ABB2BF'
-        brightBlack: '#545862'
-        brightRed: '#E06C75'
-        brightGreen: '#98C379'
-        brightYellow: '#E5C07B'
-        brightBlue: '#61AFEF'
-        brightMagenta: '#C678DD'
-        brightCyan: '#56B6C2'
-        brightWhite: '#C8CCD4'
+  # Theme
+  theme:
+    background: 'transparent'
+    foreground: '#ABB2BF'
+    cursor: '#ABB2BF'
+    black: '#282C34'
+    red: '#E06C75'
+    green: '#98C379'
+    yellow: '#E5C07B'
+    blue: '#61AFEF'
+    magenta: '#C678DD'
+    cyan: '#56B6C2'
+    white: '#ABB2BF'
+    brightBlack: '#545862'
+    brightRed: '#E06C75'
+    brightGreen: '#98C379'
+    brightYellow: '#E5C07B'
+    brightBlue: '#61AFEF'
+    brightMagenta: '#C678DD'
+    brightCyan: '#56B6C2'
+    brightWhite: '#C8CCD4'
 
 # Records, feel free to edit them
 records:
-    - delay: 192
-      content: "\e[?25l\r\n\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[H\e[147X\e[147C\r\nD:\\Git\\projects>\e[131X\e[131C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[2;17H\e[?25h"
-    - delay: 575
-      content: 'n'
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 80
-      content: p
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 88
-      content: x
-    - delay: 17
-      content: "\e[?25l\e[?25h"
-    - delay: 57
-      content: ' '
-    - delay: 9
-      content: "\e[?25l\e[?25h"
-    - delay: 741
-      content: a
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 224
-      content: q
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 128
-      content: u
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 239
-      content: ' '
-    - delay: 10
-      content: "\e[?25l\e[?25h"
-    - delay: 919
-      content: c
-    - delay: 9
-      content: "\e[?25l\e[?25h"
-    - delay: 215
-      content: r
-    - delay: 9
-      content: "\e[?25l\e[?25h"
-    - delay: 87
-      content: e
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 112
-      content: a
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 72
-      content: t
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 120
-      content: e
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 464
-      content: "\e[?25l\r\n\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e]0;C:\\WINDOWS\\SYSTEM32\\cmd.exe - npx  aqu create\a\e[?25h"
-    - delay: 82
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 266
-      content: "\e[?25l\e[H\e[147X\e[147C\r\nD:\\Git\\projects>npx aqu create\e[117X\e[117C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[3;1H\e[?25h"
-    - delay: 187
-      content: "\e[?25l\e[H\e[147X\e[147C\r\nD:\\Git\\projects>npx aqu create\e[117X\e[117C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[3;1H\e[?25h"
-    - delay: 204
-      content: "\e[?25l\e]0;npm exec aqu create\a\e[?25h"
-    - delay: 134
-      content: "\e[?25l\e[H\e[147X\e[147C\r\nD:\\Git\\projects>npx aqu create\e[117X\e[117C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[3;1H\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[H\e[147X\e[147C\r\nD:\\Git\\projects>npx aqu create\e[117X\e[117C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[3;1H\e[?25h"
-    - delay: 1006
-      content: "\e[?25l\e[36mCreating package with aqu\e[5;1H\e[?25h"
-    - delay: 9
-      content: "\e[m"
-    - delay: 1497
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m \e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[?25h"
-    - delay: 1422
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m m\e[?25h"
-    - delay: 207
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my\e[?25h"
-    - delay: 310
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-\e[?25h"
-    - delay: 255
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-a\e[?25h"
-    - delay: 263
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-aw\e[?25h"
-    - delay: 221
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awe\e[?25h"
-    - delay: 153
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awes\e[?25h"
-    - delay: 80
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-aweso\e[?25h"
-    - delay: 55
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesom\e[?25h"
-    - delay: 88
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome\e[?25h"
-    - delay: 231
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-\e[?25h"
-    - delay: 232
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 20
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-p\e[?25h"
-    - delay: 140
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-pa\e[?25h"
-    - delay: 431
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 20
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-pac\e[?25h"
-    - delay: 140
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-pack\e[?25h"
-    - delay: 111
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-packa\e[?25h"
-    - delay: 118
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-packag\e[?25h"
-    - delay: 95
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m my-awesome-package\e[?25h"
-    - delay: 219
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m \e[36mmy-awesome-package\e[32m\r\n?\e[m \e[1m\e[97mSpecify package description:\e[m () \e[?25h"
-    - delay: 1020
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () C\e[?25h"
-    - delay: 118
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Co\e[?25h"
-    - delay: 135
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Coo\e[?25h"
-    - delay: 191
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool\e[?25h"
-    - delay: 95
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool \e[?25h"
-    - delay: 112
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool d\e[?25h"
-    - delay: 168
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool de\e[?25h"
-    - delay: 98
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool des\e[?25h"
-    - delay: 93
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool desc\e[?25h"
-    - delay: 167
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descr\e[?25h"
-    - delay: 80
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descri\e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descrip\e[?25h"
-    - delay: 247
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descript\e[?25h"
-    - delay: 55
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descripti\e[?25h"
-    - delay: 102
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descriptio\e[?25h"
-    - delay: 86
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool description\e[?25h"
-    - delay: 313
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m \e[36mCool description\e[32m\r\n?\e[m \e[1m\e[97mPackage author:\e[m (Artiom Tretjakovas)         \e[7;40H\e[?25h"
-    - delay: 1006
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage author:\e[m \e[36mArtiom Tretjakovas\e[m\e[67X\e[67C\e[32m\r\n?\e[m \e[1m\e[97mGit repository (only for package.json information):\e[m (https://github.com/ArtiomTr/my-awesome-package) \e[?25h"
-    - delay: 659
-      content: "\e[?25l\r\e[147X\e[147C\r\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m?\e[m \e[1m\e[97mGit repository (only for package.json information):\e[m \e[36mhttps://github.com/ArtiomTr/my-awesome-package\e[32m\r\n?\e[m \e[1m\e[97mPick license:\e[m (Use arrow keys)\e[68X\e[68C\r\n  Apache 2.0 \e[87X\e[87C\r\n  ISC \e[94X\e[94C\e[36m\r\n> MIT\e[m \e[94X\e[94C\e[?25h"
-    - delay: 1219
-      content: "\e[?25l\e[9;1H\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m\e[9;1H?\e[m \e[1m\e[97mPick license:\e[m \e[36mMIT\e[m\e[14X\e[14C\e[32m\r\n?\e[m \e[1m\e[97mPick template:\e[m (Use arrow keys)\r\n  react\e[26X\e[26C\r\n  react-typescript\e[15X\e[15C\e[36m\r\n> typescript\e[m \e[20X\e[20C\r\n  vanilla \e[23X\e[23C\e[?25h"
-    - delay: 1575
-      content: "\e[?25l\e[10;1H\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[32m\e[10;1H?\e[m \e[1m\e[97mPick template:\e[m   \r\n  react\e[12X\e[12C\e[36m\r\n> react-typescript\e[m \r\n  typescript       \r\n  vanilla\e[10X\e[10C\e[?25h"
-    - delay: 406
-      content: "\e[?25l\e[10;1H\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[32m\e[10;1H?\e[m \e[1m\e[97mPick template:\e[m \e[36mreact-typescript\r\n\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[m\e[36m\r\n⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 92
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 40
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 31
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 77
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 70
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 69
-      content: "\e[?25l\e]0;npm view typescript version\a\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[83X\e[83C\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e]0;npm\a\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 70
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e]0;npm view react-dom version\a\e[?25h"
-    - delay: 64
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 80
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 29
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 43
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 81
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e]0;npm view react version\a\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 14
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 57
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\e]0;npm view react-scripts version\a\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[83X\e[83C\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 77
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 62
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 11
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 39
-      content: "\e[?25l\e]0;npm view @types/react version\a\e[?25h"
-    - delay: 35
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 63
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 10
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 77
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 44
-      content: "\e[?25l\e]0;npm view @types/react-dom version\a\e[?25h"
-    - delay: 27
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 82
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 81
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 79
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[83X\e[83C\e[?25h"
-    - delay: 80
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 77
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 49
-      content: "\e[?25l\e]0;npm view np version\a\e[?25h"
-    - delay: 22
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 77
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 28
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 44
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 17
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 64
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 81
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 45
-      content: "\e[?25l\e]0;npm view lint-staged version\a\e[?25h"
-    - delay: 25
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 32
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 39
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 26
-      content: "\e[?25l\e]0;npm view husky version\a\e[?25h"
-    - delay: 44
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 20
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 60
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 70
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 22
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 59
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 85
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 46
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 24
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 21
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 60
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 80
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 18
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 61
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 81
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 70
-      content: "\e[?25l\e]0;npm view size-limit version\a\e[?25h"
-    - delay: 21
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[83X\e[83C\e[?25h"
-    - delay: 63
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 59
-      content: "\e[?25l\e]0;npm\a\e[?25h"
-    - delay: 12
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 71
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 76
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 72
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 77
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e]0;npm view @size-limit/preset-small-lib version\a\e[?25h"
-    - delay: 61
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mmy-awesome-package\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
-    - delay: 70
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 10
-      content: "\e[?25l\e[32m\r√\e[m Created \e[1m\e[92mmy-awesome-package\e[m \e[90m16secs\e[36m\r\n⠋\e[m Installing dependencies...       \e[?25h"
-    - delay: 79
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
-    - delay: 73
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
-    - delay: 70
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
-    - delay: 78
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
-    - delay: 74
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 8
-      content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h"
-    - delay: 9
-      content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
-    - delay: 75
-      content: "\e[?25l\r\e[147X\e[147C\e[?25h\e[?25l\e[32m\r√\e[m Dependencies intalled \e[90m1.0secs\e[m\e[16X\e[16C\r\n\e[47X\e[47C\r\nPackage \e[1m\e[96mmy-awesome-package\e[m successfully created\r\e[?25h\e[?25l\n\e[147X\e[147C\r\e[?25h\e[?25l\nHappy coding!\e[134X\e[134C\r\e[?25h\e[?25l\n\e[147X\e[147C\r\e[?25h"
-    - delay: 6
-      content: "\e[?25l\n\e[147X\e[147C\r\e[?25h"
-    - delay: 36
-      content: "\e[?25l\e[32m\e[H?\e[m \e[1m\e[97mPackage name:\e[m \e[36mmy-awesome-package\e[m\e[113X\e[113C\e[32m\r\n?\e[m \e[1m\e[97mSpecify package description:\e[m \e[36mCool description\e[m\e[100X\e[100C\e[32m\r\n?\e[m \e[1m\e[97mPackage author:\e[m \e[36mArtiom Tretjakovas\e[m\e[111X\e[111C\e[32m\r\n?\e[m \e[1m\e[97mGit repository (only for package.json information):\e[m \e[36mhttps://github.com/ArtiomTr/my-awesome-package\e[m\e[47X\e[47C\e[32m\r\n?\e[m \e[1m\e[97mPick license:\e[m \e[36mMIT\e[m\e[128X\e[128C\e[32m\r\n?\e[m \e[1m\e[97mPick template:\e[m \e[36mreact-typescript\e[m\e[114X\e[114C\r\n\e[147X\e[147C\e[32m\r\n√\e[m Created \e[1m\e[92mmy-awesome-package\e[m \e[90m16secs\e[m\e[112X\e[112C\e[32m\r\n√\e[m Dependencies intalled \e[90m1.0secs\e[m\e[116X\e[116C\r\n\e[147X\e[147C\r\nPackage \e[1m\e[96mmy-awesome-package\e[m successfully created\e[100X\e[100C\r\n\e[147X\e[147C\r\nHappy coding!\e[134X\e[134C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\e[?25h\e[?25l\e[32m\e[H?\e[m \e[1m\e[97mPackage name:\e[m \e[36mmy-awesome-package\e[m\e[113X\e[113C\e[32m\r\n?\e[m \e[1m\e[97mSpecify package description:\e[m \e[36mCool description\e[m\e[100X\e[100C\e[32m\r\n?\e[m \e[1m\e[97mPackage author:\e[m \e[36mArtiom Tretjakovas\e[m\e[111X\e[111C\e[32m\r\n?\e[m \e[1m\e[97mGit repository (only for package.json information):\e[m \e[36mhttps://github.com/ArtiomTr/my-awesome-package\e[m\e[47X\e[47C\e[32m\r\n?\e[m \e[1m\e[97mPick license:\e[m \e[36mMIT\e[m\e[128X\e[128C\e[32m\r\n?\e[m \e[1m\e[97mPick template:\e[m \e[36mreact-typescript\e[m\e[114X\e[114C\r\n\e[147X\e[147C\e[32m\r\n√\e[m Created \e[1m\e[92mmy-awesome-package\e[m \e[90m16secs\e[m\e[112X\e[112C\e[32m\r\n√\e[m Dependencies intalled \e[90m1.0secs\e[m\e[116X\e[116C\r\n\e[147X\e[147C\r\nPackage \e[1m\e[96mmy-awesome-package\e[m successfully created\e[100X\e[100C\r\n\e[147X\e[147C\r\nHappy coding!\e[134X\e[134C\r\n\e[147X\e[147C\r\n\e[147X\e[147C\r\e]0;C:\\WINDOWS\\SYSTEM32\\cmd.exe\a\e[?25h"
-    - delay: 2000
-      content: "\e[?25l\nD:\\Git\\projects>\e[131X\e[131C\e[15;17H\e[?25h"
+  - delay: 192
+    content: "\e[?25l\r\n\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[H\e[160X\e[160C\r\nD:\\Git\\projects>\e[144X\e[144C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[2;17H\e[?25h"
+  - delay: 333
+    content: 'n'
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 72
+    content: p
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 104
+    content: x
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 79
+    content: ' '
+  - delay: 8
+    content: "\e[?25l\e[?25h"
+  - delay: 167
+    content: a
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 223
+    content: q
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 111
+    content: u
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 111
+    content: ' '
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 183
+    content: c
+  - delay: 8
+    content: "\e[?25l\e[?25h"
+  - delay: 161
+    content: r
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 78
+    content: e
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 104
+    content: a
+  - delay: 8
+    content: "\e[?25l\e[?25h"
+  - delay: 63
+    content: t
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 71
+    content: e
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 144
+    content: "\e[?25l\r\n\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e]0;C:\\WINDOWS\\SYSTEM32\\cmd.exe - npx  aqu create\a\e[?25h"
+  - delay: 77
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 337
+    content: "\e[?25l\e[H\e[160X\e[160C\r\nD:\\Git\\projects>npx aqu create\e[130X\e[130C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[3;1H\e[?25h"
+  - delay: 230
+    content: "\e[?25l\e[H\e[160X\e[160C\r\nD:\\Git\\projects>npx aqu create\e[130X\e[130C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[3;1H\e[?25h"
+  - delay: 232
+    content: "\e[?25l\e]0;npm exec aqu create\a\e[?25h"
+  - delay: 151
+    content: "\e[?25l\e[H\e[160X\e[160C\r\nD:\\Git\\projects>npx aqu create\e[130X\e[130C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[3;1H\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[H\e[160X\e[160C\r\nD:\\Git\\projects>npx aqu create\e[130X\e[130C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[3;1H\e[?25h"
+  - delay: 1125
+    content: "\e[?25l\e[36mCreating package with aqu\e[5;1H\e[?25h"
+  - delay: 9
+    content: "\e[m"
+  - delay: 1595
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m \e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[?25h"
+  - delay: 555
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m a\e[?25h"
+  - delay: 87
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m aw\e[?25h"
+  - delay: 351
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m awe\e[?25h"
+  - delay: 166
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m awes\e[?25h"
+  - delay: 96
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m aweso\e[?25h"
+  - delay: 78
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m awesom\e[?25h"
+  - delay: 103
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m awesome\e[?25h"
+  - delay: 251
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage name:\e[m \e[36mawesome\e[m\e[11X\e[11C\e[32m\r\n?\e[m \e[1m\e[97mSpecify package description:\e[m () \e[?25h"
+  - delay: 853
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () C\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Co\e[?25h"
+  - delay: 135
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Coo\e[?25h"
+  - delay: 207
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool\e[?25h"
+  - delay: 127
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool \e[?25h"
+  - delay: 87
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool d\e[?25h"
+  - delay: 167
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool de\e[?25h"
+  - delay: 94
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool des\e[?25h"
+  - delay: 80
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool desc\e[?25h"
+  - delay: 151
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descr\e[?25h"
+  - delay: 96
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descri\e[?25h"
+  - delay: 31
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descrip\e[?25h"
+  - delay: 151
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descript\e[?25h"
+  - delay: 78
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descripti\e[?25h"
+  - delay: 55
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool descriptio\e[?25h"
+  - delay: 94
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m () Cool description\e[?25h"
+  - delay: 304
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mSpecify package description:\e[m \e[36mCool description\e[32m\r\n?\e[m \e[1m\e[97mPackage author:\e[m (Artiom Tretjakovas)         \e[7;40H\e[?25h"
+  - delay: 903
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mPackage author:\e[m \e[36mArtiom Tretjakovas\e[m\e[20X\e[20C\e[32m\r\n?\e[m \e[1m\e[97mGit repository:\e[m (https://github.com/ArtiomTr/awesome) \e[?25h"
+  - delay: 1050
+    content: "\e[?25l\r\e[160X\e[160C\r\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m?\e[m \e[1m\e[97mGit repository:\e[m \e[36mhttps://github.com/ArtiomTr/awesome\e[32m\r\n?\e[m \e[1m\e[97mPick license:\e[m (Use arrow keys)\e[21X\e[21C\r\n  Apache 2.0 \e[40X\e[40C\r\n  ISC \e[47X\e[47C\e[36m\r\n> MIT\e[m \e[47X\e[47C\e[?25h"
+  - delay: 940
+    content: "\e[?25l\e[9;1H\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m\e[9;1H?\e[m \e[1m\e[97mPick license:\e[m \e[36mMIT\e[m\e[14X\e[14C\e[32m\r\n?\e[m \e[1m\e[97mPick template:\e[m (Use arrow keys)\r\n  react\e[26X\e[26C\r\n  react-typescript\e[15X\e[15C\e[36m\r\n> typescript\e[m \e[20X\e[20C\r\n  vanilla \e[23X\e[23C\e[?25h"
+  - delay: 856
+    content: "\e[?25l\e[10;1H\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[32m\e[10;1H?\e[m \e[1m\e[97mPick template:\e[m   \r\n  react\e[12X\e[12C\e[36m\r\n> react-typescript\e[m \r\n  typescript       \r\n  vanilla\e[10X\e[10C\e[?25h"
+  - delay: 367
+    content: "\e[?25l\e[10;1H\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[32m\e[10;1H?\e[m \e[1m\e[97mPick template:\e[m \e[36mreact-typescript\r\n\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[m\e[36m\r\n⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 78
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 37
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 37
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 48
+    content: "\e[?25l\e]0;npm view typescript version\a\e[?25h"
+  - delay: 24
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 66
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 78
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 12
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 68
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e]0;npm view react-dom version\a\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 68
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 75
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 51
+    content: "\e[?25l\e]0;npm view react version\a\e[?25h"
+  - delay: 20
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 30
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 40
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 67
+    content: "\e[?25l\e]0;npm view react-scripts version\a\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 78
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 62
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 9
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 53
+    content: "\e[?25l\e]0;npm view @types/react version\a\e[?25h"
+  - delay: 18
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 12
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 69
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e]0;npm\a\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e]0;npm view @types/react-dom version\a\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 67
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 76
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 79
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 67
+    content: "\e[?25l\e]0;npm view np version\a\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 74
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 66
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 77
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 63
+    content: "\e[?25l\e]0;npm view lint-staged version\a\e[?25h"
+  - delay: 10
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 51
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 21
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e]0;npm view husky version\a\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 74
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 58
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 13
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 74
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 11
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 69
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 11
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 69
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 69
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 17
+    content: "\e[?25l\e]0;npm view size-limit version\a\e[?25h"
+  - delay: 54
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 14
+    content: "\e[?25l\e]0;npm\a\e[?25h"
+  - delay: 57
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 78
+    content: "\e[?25l\e[36m\r⠋\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[107X\e[107C\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e]0;npm view @size-limit/preset-small-lib version\a\e[?25h"
+  - delay: 61
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[36m\r⠇\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Creating \e[1m\e[96mawesome\e[m using \e[36mreact-typescript\e[m template...\e[?25h"
+  - delay: 68
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 10
+    content: "\e[?25l\e[32m\r√\e[m Created \e[1m\e[92mawesome\e[m \e[90m18secs\e[m    \e[36m\r\n⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 75
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 74
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 74
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 70
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 74
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠋\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠙\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠹\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠸\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠼\e[m Installing dependencies...\e[?25h"
+  - delay: 73
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠴\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠦\e[m Installing dependencies...\e[?25h"
+  - delay: 71
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[36m\r⠧\e[m Installing dependencies...\e[?25h"
+  - delay: 72
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠇\e[m Installing dependencies...\e[?25h"
+  - delay: 74
+    content: "\e[?25l\r\e[160X\e[160C\e[?25h"
+  - delay: 8
+    content: "\e[?25l\e[36m\r⠏\e[m Installing dependencies...\e[?25h"
+  - delay: 9
+    content: "\e[?25l\e[32m\r√\e[m Dependencies intalled \e[90m8secs\e[m\e[131X\e[131C\r\n\e[160X\e[160C\r\nPackage \e[1m\e[96mawesome\e[m successfully created\e[124X\e[124C\r\n\e[160X\e[160C\r\nHappy coding!\e[147X\e[147C\e[19;1H\e[?25h"
+  - delay: 35
+    content: "\e[?25l\e[H\e[160X\e[160C\r\nD:\\Git\\projects>npx aqu create\e[130X\e[130C\e[36m\r\nCreating package with aqu\e[m\e[135X\e[135C\r\n\e[160X\e[160C\e[32m\r\n?\e[m \e[1m\e[97mPackage name:\e[m \e[36mawesome\e[m\e[137X\e[137C\e[32m\r\n?\e[m \e[1m\e[97mSpecify package description:\e[m \e[36mCool description\e[m\e[113X\e[113C\e[32m\r\n?\e[m \e[1m\e[97mPackage author:\e[m \e[36mArtiom Tretjakovas\e[m\e[124X\e[124C\e[32m\r\n?\e[m \e[1m\e[97mGit repository:\e[m \e[36mhttps://github.com/ArtiomTr/awesome\e[m\e[107X\e[107C\e[32m\r\n?\e[m \e[1m\e[97mPick license:\e[m \e[36mMIT\e[m\e[141X\e[141C\e[32m\r\n?\e[m \e[1m\e[97mPick template:\e[m \e[36mreact-typescript\e[m\e[127X\e[127C\r\n\e[160X\e[160C\e[32m\r\n√\e[m Created \e[1m\e[92mawesome\e[m \e[90m18secs\e[m\e[136X\e[136C\e[32m\r\n√\e[m Dependencies intalled \e[90m8secs\e[m\e[131X\e[131C\r\n\e[160X\e[160C\r\nPackage \e[1m\e[96mawesome\e[m successfully created\e[124X\e[124C\r\n\e[160X\e[160C\r\nHappy coding!\e[147X\e[147C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\e[19;1H\e[?25h"
+  - delay: 4464
+    content: "\e[?25l\e[H\e[160X\e[160C\r\nD:\\Git\\projects>npx aqu create\e[130X\e[130C\e[36m\r\nCreating package with aqu\e[m\e[135X\e[135C\r\n\e[160X\e[160C\e[32m\r\n?\e[m \e[1m\e[97mPackage name:\e[m \e[36mawesome\e[m\e[137X\e[137C\e[32m\r\n?\e[m \e[1m\e[97mSpecify package description:\e[m \e[36mCool description\e[m\e[113X\e[113C\e[32m\r\n?\e[m \e[1m\e[97mPackage author:\e[m \e[36mArtiom Tretjakovas\e[m\e[124X\e[124C\e[32m\r\n?\e[m \e[1m\e[97mGit repository:\e[m \e[36mhttps://github.com/ArtiomTr/awesome\e[m\e[107X\e[107C\e[32m\r\n?\e[m \e[1m\e[97mPick license:\e[m \e[36mMIT\e[m\e[141X\e[141C\e[32m\r\n?\e[m \e[1m\e[97mPick template:\e[m \e[36mreact-typescript\e[m\e[127X\e[127C\r\n\e[160X\e[160C\e[32m\r\n√\e[m Created \e[1m\e[92mawesome\e[m \e[90m18secs\e[m\e[136X\e[136C\e[32m\r\n√\e[m Dependencies intalled \e[90m8secs\e[m\e[131X\e[131C\r\n\e[160X\e[160C\r\nPackage \e[1m\e[96mawesome\e[m successfully created\e[124X\e[124C\r\n\e[160X\e[160C\r\nHappy coding!\e[147X\e[147C\r\n\e[160X\e[160C\r\n\e[160X\e[160C\r\nD:\\Git\\projects>\e[144X\e[144C\r\n\e[160X\e[160C\e[20;17H\e]0;C:\\WINDOWS\\SYSTEM32\\cmd.exe\a\e[?25h"
