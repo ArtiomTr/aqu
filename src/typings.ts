@@ -75,7 +75,9 @@ export type TemplateInitializationOptions = {
 };
 
 export type TemplateScript = {
-  initialize: () => TemplateInitializationOptions;
+  initialize: (
+    packageManager: string,
+  ) => Promise<TemplateInitializationOptions>;
 };
 
 export type CreateOptions = {

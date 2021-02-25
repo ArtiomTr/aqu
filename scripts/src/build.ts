@@ -1,7 +1,7 @@
 const NodeResolve = require('@esbuild-plugins/node-resolve').default;
 
 /** @type {import('esbuild').BuildOptions} */
-var buildOptions = {
+const buildOptions = {
   entryPoints: ['./src/index.ts'],
   outfile: './dist/aqu.js',
   bundle: true,
@@ -24,10 +24,15 @@ var buildOptions = {
   external: ['jest-watch-typeahead/testname', 'jest-watch-typeahead/filename'],
 };
 
+const othOptions = {
+  templatesFolder: './templates',
+};
+
 require('esbuild')
   .build(buildOptions)
   .catch((error) => console.error(error));
 
 module.exports = {
   buildOptions,
+  othOptions,
 };
