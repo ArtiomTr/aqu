@@ -130,22 +130,22 @@ npx aqu create <package> -y
 
 Default **aqu** configuration:
 
-```json
-{
-  "format": ["cjs", "esm"], // will generate multiple outputs: one for cjs and one for esm
-  "cjsMode": "mixed", // will generate separate files for development and production
-  "outdir": "dist", // default output directory
-  "declaration": "bundle", // will bundle declarations using https://github.com/timocov/dts-bundle-generator
-  "externalNodeModules": true, // automatically will mark all node_modules as external
-  "tsconfig": "tsconfig.json", // default path to tsconfig
-  "incremental": true, // will build incrementally
-  "buildOptions": {}, // custom esbuild options
-  "watchOptions": {
+```js
+var defaultConfig = {
+  format: ['cjs', 'esm'], // will generate multiple outputs: one for cjs and one for esm
+  cjsMode: 'mixed', // will generate separate files for development and production
+  outdir: 'dist', // default output directory
+  declaration: 'bundle', // will bundle declarations using https://github.com/timocov/dts-bundle-generator
+  externalNodeModules: true, // automatically will mark all node_modules as external
+  tsconfig: 'tsconfig.json', // default path to tsconfig
+  incremental: true, // will build incrementally
+  buildOptions: {}, // custom esbuild options
+  watchOptions: {
     // chokidar watch options
-    "ignored": ["node_modules/**", "dist/**", "build/**", "out/**"], // by default, will ignore those folders
-    "followSymlinks": false // will not follow symlinks
-  }
-}
+    ignored: ['node_modules/**', 'dist/**', 'build/**', 'out/**'], // by default, will ignore those folders
+    followSymlinks: false, // will not follow symlinks
+  },
+};
 ```
 
 For input, **aqu** will search `index` file inside `lib` or `src` folder (available extensions for index: `.js`, `.jsx`, `.cjs`, `.mjs`, `.ts`, `.tsx`)
