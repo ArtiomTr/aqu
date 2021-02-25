@@ -2,7 +2,7 @@ import { join, resolve } from 'path';
 
 import { copyTemplate } from './copyTemplate';
 import { getFolderFromPackageName } from './getFolderFromPackageName';
-import { transpileAndGetRawConfig } from '../config/transpileAndGetRawConfig';
+import { getRawConfigFromCjs } from '../config/getRawConfigFromCjs';
 import { templatesPath } from '../constants';
 import logger from '../logger';
 import { templateLoadLoop } from '../messages.json';
@@ -13,6 +13,7 @@ import {
 } from '../typings';
 import assert from '../utils/assert';
 import { insertArgs } from '../utils/insertArgs';
+import { getPackageManager } from '../utils/packageManager';
 
 export const loadTemplate = async (
   templateOptions: CreateOptions,
@@ -30,11 +31,11 @@ export const loadTemplate = async (
   let options: TemplateInitializationOptions = {};
 
   try {
-    const templateScript = await transpileAndGetRawConfig<TemplateScript>(
+    const templateScript = await getRawConfigFromCjs<TemplateScript>(
       scriptPath,
     );
 
-    options = await templateScript.initialize();
+    options = await templateScript.initialize(await getPackageManager());
 
     if (options.templateFilePaths) {
       options.templateFilePaths = options.templateFilePaths.map((path) =>

@@ -17,7 +17,7 @@ export const AVAILABLE_CJS_MODES = ['production', 'development', 'mixed'];
 
 export const AVAILABLE_DECLARATION_MODES = ['bundle', 'normal', 'none'];
 
-export const templatesPath = resolve(__dirname, '..', 'templates');
+export const templatesPath = resolve(__dirname, 'templates');
 
 export const DEFAULT_OPTIONS: Omit<
   Required<AquOptions>,

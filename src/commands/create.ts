@@ -19,6 +19,7 @@ import { getAuthor } from '../utils/getAuthor';
 import { getDefaultRepo } from '../utils/getDefaultRepo';
 import { getGithubUser } from '../utils/getGithubUser';
 import { insertArgs } from '../utils/insertArgs';
+import { pickPackageManager } from '../utils/packageManager';
 
 type CreateArguments = {
   yes: boolean;
@@ -78,6 +79,10 @@ const createCommand: AquCommand<CreateArguments> = {
   ],
   action: async (args, _, command) => {
     console.log(chalk.cyan(createBanner));
+
+    if (!args.yes) {
+      await pickPackageManager();
+    }
 
     const name = command.args[0];
     const githubUser = await getGithubUser();
