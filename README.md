@@ -45,7 +45,7 @@ This package highly inspired by [TSDX](https://github.com/formium/tsdx), [Microb
 - Supports vanilla JS, [TypeScript](https://github.com/microsoft/TypeScript#readme) and [React](https://github.com/facebook/react/#readme) ⚛
 - No dealing with configurations (automatically generates CJS and esm outputs) ⚙
 - Easy project creation, build, management 🔧
-- Supports different package managers - [npm](https://github.com/npm/cli#readme), [yarn](https://github.com/yarnpkg/berry#readme) and [pnpm](https://github.com/pnpm/pnpm#readme) 👾
+- Supports different package managers - [npm](https://github.com/npm/cli#readme), [yarn](https://github.com/yarnpkg/berry#readme) and [pnpm](https://github.com/pnpm/pnpm#readme) 🚀
 - Fast, optimized builds thanks to [esbuild](https://github.com/evanw/esbuild#readme) ⏩
 - Generates types, using common emit or [dts bundle](https://github.com/timocov/dts-bundle-generator#readme)
 - Supports tree shaking 🗑
