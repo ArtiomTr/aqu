@@ -37,7 +37,7 @@
 
 ## Inspiration
 
-This package highly inspired by [ESBuild](https://github.com/evanw/esbuild#readme), [TSDX](https://github.com/formium/tsdx), [Microbundle](https://github.com/developit/microbundle), [Create React Library](https://github.com/transitive-bullshit/create-react-library#readme) and [DTS Bundle generator](https://github.com/timocov/dts-bundle-generator)
+This package highly inspired by [TSDX](https://github.com/formium/tsdx), [Microbundle](https://github.com/developit/microbundle), [Create React Library](https://github.com/transitive-bullshit/create-react-library#readme).
 
 ## ✨ Features <a name="features"></a>
 
@@ -45,6 +45,7 @@ This package highly inspired by [ESBuild](https://github.com/evanw/esbuild#readm
 - Supports vanilla JS, [TypeScript](https://github.com/microsoft/TypeScript#readme) and [React](https://github.com/facebook/react/#readme) ⚛
 - No dealing with configurations (automatically generates CJS and esm outputs) ⚙
 - Easy project creation, build, management 🔧
+- Supports different package managers - [npm](https://github.com/npm/cli#readme), [yarn](https://github.com/yarnpkg/berry#readme) and [pnpm](https://github.com/pnpm/pnpm#readme) 👾
 - Fast, optimized builds thanks to [esbuild](https://github.com/evanw/esbuild#readme) ⏩
 - Generates types, using common emit or [dts bundle](https://github.com/timocov/dts-bundle-generator#readme)
 - Supports tree shaking 🗑
