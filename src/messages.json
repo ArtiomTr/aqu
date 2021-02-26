@@ -28,7 +28,6 @@
   "requiredCli": "Please enter the value",
   "skipped": "skipped",
   "notValidUrl": "${value} is not valid URL.",
-  "createBanner": "Creating package with aqu\n",
   "pickCommandToEject": "Pick command to eject",
   "pickCommandToRevert": "Pick command to revert",
   "cannotEject": "Cannot eject command ${command}",
