@@ -1,4 +1,4 @@
-import { join, resolve } from 'path';
+import { join } from 'path';
 
 import { copyTemplate } from './copyTemplate';
 import { getFolderFromPackageName } from './getFolderFromPackageName';
@@ -11,6 +11,7 @@ import {
   TemplateInitializationOptions,
   TemplateScript,
 } from '../typings';
+import { appResolve } from '../utils/appResolve';
 import assert from '../utils/assert';
 import { insertArgs } from '../utils/insertArgs';
 import { getPackageManager } from '../utils/packageManager';
@@ -39,13 +40,13 @@ export const loadTemplate = async (
 
     if (options.templateFilePaths) {
       options.templateFilePaths = options.templateFilePaths.map((path) =>
-        resolve(process.cwd(), folder, path),
+        appResolve(folder, path),
       );
     }
 
     if (options.filesToMergePaths) {
       options.filesToMergePaths = options.filesToMergePaths.map((path) =>
-        resolve(process.cwd(), folder, path),
+        appResolve(folder, path),
       );
     }
   } catch (err) {

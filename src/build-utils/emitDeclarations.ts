@@ -1,4 +1,4 @@
-import { extname, join } from 'path';
+import { extname } from 'path';
 
 import { generateDtsBundle } from 'dts-bundle-generator';
 
@@ -7,6 +7,7 @@ import { getFolderFromPackageName } from '../create-utils/getFolderFromPackageNa
 import { Progress } from '../logger';
 import { steps } from '../messages.json';
 import { VerifiedAquOptions } from '../typings';
+import { appResolve } from '../utils/appResolve';
 import { safeWriteFile } from '../utils/safeWriteFile';
 
 const canHaveDeclarations = (filePath: string) =>
@@ -32,7 +33,7 @@ export const emitDeclarations = async (config: VerifiedAquOptions) => {
             return safeWriteFile(
               outfile
                 ? `${outfile.substring(0, outfile.lastIndexOf('.'))}.d.ts`
-                : join(outdir, `${getFolderFromPackageName(name)}.d.ts`),
+                : appResolve(outdir, `${getFolderFromPackageName(name)}.d.ts`),
               bundle,
             );
           }),

@@ -1,11 +1,12 @@
 import { readFile } from 'fs';
-import { join } from 'path';
+
+import { appResolve } from '../utils/appResolve';
 
 export const getConfigFromPackage = <T>(
   packageProp: string,
 ): Promise<T | undefined> =>
   new Promise((resolve) =>
-    readFile(join(process.cwd(), 'package.json'), (err, data) => {
+    readFile(appResolve('package.json'), (err, data) => {
       if (err) {
         resolve(undefined);
       } else {
