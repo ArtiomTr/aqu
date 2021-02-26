@@ -55,19 +55,35 @@ function main() {
 main();
 `;
 
-export const ejectWatch = async (configs: VerifiedAquOptions[]) => {
-  const result = await prompt({
-    type: 'confirm',
-    message:
-      'Ejecting watch script will result in functionality loss - no declarations will be generated. Continue?',
-    name: 'confirm',
-  });
+export const ejectWatch = async (
+  configs: VerifiedAquOptions[],
+  skipAllWarnings?: boolean,
+) => {
+  if (!skipAllWarnings) {
+    const result = await prompt({
+      type: 'confirm',
+      message:
+        'Ejecting watch script will result in functionality loss - no declarations will be generated. Continue?',
+      name: 'confirm',
+    });
 
-  if (!result.confirm) {
-    return;
+    if (!result.confirm) {
+      return;
+    }
   }
-  await ejectNewScript('./scripts/watch.js', buildScriptSource, configs);
-  await ejectPackageScript('start', 'aqu watch', 'node ./scripts/watch.js');
+
+  await ejectNewScript(
+    './scripts/watch.js',
+    buildScriptSource,
+    configs,
+    skipAllWarnings,
+  );
+  await ejectPackageScript(
+    'start',
+    'aqu watch',
+    'node ./scripts/watch.js',
+    skipAllWarnings,
+  );
   await lowPriorityWriteFile(
     appResolve('./scripts/.eslintrc'),
     JSON.stringify(buildEslintConfig, null, 2),

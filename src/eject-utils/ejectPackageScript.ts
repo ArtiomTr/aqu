@@ -8,6 +8,7 @@ export const ejectPackageScript = async (
   script: string,
   defaultScript: string,
   newScript: string,
+  skipWarning?: boolean,
 ) => {
   try {
     const appPackagePath = appResolve('package.json');
@@ -22,6 +23,7 @@ export const ejectPackageScript = async (
     }
 
     if (
+      !skipWarning &&
       appPackage.scripts &&
       appPackage.scripts[script] &&
       appPackage.scripts[script].trim() !== defaultScript.trim()

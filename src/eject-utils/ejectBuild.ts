@@ -74,19 +74,35 @@ export const buildEslintConfig: Linter.Config = {
   },
 };
 
-export const ejectBuild = async (configs: VerifiedAquOptions[]) => {
-  const result = await prompt({
-    type: 'confirm',
-    message:
-      'Ejecting build script will result in functionality loss - no declarations will be generated. Continue?',
-    name: 'confirm',
-  });
+export const ejectBuild = async (
+  configs: VerifiedAquOptions[],
+  skipAllWarnings?: boolean,
+) => {
+  if (!skipAllWarnings) {
+    const result = await prompt({
+      type: 'confirm',
+      message:
+        'Ejecting build script will result in functionality loss - no declarations will be generated. Continue?',
+      name: 'confirm',
+    });
 
-  if (!result.confirm) {
-    return;
+    if (!result.confirm) {
+      return;
+    }
   }
-  await ejectNewScript('./scripts/build.js', buildScriptSource, configs);
-  await ejectPackageScript('build', 'aqu build', 'node ./scripts/build.js');
+
+  await ejectNewScript(
+    './scripts/build.js',
+    buildScriptSource,
+    configs,
+    skipAllWarnings,
+  );
+  await ejectPackageScript(
+    'build',
+    'aqu build',
+    'node ./scripts/build.js',
+    skipAllWarnings,
+  );
   await lowPriorityWriteFile(
     appResolve('./scripts/.eslintrc'),
     JSON.stringify(buildEslintConfig, null, 2),

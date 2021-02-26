@@ -13,6 +13,7 @@ export const ejectNewScript = async (
   path: string,
   text: string,
   configs: VerifiedAquOptions[],
+  skipWarning?: boolean,
 ) => {
   const buildConfigs = flatten(
     await Promise.all(configs.map((config) => createBuildOptions(config))),
@@ -50,5 +51,5 @@ export const ejectNewScript = async (
     ),
   });
 
-  await writeFileWithWarning(path, newText);
+  await writeFileWithWarning(path, newText, skipWarning);
 };

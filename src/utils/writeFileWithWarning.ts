@@ -8,9 +8,10 @@ import { safeWriteFile } from './safeWriteFile';
 export const writeFileWithWarning = async (
   filename: string,
   content: string,
+  skipWarning?: boolean,
 ) => {
   const path = appResolve(filename);
-  if (await canReadFile(path)) {
+  if (!skipWarning && (await canReadFile(path))) {
     const result = await prompt({
       name: 'continue',
       message: `File ${chalk.bold.cyan(

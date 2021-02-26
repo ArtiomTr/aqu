@@ -8,15 +8,25 @@ import { ejectWatch } from '../eject-utils/ejectWatch';
 import logger from '../logger';
 import { AquCommand } from '../typings';
 
-export type EjectOptions = {};
+export type EjectOptions = {
+  yes?: boolean;
+};
 
 const availableCommands = ['build', 'watch', 'lint', 'test'];
 
 const ejectCommand: AquCommand<EjectOptions> = {
   name: 'eject',
   description: '',
-  options: [],
-  action: async (_, configs, command) => {
+  options: [
+    {
+      flag: {
+        full: 'yes',
+        short: 'y',
+      },
+      description: 'Yes to all',
+    },
+  ],
+  action: async ({ yes }, configs, command) => {
     let commandToEject = command.args[0];
 
     if (!commandToEject) {
@@ -31,16 +41,16 @@ const ejectCommand: AquCommand<EjectOptions> = {
 
     switch (commandToEject) {
       case 'lint':
-        await ejectLint();
+        await ejectLint(yes);
         break;
       case 'test':
-        await ejectTest(configs);
+        await ejectTest(configs, yes);
         break;
       case 'build':
-        await ejectBuild(configs);
+        await ejectBuild(configs, yes);
         break;
       case 'watch':
-        await ejectWatch(configs);
+        await ejectWatch(configs, yes);
         break;
       default:
         logger.fatal(
