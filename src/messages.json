@@ -75,7 +75,8 @@
     "declaration": "Algorithm to emit declarations. Available options: none, normal and bundle. Default: bundle",
     "tsconfig": "Path to tsconfig. Default: tsconfig.json in current working directory.",
     "incremental": "Build incrementally. Default: true",
-    "noExternal": "Should include node_modules packages into bundle? Default: false"
+    "noExternal": "Should include node_modules packages into bundle? Default: false",
+    "noCleanup": "Do not delete output folder before build"
   },
   "createQuestions": {
     "name": "Package name:",
