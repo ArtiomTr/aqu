@@ -1,9 +1,10 @@
 import { readFile } from 'fs';
-import { join } from 'path';
+
+import { appResolve } from './appResolve';
 
 export const hasReact = async (): Promise<boolean> =>
   new Promise((resolve) => {
-    readFile(join(process.cwd(), 'package.json'), (err, data) => {
+    readFile(appResolve('package.json'), (err, data) => {
       if (err) {
         resolve(false);
       } else {

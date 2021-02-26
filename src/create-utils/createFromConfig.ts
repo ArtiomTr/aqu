@@ -1,5 +1,3 @@
-import { join } from 'path';
-
 import chalk from 'chalk';
 
 import { createLicense } from './createLicense';
@@ -11,6 +9,7 @@ import { showSkippedStep } from '../build-utils/showSkippedStep';
 import logger, { Progress } from '../logger';
 import { steps } from '../messages.json';
 import { CreateOptions } from '../typings';
+import { appResolve } from '../utils/appResolve';
 import { insertArgs } from '../utils/insertArgs';
 
 export const createFromConfig = async (
@@ -34,7 +33,7 @@ export const createFromConfig = async (
     await loadTemplate(options, githubUser);
     await createLicense(
       options.license,
-      join(process.cwd(), getFolderFromPackageName(options.name), 'LICENSE'),
+      appResolve(getFolderFromPackageName(options.name), 'LICENSE'),
       options.author,
     );
     creationProgress.succeed(

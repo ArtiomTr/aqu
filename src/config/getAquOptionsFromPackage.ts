@@ -1,14 +1,14 @@
 import { readFile } from 'fs';
-import { resolve } from 'path';
 
 import logger from '../logger';
 import { packageNotFound } from '../messages.json';
 import { AquOptions } from '../typings';
+import { appResolve } from '../utils/appResolve';
 
 export const getAquOptionsFromPackage = async (): Promise<
   AquOptions | undefined
 > => {
-  const packageJsonPath = resolve('package.json');
+  const packageJsonPath = appResolve('package.json');
 
   return new Promise((resolve) => {
     readFile(packageJsonPath, async (err, data) => {

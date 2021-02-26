@@ -1,10 +1,9 @@
-import { join } from 'path';
-
 import NodeResolve from '@esbuild-plugins/node-resolve';
 import { BuildOptions } from 'esbuild';
 
 import { getFolderFromPackageName } from '../create-utils/getFolderFromPackageName';
 import { VerifiedAquOptions } from '../typings';
+import { appResolve } from '../utils/appResolve';
 
 export const createBuildOptions = async (config: VerifiedAquOptions) => {
   const {
@@ -53,7 +52,8 @@ export const createBuildOptions = async (config: VerifiedAquOptions) => {
       normalConfigs.push({
         ...sharedOpts,
         format: 'cjs',
-        outfile: outfile || join(outdir, `${safeName}.cjs.development.js`),
+        outfile:
+          outfile || appResolve(outdir, `${safeName}.cjs.development.js`),
       });
     }
     if (cjsMode === 'production' || cjsMode === 'mixed') {
@@ -61,7 +61,8 @@ export const createBuildOptions = async (config: VerifiedAquOptions) => {
         ...sharedOpts,
         minify: true,
         format: 'cjs',
-        outfile: outfile || join(outdir, `${safeName}.cjs.production.min.js`),
+        outfile:
+          outfile || appResolve(outdir, `${safeName}.cjs.production.min.js`),
       });
     }
   }
@@ -70,7 +71,7 @@ export const createBuildOptions = async (config: VerifiedAquOptions) => {
     normalConfigs.push({
       ...sharedOpts,
       format: 'esm',
-      outfile: outfile || join(outdir, `${safeName}.esm.js`),
+      outfile: outfile || appResolve(outdir, `${safeName}.esm.js`),
     });
   }
 
@@ -78,7 +79,7 @@ export const createBuildOptions = async (config: VerifiedAquOptions) => {
     normalConfigs.push({
       ...sharedOpts,
       format: 'iife',
-      outfile: outfile || join(outdir, `${safeName}.js`),
+      outfile: outfile || appResolve(outdir, `${safeName}.js`),
     });
   }
 

@@ -1,5 +1,3 @@
-import { join } from 'path';
-
 import chalk from 'chalk';
 import { pathExists } from 'fs-extra';
 import { string, ValidationError } from 'yup';
@@ -10,6 +8,7 @@ import {
   packageNameInvalid,
   packageNameNotSpecified,
 } from '../messages.json';
+import { appResolve } from '../utils/appResolve';
 import { insertArgs } from '../utils/insertArgs';
 
 export const verifyPackageName = (
@@ -22,15 +21,14 @@ export const verifyPackageName = (
       insertArgs(packageNameInvalid, { name: chalk.bold.red('${value}') }),
     )
     .test((value, { createError }) =>
-      pathExists(join(process.cwd(), getFolderFromPackageName(value!))).then(
-        (exists) =>
-          exists
-            ? createError({
-                message: insertArgs(folderAlreadyExists, {
-                  path: chalk.bold.red(value),
-                }),
-              })
-            : true,
+      pathExists(appResolve(getFolderFromPackageName(value!))).then((exists) =>
+        exists
+          ? createError({
+              message: insertArgs(folderAlreadyExists, {
+                path: chalk.bold.red(value),
+              }),
+            })
+          : true,
       ),
     )
     .validate(name ?? '')

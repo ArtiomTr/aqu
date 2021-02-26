@@ -1,5 +1,6 @@
-import { join, resolve } from 'path';
+import { resolve } from 'path';
 
+import { appResolve } from './utils/appResolve';
 import type { AquOptions } from './typings';
 
 export const CONFIG_EXTENSIONS = ['ts', 'js', 'mjs', 'cjs', 'json'];
@@ -28,7 +29,7 @@ export const DEFAULT_OPTIONS: Omit<
   outdir: 'dist',
   declaration: 'bundle',
   externalNodeModules: true,
-  tsconfig: join(process.cwd(), 'tsconfig.json'),
+  tsconfig: appResolve('tsconfig.json'),
   incremental: true,
   buildOptions: {},
   watchOptions: {

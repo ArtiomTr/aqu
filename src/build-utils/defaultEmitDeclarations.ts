@@ -1,4 +1,4 @@
-import { dirname, resolve } from 'path';
+import { dirname } from 'path';
 import {
   CompilerOptions,
   createCompilerHost,
@@ -10,6 +10,7 @@ import {
 import { ParseConfigHost } from 'typescript';
 
 import { VerifiedAquOptions } from '../typings';
+import { appResolve } from '../utils/appResolve';
 
 const parseConfigHost: ParseConfigHost = {
   useCaseSensitiveFileNames: sys.useCaseSensitiveFileNames,
@@ -28,7 +29,7 @@ export const defaultEmitDeclarations = async (
   const specifiedTsconfig = parseJsonConfigFileContent(
     rawConfig.config,
     parseConfigHost,
-    resolve(dirname(tsconfig)),
+    appResolve(dirname(tsconfig)),
     undefined,
     tsconfig,
   );

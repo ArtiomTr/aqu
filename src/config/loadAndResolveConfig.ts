@@ -1,8 +1,7 @@
-import { join, resolve } from 'path';
-
 import { getConfigFromPackage } from './getConfigFromPackage';
 import { getRawConfig } from './getRawConfig';
 import { configNotFound } from '../messages.json';
+import { appResolve } from '../utils/appResolve';
 import assert from '../utils/assert';
 import { canReadFile } from '../utils/canReadFile';
 import { existsAny } from '../utils/existsAny';
@@ -22,14 +21,14 @@ export const loadAndResolveConfig = async <T>({
   const configs: Array<Promise<T | undefined>> = [];
 
   if (specifiedConfigPath !== undefined) {
-    specifiedConfigPath = resolve(specifiedConfigPath);
+    specifiedConfigPath = appResolve(specifiedConfigPath);
     assert(
       await canReadFile(specifiedConfigPath),
       insertArgs(configNotFound, { path: specifiedConfigPath }),
     );
   } else {
     specifiedConfigPath = await existsAny(
-      availableConfigNames.map((configName) => join(process.cwd(), configName)),
+      availableConfigNames.map((configName) => appResolve(configName)),
     );
   }
 
