@@ -21,6 +21,16 @@ import { getGithubUser } from '../utils/getGithubUser';
 import { insertArgs } from '../utils/insertArgs';
 import { pickPackageManager } from '../utils/packageManager';
 
+const title = `                        
+    ___       ___       ___   
+   /\\  \\     /\\  \\     /\\__\\  
+  /::\\  \\   /::\\  \\   /:/ _/_ 
+ /::\\:\\__\\  \\:\\:\\__\\ /:/_/\\__\\
+ \\/\\::/  /   \\::/  / \\:\\/:/  /
+   /:/  /    /:/  /   \\::/  / 
+   \\/__/     \\/__/     \\/__/                                                                          
+`;
+
 type CreateArguments = {
   yes: boolean;
 } & CreateOptions;
@@ -78,7 +88,7 @@ const createCommand: AquCommand<CreateArguments> = {
     },
   ],
   action: async (args, _, command) => {
-    console.log(chalk.cyan(createBanner));
+    console.log(chalk.cyan(title));
 
     if (!args.yes) {
       await pickPackageManager();
