@@ -23,6 +23,7 @@ export type WatchOptions = {
   watchdir: string[];
   ignore: string[];
   Nosym: boolean;
+  NoCleanup: boolean;
 };
 
 export const watchCommand: AquCommand<WatchOptions> = {
@@ -53,10 +54,17 @@ export const watchCommand: AquCommand<WatchOptions> = {
       description: options.ignore,
       multiple: true,
     },
+    {
+      flag: {
+        full: 'no-cleanup',
+      },
+      description: options.noCleanup,
+    },
   ],
   action: async (options, configs) => {
-    await deleteBuildDirs(configs);
-
+    if (!options.NoCleanup) {
+      await deleteBuildDirs(configs);
+    }
     let dirs: string[] = [];
 
     if (options.watchdir) {

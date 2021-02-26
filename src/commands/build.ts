@@ -3,17 +3,29 @@ import { startService } from 'esbuild';
 import { buildFromConfig } from '../build-utils/buildFromConfig';
 import logger from '../logger';
 import { commands } from '../messages.json';
+import { options } from '../messages.json';
 import { AquCommand } from '../typings';
 import { deleteBuildDirs } from '../utils/deleteBuildDirs';
 
-type BuildOptions = {};
+type BuildOptions = {
+  NoCleanup: boolean;
+};
 
 const buildCommand: AquCommand<BuildOptions> = {
   name: 'build',
   description: commands.build,
-  options: [],
+  options: [
+    {
+      flag: {
+        full: 'no-cleanup',
+      },
+      description: options.noCleanup,
+    },
+  ],
   action: async (options, config) => {
-    await deleteBuildDirs(config);
+    if (!options.NoCleanup) {
+      await deleteBuildDirs(config);
+    }
 
     const service = await startService();
 
