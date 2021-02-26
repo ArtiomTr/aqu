@@ -54,13 +54,13 @@
   },
   "additionalHelp": "\n✨ Found a bug? Or want to add new feature? Let us know! ${link}\n   Let's make ${package} better together!",
   "commands": {
-    "watch": "Watch project",
-    "build": "Build project",
-    "test": "Run jest",
+    "watch": "Watch project and rebuild on every change",
+    "build": "Bundle project using esbuild",
+    "test": "Run jest. (passes all rest cli arguments into jest)",
     "lint": "Lint using eslint",
     "create": "Create new package",
-    "eject": "Eject command",
-    "revert": "Revert command eject"
+    "eject": "Eject command. (if you want to do additional customizations)",
+    "revert": "Revert command eject. (will revert do initial command)"
   },
   "options": {
     "watchdir": "Specify custom watching directories",
