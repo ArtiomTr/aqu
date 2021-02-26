@@ -2,7 +2,9 @@ import { Command } from 'commander';
 
 import buildCommand from './commands/build';
 import createCommand from './commands/create';
+import ejectCommand from './commands/eject';
 import lintCommand from './commands/lint';
+import revertCommand from './commands/revert';
 import testCommand from './commands/test';
 import { watchCommand } from './commands/watch';
 import { loadConfigFromArguments } from './config/loadConfigFromArguments';
@@ -109,6 +111,8 @@ const main = async () => {
     watchCommand,
     testCommand,
     lintCommand,
+    ejectCommand,
+    revertCommand,
   ];
   const commandsWithoutConfig = [createCommand];
 

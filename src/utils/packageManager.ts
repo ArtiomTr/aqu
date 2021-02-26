@@ -2,7 +2,13 @@ import chalk from 'chalk';
 import execa from 'execa';
 import inquirer from 'inquirer';
 
+import { insertArgs } from './insertArgs';
 import logger from '../logger';
+import {
+  noPackageManagersFound,
+  pickPackageManager as pickPackageManagerMessage,
+  unknownPackageManager,
+} from '../messages.json';
 
 let packageManager: string | null = null;
 
@@ -43,9 +49,9 @@ export const getPackageManager = async (): Promise<string> => {
 
   if (available.length === 0) {
     logger.fatal(
-      `No package managers found. (available: ${chalk.bold.red(
-        managers.join(', '),
-      )})`,
+      insertArgs(noPackageManagersFound, {
+        available: chalk.bold.red(managers.join(', ')),
+      }),
     );
   }
 
@@ -67,7 +73,11 @@ export const getPackageVersion = async (pkg: string, manager: string) => {
 
     return stdout.trim();
   } else {
-    logger.fatal(`Package manager ${chalk.bold.red(manager)} is not available`);
+    logger.fatal(
+      insertArgs(unknownPackageManager, {
+        manager: chalk.bold.red(manager),
+      }),
+    );
   }
 };
 
@@ -80,9 +90,9 @@ export const pickPackageManager = async (): Promise<string> => {
 
   if (availableManagers.length === 0) {
     logger.fatal(
-      `No package managers found. (available: ${chalk.bold.red(
-        managers.join(', '),
-      )})`,
+      insertArgs(noPackageManagersFound, {
+        available: chalk.bold.red(managers.join(', ')),
+      }),
     );
   }
 
@@ -92,7 +102,7 @@ export const pickPackageManager = async (): Promise<string> => {
   }
 
   const out = await inquirer.prompt({
-    message: 'Which package manager to use?',
+    message: pickPackageManagerMessage,
     type: 'list',
     name: 'manager',
     choices: availableManagers.map(

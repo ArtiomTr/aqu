@@ -20,6 +20,8 @@ export const AVAILABLE_DECLARATION_MODES = ['bundle', 'normal', 'none'];
 
 export const templatesPath = resolve(__dirname, 'templates');
 
+export const availableForEjectCommands = ['build', 'watch', 'lint', 'test'];
+
 export const DEFAULT_OPTIONS: Omit<
   Required<AquOptions>,
   'input' | 'name' | 'outfile'
