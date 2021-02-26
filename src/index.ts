@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { Command } from 'commander';
 
 import buildCommand from './commands/build';
@@ -9,12 +10,21 @@ import testCommand from './commands/test';
 import { watchCommand } from './commands/watch';
 import { loadConfigFromArguments } from './config/loadConfigFromArguments';
 import { initializeCommand } from './utils/initializeCommand';
-import { options } from './messages.json';
+import { insertArgs } from './utils/insertArgs';
+import { additionalHelp, options } from './messages.json';
 import { AquCommand, AquCommandOptions } from './typings';
 import { description, name, version } from '../package.json';
 
 const main = async () => {
   const program = new Command(name).description(description).version(version);
+
+  program.addHelpText(
+    'afterAll',
+    insertArgs(additionalHelp, {
+      link: chalk.bold.cyan('https://github.com/ArtiomTr/aqu/issues'),
+      package: chalk.bold.cyan('aqu'),
+    }),
+  );
 
   const sharedOptions: Array<AquCommandOptions> = [
     {
@@ -106,6 +116,7 @@ const main = async () => {
       description: options.noExternal,
     },
   ];
+
   const commandsRequiringConfig = [
     buildCommand,
     watchCommand,
@@ -114,6 +125,7 @@ const main = async () => {
     ejectCommand,
     revertCommand,
   ];
+
   const commandsWithoutConfig = [createCommand];
 
   commandsRequiringConfig.forEach((command) =>

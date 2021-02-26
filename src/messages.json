@@ -53,6 +53,7 @@
     "installDepsFail": "Install dependencies",
     "creationFinalize": "\nPackage ${package} successfully created\n\nHappy coding!"
   },
+  "additionalHelp": "\n✨ Found a bug? Or want to add new feature? Let us know! ${link}\n   Let's make ${package} better together!",
   "commands": {
     "watch": "Watch project",
     "build": "Build project",
