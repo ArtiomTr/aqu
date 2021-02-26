@@ -10,9 +10,7 @@ const templateScript: TemplateScript = {
       'README.md',
     ],
     customArgs: {
-      // TODO: replace with normal when published
-      ['versions.aqu']: 'file:../..',
-      // ["versions.aqu"]: packageVersion("aqu"),
+      ['versions.aqu']: await getPackageVersion('aqu', manager),
       ['versions.np']: await getPackageVersion('np', manager),
       ['versions.lintStaged']: await getPackageVersion('lint-staged', manager),
       ['versions.husky']: await getPackageVersion('husky', manager),
