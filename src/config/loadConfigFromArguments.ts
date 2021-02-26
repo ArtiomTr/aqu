@@ -9,5 +9,9 @@ export const loadConfigFromArguments = async (
     typeof args.config === 'string' ? args.config : undefined,
   ) as Promise<Array<AquOptions>>);
 
-  return Promise.all(config.map((cfg) => verifyConfig(cfg)));
+  if (config.length === 0) {
+    return Promise.all([verifyConfig(args as AquOptions)]);
+  }
+
+  return Promise.all(config.map((cfg) => verifyConfig({ ...cfg, ...args })));
 };
