@@ -67,7 +67,9 @@ const optionSchema = Yup.object()
   .test((values, options) => {
     if (
       values.outfile &&
-      ((typeof values.input !== 'string' && values.input.length > 1) ||
+      ((typeof values.input !== 'string' &&
+        values.input &&
+        values.input.length > 1) ||
         (values.cjsMode === 'mixed' && values.format.includes('cjs')) ||
         (typeof values.format !== 'string' && values.format.length > 1))
     ) {
@@ -82,6 +84,7 @@ const optionSchema = Yup.object()
   .test((values, options) => {
     if (
       typeof values.input !== 'string' &&
+      values.input &&
       values.input.length > 1 &&
       values.format.includes('cjs') &&
       values.cjsMode === 'mixed'
