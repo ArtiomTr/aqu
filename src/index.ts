@@ -2,6 +2,7 @@ import { Command } from 'commander';
 
 import buildCommand from './commands/build';
 import createCommand from './commands/create';
+import ejectCommand from './commands/eject';
 import lintCommand from './commands/lint';
 import testCommand from './commands/test';
 import { watchCommand } from './commands/watch';
@@ -109,6 +110,7 @@ const main = async () => {
     watchCommand,
     testCommand,
     lintCommand,
+    ejectCommand,
   ];
   const commandsWithoutConfig = [createCommand];
 
