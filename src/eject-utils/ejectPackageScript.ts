@@ -2,7 +2,9 @@ import chalk from 'chalk';
 import { readJSON, writeJSON } from 'fs-extra';
 import { prompt } from 'inquirer';
 
+import { ejectPackageScriptWarn } from '../messages.json';
 import { appResolve } from '../utils/appResolve';
+import { insertArgs } from '../utils/insertArgs';
 
 export const ejectPackageScript = async (
   script: string,
@@ -30,9 +32,10 @@ export const ejectPackageScript = async (
     ) {
       const result = await prompt({
         name: 'confirm',
-        message: `Found custom script in package.json - ${chalk.cyan(
-          `"${appPackage.scripts[script]}"`,
-        )}. Do you want to replace it to ${chalk.bold.cyan(`"${newScript}"`)}?`,
+        message: insertArgs(ejectPackageScriptWarn, {
+          oldScript: chalk.cyan(`"${appPackage.scripts[script]}"`),
+          newScript: chalk.bold.cyan(`"${newScript}"`),
+        }),
         type: 'confirm',
       });
 

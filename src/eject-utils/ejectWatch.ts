@@ -3,8 +3,10 @@ import { prompt } from 'inquirer';
 import { buildEslintConfig } from './ejectBuild';
 import { ejectNewScript } from './ejectNewScript';
 import { ejectPackageScript } from './ejectPackageScript';
+import { ejectWarn } from '../messages.json';
 import { VerifiedAquOptions } from '../typings';
 import { appResolve } from '../utils/appResolve';
+import { insertArgs } from '../utils/insertArgs';
 import { lowPriorityWriteFile } from '../utils/lowPriorityWriteFile';
 
 const buildScriptSource = `
@@ -62,8 +64,9 @@ export const ejectWatch = async (
   if (!skipAllWarnings) {
     const result = await prompt({
       type: 'confirm',
-      message:
-        'Ejecting watch script will result in functionality loss - no declarations will be generated. Continue?',
+      message: insertArgs(ejectWarn, {
+        script: 'watch',
+      }),
       name: 'confirm',
     });
 

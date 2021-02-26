@@ -1,29 +1,35 @@
 import chalk from 'chalk';
 import { prompt } from 'inquirer';
 
+import { availableForEjectCommands } from '../constants';
 import { ejectBuild } from '../eject-utils/ejectBuild';
 import { ejectLint } from '../eject-utils/ejectLint';
 import { ejectTest } from '../eject-utils/ejectTest';
 import { ejectWatch } from '../eject-utils/ejectWatch';
 import logger from '../logger';
+import {
+  cannotEject,
+  commands,
+  options,
+  pickCommandToEject,
+} from '../messages.json';
 import { AquCommand } from '../typings';
+import { insertArgs } from '../utils/insertArgs';
 
 export type EjectOptions = {
   yes?: boolean;
 };
 
-const availableCommands = ['build', 'watch', 'lint', 'test'];
-
 const ejectCommand: AquCommand<EjectOptions> = {
   name: 'eject',
-  description: '',
+  description: commands.eject,
   options: [
     {
       flag: {
         full: 'yes',
         short: 'y',
       },
-      description: 'Yes to all',
+      description: options.yes,
     },
   ],
   action: async ({ yes }, configs, command) => {
@@ -33,8 +39,8 @@ const ejectCommand: AquCommand<EjectOptions> = {
       const result = await prompt({
         name: 'target',
         type: 'list',
-        message: 'Which command to eject?',
-        choices: availableCommands,
+        message: pickCommandToEject,
+        choices: availableForEjectCommands,
       });
       commandToEject = result.target;
     }
@@ -54,9 +60,9 @@ const ejectCommand: AquCommand<EjectOptions> = {
         break;
       default:
         logger.fatal(
-          `Command ${chalk.bold.red(
-            commandToEject,
-          )} is not available for eject.`,
+          insertArgs(cannotEject, {
+            command: chalk.bold.red(commandToEject),
+          }),
         );
     }
   },

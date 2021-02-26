@@ -29,6 +29,17 @@
   "skipped": "skipped",
   "notValidUrl": "${value} is not valid URL.",
   "createBanner": "Creating package with aqu\n",
+  "pickCommandToEject": "Pick command to eject",
+  "pickCommandToRevert": "Pick command to revert",
+  "cannotEject": "Cannot eject command ${command}",
+  "cannotRevert": "Cannot revert command ${command}",
+  "ejectWarn": "Ejecting ${script} script will result in functionality loss - no declarations will be generated. Continue?",
+  "ejectPackageScriptWarn": "Found custom script in package.json - ${oldScript}. Do you want to replace it to ${newScript}?",
+  "revertWarning": "Reverting ${script} will revert ${packageScript} script in package.json and delete these files: ${files}. Continue?",
+  "noPackageManagersFound": "No package managers found. (none of ${available} currently installed on this machine)",
+  "unknownPackageManager": "Unknown package manager ${manager} found",
+  "pickPackageManager": "Pick package manager:",
+  "fileExistsWarning": "File ${path} already exists. Do you want to override it?",
   "steps": {
     "esbuild": "Bundling using esbuild",
     "dtsBundle": "Generating declaration bundle",
@@ -47,7 +58,9 @@
     "build": "Build project",
     "test": "Run jest",
     "lint": "Lint using eslint",
-    "create": "Create new package"
+    "create": "Create new package",
+    "eject": "Eject command",
+    "revert": "Revert command eject"
   },
   "options": {
     "watchdir": "Specify custom watching directories",

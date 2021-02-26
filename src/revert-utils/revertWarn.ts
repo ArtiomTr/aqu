@@ -1,6 +1,9 @@
 import chalk from 'chalk';
 import { prompt } from 'inquirer';
 
+import { revertWarning } from '../messages.json';
+import { insertArgs } from '../utils/insertArgs';
+
 export const revertWarn = async (
   command: string,
   packageScript: string,
@@ -8,11 +11,11 @@ export const revertWarn = async (
 ): Promise<boolean> => {
   const result = await prompt({
     type: 'confirm',
-    message: `Reverting ${chalk.bold.cyan(command)} will revert ${chalk.yellow(
-      packageScript,
-    )} script in package.json and delete these files: ${chalk.yellow(
-      files.join(', '),
-    )}. Continue?`,
+    message: insertArgs(revertWarning, {
+      script: chalk.bold.cyan(command),
+      packageScript: chalk.yellow(packageScript),
+      files: chalk.yellow(files.join(', ')),
+    }),
     name: 'confirm',
   });
 

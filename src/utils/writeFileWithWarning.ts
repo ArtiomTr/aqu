@@ -3,7 +3,9 @@ import { prompt } from 'inquirer';
 
 import { appResolve } from './appResolve';
 import { canReadFile } from './canReadFile';
+import { insertArgs } from './insertArgs';
 import { safeWriteFile } from './safeWriteFile';
+import { fileExistsWarning } from '../messages.json';
 
 export const writeFileWithWarning = async (
   filename: string,
@@ -14,9 +16,9 @@ export const writeFileWithWarning = async (
   if (!skipWarning && (await canReadFile(path))) {
     const result = await prompt({
       name: 'continue',
-      message: `File ${chalk.bold.cyan(
-        filename,
-      )} already exists. Do you want to override it?`,
+      message: insertArgs(fileExistsWarning, {
+        path: chalk.bold.yellow(filename),
+      }),
       type: 'confirm',
     });
 

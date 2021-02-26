@@ -1,40 +1,46 @@
 import chalk from 'chalk';
 import { prompt } from 'inquirer';
 
+import { availableForEjectCommands } from '../constants';
 import logger from '../logger';
+import {
+  cannotRevert,
+  commands,
+  options,
+  pickCommandToRevert,
+} from '../messages.json';
 import { revertBuild } from '../revert-utils/revertBuild';
 import { revertLint } from '../revert-utils/revertLint';
 import { revertTest } from '../revert-utils/revertTest';
 import { revertWatch } from '../revert-utils/revertWatch';
 import { AquCommand } from '../typings';
+import { insertArgs } from '../utils/insertArgs';
 
 type RevertOptions = {
   yes?: boolean;
 };
 
-const availableCommands = ['build', 'watch', 'lint', 'test'];
-
 const revertCommand: AquCommand<RevertOptions> = {
   name: 'revert',
-  description: '',
+  description: commands.revert,
   options: [
     {
       flag: {
         full: 'yes',
         short: 'y',
       },
-      description: 'Skip all',
+      description: options.yes,
     },
   ],
-  action: async ({ yes }, configs, command) => {
+  action: async ({ yes }, _, command) => {
     let commandToRevert = command.args[0];
 
     if (!commandToRevert) {
       const result = await prompt({
         name: 'target',
         type: 'list',
-        message: 'Which command to revert?',
-        choices: availableCommands,
+        message: pickCommandToRevert,
+        choices: availableForEjectCommands,
       });
       commandToRevert = result.target;
     }
@@ -54,7 +60,9 @@ const revertCommand: AquCommand<RevertOptions> = {
         break;
       default:
         logger.fatal(
-          `Cannot revert ${chalk.bold.red(commandToRevert)} command.`,
+          insertArgs(cannotRevert, {
+            command: chalk.bold.red(commandToRevert),
+          }),
         );
     }
   },
