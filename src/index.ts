@@ -98,10 +98,10 @@ const main = async () => {
     },
     {
       flag: {
-        full: 'externalNodeModules',
-        short: 'e',
+        full: 'noExternal',
+        short: 'nE',
       },
-      description: options.externalNodeModules,
+      description: options.noExternal,
     },
   ];
   const commandsRequiringConfig = [

@@ -5,6 +5,9 @@ import { AquOptions } from '../typings';
 export const loadConfigFromArguments = async (
   args: Record<string, unknown>,
 ) => {
+  args['externalNodeModules'] = !args['noExternal'];
+  delete args['noExternal'];
+
   const config = await (loadAndResolveAquConfig(
     typeof args.config === 'string' ? args.config : undefined,
   ) as Promise<Array<AquOptions>>);
