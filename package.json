@@ -1,9 +1,9 @@
 {
   "name": "aqu",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "🌊 Powerful tool for easy typescript/javascript package development",
   "bin": {
-    "aqu": "./dist/aqu.js"
+    "aqu": "dist/aqu.js"
   },
   "files": [
     "dist",
