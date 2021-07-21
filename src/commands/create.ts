@@ -8,7 +8,6 @@ import { getAllTemplates } from '../create-utils/getAllTemplates';
 import { verifyPackageName } from '../create-utils/verifyPackageName';
 import {
   commands,
-  createBanner,
   createQuestions,
   notValidUrl,
   options,

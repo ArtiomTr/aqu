@@ -24,7 +24,7 @@ export const availableForEjectCommands = ['build', 'watch', 'lint', 'test'];
 
 export const DEFAULT_OPTIONS: Omit<
   Required<AquOptions>,
-  'input' | 'name' | 'outfile'
+  'input' | 'name' | 'outfile' | 'dtsBundleGeneratorOptions'
 > = {
   format: ['cjs', 'esm'],
   cjsMode: 'mixed',

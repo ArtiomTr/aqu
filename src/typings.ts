@@ -37,10 +37,11 @@ export type DtsBundleGeneratorOptions = Omit<EntryPointConfig, 'filePath'>;
 
 export type VerifiedAquOptions = Omit<
   Required<AquOptions>,
-  'input' | 'format'
+  'input' | 'format' | 'dtsBundleGeneratorOptions'
 > & {
   input: string[];
   format: Format[];
+  dtsBundleGeneratorOptions?: DtsBundleGeneratorOptions;
 };
 
 export type DeclarationType = 'bundle' | 'normal' | 'none';
