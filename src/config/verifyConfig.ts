@@ -54,6 +54,7 @@ const optionSchema = Yup.object()
     externalNodeModules: Yup.bool().required(unexpectedlyMissingField),
     watchOptions: Yup.mixed().required(unexpectedlyMissingField),
     buildOptions: Yup.mixed(),
+    dtsBundleGeneratorOptions: Yup.mixed(),
   })
   .test((values, options) => {
     if (!values.outdir && !values.outfile) {

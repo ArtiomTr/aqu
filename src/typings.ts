@@ -1,5 +1,6 @@
 import { WatchOptions } from 'chokidar';
 import { Command } from 'commander';
+import { EntryPointConfig } from 'dts-bundle-generator';
 import { BuildOptions } from 'esbuild';
 import { Format } from 'esbuild';
 
@@ -28,7 +29,11 @@ export type AquOptions = {
   buildOptions?: BuildOptions;
   /** Custom watch options @see https://github.com/paulmillr/chokidar#readme */
   watchOptions?: WatchOptions;
+  /** Custom dts-bundle-generator-options @see https://github.com/timocov/dts-bundle-generator#usage */
+  dtsBundleGeneratorOptions?: DtsBundleGeneratorOptions;
 };
+
+export type DtsBundleGeneratorOptions = Omit<EntryPointConfig, 'filePath'>;
 
 export type VerifiedAquOptions = Omit<
   Required<AquOptions>,
