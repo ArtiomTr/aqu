@@ -14,7 +14,15 @@ const canHaveDeclarations = (filePath: string) =>
   ['.ts', '.tsx'].includes(extname(filePath));
 
 export const emitDeclarations = async (config: VerifiedAquOptions) => {
-  const { input, declaration, outfile, outdir, name, tsconfig } = config;
+  const {
+    input,
+    declaration,
+    outfile,
+    outdir,
+    name,
+    tsconfig,
+    dtsBundleGeneratorOptions,
+  } = config;
 
   if (input.some(canHaveDeclarations)) {
     if (declaration === 'bundle') {
@@ -24,6 +32,7 @@ export const emitDeclarations = async (config: VerifiedAquOptions) => {
         await Promise.all(
           generateDtsBundle(
             input.filter(canHaveDeclarations).map((entry) => ({
+              ...dtsBundleGeneratorOptions,
               filePath: entry,
             })),
             {
