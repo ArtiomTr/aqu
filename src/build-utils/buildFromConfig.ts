@@ -1,4 +1,4 @@
-import { Service } from 'esbuild';
+import { build } from 'esbuild';
 
 import { createBuildOptions } from './createBuildOptions';
 import { createMixedCjsEntrypoint } from './createMixedCjsEntrypoint';
@@ -7,11 +7,9 @@ import { showSkippedStep } from './showSkippedStep';
 import { Progress } from '../logger';
 import { steps } from '../messages.json';
 import { VerifiedAquOptions } from '../typings';
+import { runWithESBuildBinaryContext } from '../utils/runWithESBuildBinaryContext';
 
-export const buildFromConfig = async (
-  config: VerifiedAquOptions,
-  service: Service,
-) => {
+export const buildFromConfig = async (config: VerifiedAquOptions) => {
   const { cjsMode, outdir, name, format, declaration } = config;
 
   if (format.includes('cjs') && cjsMode === 'mixed') {
@@ -23,7 +21,9 @@ export const buildFromConfig = async (
   const esbuildProgress = new Progress(steps.esbuild);
 
   try {
-    await Promise.all(buildConfigs.map((config) => service.build(config)));
+    await runWithESBuildBinaryContext(() =>
+      Promise.all(buildConfigs.map((config) => build(config))),
+    );
 
     esbuildProgress.succeed();
   } catch (err) {

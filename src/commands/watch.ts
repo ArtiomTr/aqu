@@ -1,6 +1,5 @@
 import chalk from 'chalk';
 import chokidar, { WatchOptions as ChokidarWatchOptions } from 'chokidar';
-import { startService } from 'esbuild';
 
 import { buildFromConfig } from '../build-utils/buildFromConfig';
 import logger from '../logger';
@@ -73,8 +72,6 @@ export const watchCommand: AquCommand<WatchOptions> = {
       dirs = getInputDirs(configs);
     }
 
-    const service = await startService();
-
     const mergedWatchOptions = deepMerge<ChokidarWatchOptions>(
       [
         {
@@ -88,7 +85,6 @@ export const watchCommand: AquCommand<WatchOptions> = {
     const watcher = chokidar.watch(dirs, mergedWatchOptions);
 
     gracefulShutdown(() => {
-      service.stop();
       watcher.close();
     });
 
@@ -103,9 +99,7 @@ export const watchCommand: AquCommand<WatchOptions> = {
         try {
           console.log('\n', chalk.cyan(compilationStart), '\n');
 
-          await Promise.all(
-            configs.map((config) => buildFromConfig(config, service)),
-          );
+          await Promise.all(configs.map((config) => buildFromConfig(config)));
 
           clearConsole();
 
