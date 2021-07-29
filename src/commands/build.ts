@@ -1,5 +1,3 @@
-import { startService } from 'esbuild';
-
 import { buildFromConfig } from '../build-utils/buildFromConfig';
 import logger from '../logger';
 import { commands } from '../messages.json';
@@ -27,16 +25,11 @@ const buildCommand: AquCommand<BuildOptions> = {
       await deleteBuildDirs(config);
     }
 
-    const service = await startService();
-
     try {
-      await Promise.all(
-        config.map((config) => buildFromConfig(config, service)),
-      );
+      await Promise.all(config.map((config) => buildFromConfig(config)));
     } catch (err) {
       logger.fatal(err);
     } finally {
-      service.stop();
       process.exit();
     }
   },

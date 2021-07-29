@@ -1,7 +1,7 @@
 import { dirname, join, parse, relative } from 'path';
 
 import NodeResolve from '@esbuild-plugins/node-resolve';
-import { build, BuildOptions, Service, startService } from 'esbuild';
+import { build, BuildOptions } from 'esbuild';
 import { copy, pathExists, readdir, remove } from 'fs-extra';
 import rimraf from 'rimraf';
 
@@ -28,7 +28,9 @@ export const buildOptions: AquSelfBuildOptions = {
     bundle: true,
     target: 'node10.16.0',
     platform: 'node',
-    banner: '#!/usr/bin/env node\n',
+    banner: {
+      js: '#!/usr/bin/env node\n',
+    },
     plugins: [
       NodeResolve({
         extensions: ['.ts', '.js', '.tsx', '.jsx', '.cjs', '.mjs'],
@@ -45,6 +47,7 @@ export const buildOptions: AquSelfBuildOptions = {
     external: [
       'jest-watch-typeahead/testname',
       'jest-watch-typeahead/filename',
+      'esbuild',
     ],
   },
 };
@@ -53,7 +56,7 @@ const buildSrc = () => {
   build(buildOptions.esbuild).catch((err) => console.error(err));
 };
 
-export const buildTemplates = (service: Service) =>
+export const buildTemplates = () =>
   new Promise<void>((resolve, reject) => {
     rimraf(buildOptions.templates.outdir, async () => {
       try {
@@ -82,7 +85,7 @@ export const buildTemplates = (service: Service) =>
               buildOptions.templates.outdir,
               dirname(relative(buildOptions.templates.sourceDir, entry)),
             );
-            await service.build({
+            await build({
               ...buildOptions.esbuild,
               entryPoints: [entry],
               outfile: join(dir, `${parsedEntry.name}.js`),
@@ -103,14 +106,7 @@ export const buildTemplates = (service: Service) =>
 const main = () => {
   rimraf(buildOptions.outdir, async () => {
     buildSrc();
-    const service = await startService();
-    try {
-      buildTemplates(service);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      service.stop();
-    }
+    buildTemplates();
   });
 };
 

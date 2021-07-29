@@ -1,5 +1,5 @@
 import { watch } from 'chokidar';
-import { build, startService } from 'esbuild';
+import { build } from 'esbuild';
 import rimraf from 'rimraf';
 
 import { buildOptions, buildTemplates } from './build';
@@ -13,15 +13,12 @@ const watchSrc = () => {
 };
 
 const watchTemplates = async () => {
-  const service = await startService();
-
   let building = false;
 
   const watcher = watch(buildOptions.templates.sourceDir);
 
   gracefulShutdown(() => {
     watcher.close();
-    service.stop();
   });
 
   watcher.on('all', async () => {
@@ -29,7 +26,7 @@ const watchTemplates = async () => {
       console.log('rebuilding templates');
       building = true;
       try {
-        await buildTemplates(service);
+        await buildTemplates();
       } catch (err) {
         console.error(err);
       } finally {
