@@ -14,7 +14,7 @@ export const getGithubUser = async () => {
   if (githubUser) {
     return githubUser;
   } else if (email) {
-    return await githubUsername(email);
+    return await githubUsername(email).catch(() => undefined);
   }
 
   return undefined;
