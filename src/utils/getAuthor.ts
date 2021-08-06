@@ -3,7 +3,7 @@ import execa from 'execa';
 import { getPackageManager } from './packageManager';
 
 export const getAuthor = async () => {
-  const arr = await Promise.all([
+  const nameCandidates = await Promise.all([
     execa(await getPackageManager(), ['config', 'get', 'init-author-name'])
       .then(({ stdout }) => stdout)
       .catch(() => undefined),
@@ -12,5 +12,17 @@ export const getAuthor = async () => {
       .catch(() => undefined),
   ]);
 
-  return arr.find(Boolean);
+  const name = nameCandidates.find(
+    (element) => element !== 'undefined' && Boolean(element),
+  );
+  const email = await execa('git', [
+    'config',
+    '--global',
+    '--get',
+    'user.email',
+  ])
+    .then(({ stdout }) => stdout)
+    .catch(() => undefined);
+
+  return name ? (email ? `${name} <${email}>` : name) : '';
 };
