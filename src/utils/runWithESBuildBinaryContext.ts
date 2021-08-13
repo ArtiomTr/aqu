@@ -1,3 +1,4 @@
+import { platform } from 'os';
 import { resolve } from 'path';
 
 import { access } from 'fs-extra';
@@ -6,57 +7,63 @@ import { gracefulShutdown } from './gracefulShutdown';
 import logger from '../logger';
 
 export const runWithESBuildBinaryContext = async <T>(run: () => Promise<T>) => {
-  let binaryPath: string | undefined = undefined;
+  const automaticSearch = platform() === 'win32';
 
-  try {
-    const testBinaryPath = resolve(
-      __dirname,
-      '..',
-      '..',
-      'esbuild',
-      'esbuild.exe',
-    );
+  if (automaticSearch) {
+    let binaryPath: string | undefined = undefined;
 
-    await access(testBinaryPath);
+    try {
+      const testBinaryPath = resolve(
+        __dirname,
+        '..',
+        '..',
+        'esbuild',
+        'esbuild.exe',
+      );
 
-    binaryPath = testBinaryPath;
-  } catch {
-    /** do nothing */
-  }
+      await access(testBinaryPath);
 
-  try {
-    const testBinaryPath = resolve(
-      __dirname,
-      '..',
-      'node_modules',
-      'esbuild',
-      'esbuild.exe',
-    );
+      binaryPath = testBinaryPath;
+    } catch {
+      /** do nothing */
+    }
 
-    await access(testBinaryPath);
+    try {
+      const testBinaryPath = resolve(
+        __dirname,
+        '..',
+        'node_modules',
+        'esbuild',
+        'esbuild.exe',
+      );
 
-    binaryPath = testBinaryPath;
-  } catch {
-    /** do nothing */
-  }
+      await access(testBinaryPath);
 
-  if (!binaryPath) {
-    logger.fatal('No binary for esbuild found');
-  }
+      binaryPath = testBinaryPath;
+    } catch {
+      /** do nothing */
+    }
 
-  const previousPath = process.env.ESBUILD_BINARY_PATH;
+    if (!binaryPath) {
+      logger.fatal('No binary for esbuild found');
+    }
 
-  const cleanup = gracefulShutdown(() => {
+    const previousPath = process.env.ESBUILD_BINARY_PATH;
+
+    const cleanup = gracefulShutdown(() => {
+      process.env.ESBUILD_BINARY_PATH = previousPath;
+    });
+
+    process.env.ESBUILD_BINARY_PATH = binaryPath;
+
+    const result = await run();
+
     process.env.ESBUILD_BINARY_PATH = previousPath;
-  });
 
-  process.env.ESBUILD_BINARY_PATH = binaryPath;
+    cleanup();
 
-  const result = await run();
-
-  process.env.ESBUILD_BINARY_PATH = previousPath;
-
-  cleanup();
-
-  return result;
+    return result;
+  } else {
+    return await run();
+  }
 };
