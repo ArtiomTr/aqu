@@ -23,6 +23,7 @@ export const transpileAndGetRawConfig = async <T>(path: string): Promise<T> => {
       outdir: '__unique__folder',
       bundle: true,
       write: false,
+      target: 'node14',
     }),
   );
 
