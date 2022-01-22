@@ -40,6 +40,9 @@ export const createBuildOptions = async (config: VerifiedAquOptions) => {
           }
           return resolved;
         },
+        resolveOptions: {
+          preserveSymlinks: config.buildOptions.preserveSymlinks,
+        },
       }),
     ],
     ...buildOptions,
