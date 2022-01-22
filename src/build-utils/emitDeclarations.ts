@@ -22,6 +22,7 @@ export const emitDeclarations = async (config: VerifiedAquOptions) => {
     name,
     tsconfig,
     dtsBundleGeneratorOptions,
+    buildOptions,
   } = config;
 
   if (input.some(canHaveDeclarations)) {
@@ -37,6 +38,7 @@ export const emitDeclarations = async (config: VerifiedAquOptions) => {
             })),
             {
               preferredConfigPath: tsconfig,
+              followSymlinks: !buildOptions.preserveSymlinks,
             },
           ).map((bundle) => {
             return safeWriteFile(
