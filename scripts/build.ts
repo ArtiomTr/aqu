@@ -1,9 +1,13 @@
 import { dirname, join, parse, relative } from 'path';
 
-import NodeResolve from '@esbuild-plugins/node-resolve';
+import { NodeResolvePlugin } from '@esbuild-plugins/node-resolve';
 import { build, BuildOptions } from 'esbuild';
-import { copy, pathExists, readdir, remove } from 'fs-extra';
+import * as fsExtra from 'fs-extra';
 import rimraf from 'rimraf';
+
+const { copy, pathExists, readdir, remove } = (
+  fsExtra as unknown as { default: typeof fsExtra }
+).default;
 
 export type AquSelfBuildOptions = {
   esbuild: BuildOptions;
@@ -32,7 +36,7 @@ export const buildOptions: AquSelfBuildOptions = {
       js: '#!/usr/bin/env node\n',
     },
     plugins: [
-      NodeResolve({
+      NodeResolvePlugin({
         extensions: ['.ts', '.js', '.tsx', '.jsx', '.cjs', '.mjs'],
         onResolved: (resolved) => {
           if (resolved.includes('node_modules')) {
@@ -65,14 +69,13 @@ export const buildTemplates = () =>
           buildOptions.templates.outdir,
         );
 
-        const paths = (
-          await readdir(buildOptions.templates.sourceDir)
-        ).map((pth) =>
-          join(
-            buildOptions.templates.sourceDir,
-            pth,
-            buildOptions.templates.templateScriptFilename,
-          ),
+        const paths = (await readdir(buildOptions.templates.sourceDir)).map(
+          (pth) =>
+            join(
+              buildOptions.templates.sourceDir,
+              pth,
+              buildOptions.templates.templateScriptFilename,
+            ),
         );
         const isEntry = await Promise.all(paths.map((pth) => pathExists(pth)));
 

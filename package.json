@@ -21,9 +21,8 @@
     "aqu"
   ],
   "scripts": {
-    "build:scripts": "node ./scripts/buildScripts.js",
-    "build": "node ./scripts/dist/build.js",
-    "start": "node ./scripts/dist/watch.js",
+    "build": "zxpp ./scripts/build.ts",
+    "start": "zxpp ./scripts/watch.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx,.json,.html,.md --fix",
     "test": "jest",
@@ -78,7 +77,8 @@
     "@types/node": "^14.14.27",
     "@types/rimraf": "^3.0.0",
     "cross-env": "^7.0.3",
-    "np": "^6.5.0"
+    "np": "^6.5.0",
+    "zxpp": "^0.2.0"
   },
   "engines": {
     "node": "^10.12.0 || >=12.0.0"
