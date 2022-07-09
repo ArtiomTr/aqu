@@ -3,7 +3,7 @@ import { build } from 'esbuild';
 import rimraf from 'rimraf';
 
 import { buildOptions, buildTemplates } from './build';
-import { gracefulShutdown } from '../../src/utils/gracefulShutdown';
+import { gracefulShutdown } from '../src/utils/gracefulShutdown';
 
 const watchSrc = () => {
   build({
