@@ -8,37 +8,32 @@ import { existsAny } from '../utils/existsAny';
 import { insertArgs } from '../utils/insertArgs';
 
 export type ResolveConfigOptions = {
-  availableConfigNames: string[];
-  packageJsonProp?: string;
-  specifiedConfigPath?: string;
+    availableConfigNames: string[];
+    packageJsonProp?: string;
+    specifiedConfigPath?: string;
 };
 
 export const loadAndResolveConfig = async <T>({
-  availableConfigNames,
-  packageJsonProp,
-  specifiedConfigPath,
+    availableConfigNames,
+    packageJsonProp,
+    specifiedConfigPath,
 }: ResolveConfigOptions): Promise<Array<T | undefined>> => {
-  const configs: Array<Promise<T | undefined>> = [];
+    const configs: Array<Promise<T | undefined>> = [];
 
-  if (specifiedConfigPath !== undefined) {
-    specifiedConfigPath = appResolve(specifiedConfigPath);
-    assert(
-      await canReadFile(specifiedConfigPath),
-      insertArgs(configNotFound, { path: specifiedConfigPath }),
-    );
-  } else {
-    specifiedConfigPath = await existsAny(
-      availableConfigNames.map((configName) => appResolve(configName)),
-    );
-  }
+    if (specifiedConfigPath !== undefined) {
+        specifiedConfigPath = appResolve(specifiedConfigPath);
+        assert(await canReadFile(specifiedConfigPath), insertArgs(configNotFound, { path: specifiedConfigPath }));
+    } else {
+        specifiedConfigPath = await existsAny(availableConfigNames.map((configName) => appResolve(configName)));
+    }
 
-  if (packageJsonProp) {
-    configs.push(getConfigFromPackage(packageJsonProp));
-  }
+    if (packageJsonProp) {
+        configs.push(getConfigFromPackage(packageJsonProp));
+    }
 
-  if (specifiedConfigPath !== undefined) {
-    configs.push(getRawConfig(specifiedConfigPath));
-  }
+    if (specifiedConfigPath !== undefined) {
+        configs.push(getRawConfig(specifiedConfigPath));
+    }
 
-  return Promise.all(configs);
+    return Promise.all(configs);
 };

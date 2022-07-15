@@ -1,7 +1,7 @@
 import type { AquOptions } from '../../src/typings';
 
 const config: AquOptions = {
-  input: 'hello',
+    input: 'hello',
 };
 
 export default config;

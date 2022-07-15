@@ -5,10 +5,7 @@ import type { AquOptions } from './typings';
 
 export const CONFIG_EXTENSIONS = ['ts', 'js', 'mjs', 'cjs', 'json'];
 
-export const CONFIG_NAMES = [
-  ...CONFIG_EXTENSIONS.map((ext) => `aqu.config.${ext}`),
-  '.aqurc',
-];
+export const CONFIG_NAMES = [...CONFIG_EXTENSIONS.map((ext) => `aqu.config.${ext}`), '.aqurc'];
 
 export const ENTRYPOINT_EXTENSIONS = ['ts', 'tsx', 'js', 'jsx', 'cjs', 'mjs'];
 
@@ -22,20 +19,17 @@ export const templatesPath = resolve(__dirname, 'templates');
 
 export const availableForEjectCommands = ['build', 'watch', 'lint', 'test'];
 
-export const DEFAULT_OPTIONS: Omit<
-  Required<AquOptions>,
-  'input' | 'name' | 'outfile' | 'dtsBundleGeneratorOptions'
-> = {
-  format: ['cjs', 'esm'],
-  cjsMode: 'mixed',
-  outdir: 'dist',
-  declaration: 'bundle',
-  externalNodeModules: true,
-  tsconfig: appResolve('tsconfig.json'),
-  incremental: true,
-  buildOptions: {},
-  watchOptions: {
-    ignored: ['node_modules/**', 'dist/**', 'build/**', 'out/**'],
-    followSymlinks: false,
-  },
+export const DEFAULT_OPTIONS: Omit<Required<AquOptions>, 'input' | 'name' | 'outfile' | 'dtsBundleGeneratorOptions'> = {
+    format: ['cjs', 'esm'],
+    cjsMode: 'mixed',
+    outdir: 'dist',
+    declaration: 'bundle',
+    externalNodeModules: true,
+    tsconfig: appResolve('tsconfig.json'),
+    incremental: true,
+    buildOptions: {},
+    watchOptions: {
+        ignored: ['node_modules/**', 'dist/**', 'build/**', 'out/**'],
+        followSymlinks: false,
+    },
 };

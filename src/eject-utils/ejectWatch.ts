@@ -57,38 +57,22 @@ function main() {
 main();
 `;
 
-export const ejectWatch = async (
-  configs: VerifiedAquOptions[],
-  skipAllWarnings?: boolean,
-) => {
-  if (!skipAllWarnings) {
-    const result = await prompt({
-      type: 'confirm',
-      message: insertArgs(ejectWarn, {
-        script: 'watch',
-      }),
-      name: 'confirm',
-    });
+export const ejectWatch = async (configs: VerifiedAquOptions[], skipAllWarnings?: boolean) => {
+    if (!skipAllWarnings) {
+        const result = await prompt({
+            type: 'confirm',
+            message: insertArgs(ejectWarn, {
+                script: 'watch',
+            }),
+            name: 'confirm',
+        });
 
-    if (!result.confirm) {
-      return;
+        if (!result.confirm) {
+            return;
+        }
     }
-  }
 
-  await ejectNewScript(
-    './scripts/watch.js',
-    buildScriptSource,
-    configs,
-    skipAllWarnings,
-  );
-  await ejectPackageScript(
-    'start',
-    'aqu watch',
-    'node ./scripts/watch.js',
-    skipAllWarnings,
-  );
-  await lowPriorityWriteFile(
-    appResolve('./scripts/.eslintrc'),
-    JSON.stringify(buildEslintConfig, null, 2),
-  );
+    await ejectNewScript('./scripts/watch.js', buildScriptSource, configs, skipAllWarnings);
+    await ejectPackageScript('start', 'aqu watch', 'node ./scripts/watch.js', skipAllWarnings);
+    await lowPriorityWriteFile(appResolve('./scripts/.eslintrc'), JSON.stringify(buildEslintConfig, null, 2));
 };

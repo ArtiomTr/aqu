@@ -10,62 +10,52 @@ import { VerifiedAquOptions } from '../typings';
 import { appResolve } from '../utils/appResolve';
 import { safeWriteFile } from '../utils/safeWriteFile';
 
-const canHaveDeclarations = (filePath: string) =>
-  ['.ts', '.tsx'].includes(extname(filePath));
+const canHaveDeclarations = (filePath: string) => ['.ts', '.tsx'].includes(extname(filePath));
 
 export const emitDeclarations = async (config: VerifiedAquOptions) => {
-  const {
-    input,
-    declaration,
-    outfile,
-    outdir,
-    name,
-    tsconfig,
-    dtsBundleGeneratorOptions,
-    buildOptions,
-  } = config;
+    const { input, declaration, outfile, outdir, name, tsconfig, dtsBundleGeneratorOptions, buildOptions } = config;
 
-  if (input.some(canHaveDeclarations)) {
-    if (declaration === 'bundle') {
-      const dtsProgress = new Progress(steps.dtsBundle);
+    if (input.some(canHaveDeclarations)) {
+        if (declaration === 'bundle') {
+            const dtsProgress = new Progress(steps.dtsBundle);
 
-      try {
-        await Promise.all(
-          generateDtsBundle(
-            input.filter(canHaveDeclarations).map((entry) => ({
-              ...dtsBundleGeneratorOptions,
-              filePath: entry,
-            })),
-            {
-              preferredConfigPath: tsconfig,
-              followSymlinks: !buildOptions.preserveSymlinks,
-            },
-          ).map((bundle) => {
-            return safeWriteFile(
-              outfile
-                ? `${outfile.substring(0, outfile.lastIndexOf('.'))}.d.ts`
-                : appResolve(outdir, `${getFolderFromPackageName(name)}.d.ts`),
-              bundle,
-            );
-          }),
-        );
+            try {
+                await Promise.all(
+                    generateDtsBundle(
+                        input.filter(canHaveDeclarations).map((entry) => ({
+                            ...dtsBundleGeneratorOptions,
+                            filePath: entry,
+                        })),
+                        {
+                            preferredConfigPath: tsconfig,
+                            followSymlinks: !buildOptions.preserveSymlinks,
+                        },
+                    ).map((bundle) => {
+                        return safeWriteFile(
+                            outfile
+                                ? `${outfile.substring(0, outfile.lastIndexOf('.'))}.d.ts`
+                                : appResolve(outdir, `${getFolderFromPackageName(name)}.d.ts`),
+                            bundle,
+                        );
+                    }),
+                );
 
-        dtsProgress.succeed();
-      } catch (err) {
-        dtsProgress.fail();
-        throw err;
-      }
-    } else if (declaration === 'normal') {
-      const dtsProgress = new Progress(steps.dtsStandard);
+                dtsProgress.succeed();
+            } catch (err) {
+                dtsProgress.fail();
+                throw err;
+            }
+        } else if (declaration === 'normal') {
+            const dtsProgress = new Progress(steps.dtsStandard);
 
-      try {
-        await defaultEmitDeclarations(config);
+            try {
+                await defaultEmitDeclarations(config);
 
-        dtsProgress.succeed();
-      } catch (err) {
-        dtsProgress.fail();
-        throw err;
-      }
+                dtsProgress.succeed();
+            } catch (err) {
+                dtsProgress.fail();
+                throw err;
+            }
+        }
     }
-  }
 };
