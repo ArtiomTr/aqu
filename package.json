@@ -27,7 +27,7 @@
 		"lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx,.json,.html,.md --fix",
 		"test": "jest",
 		"release": "np",
-		"format": "npx prettier --write **/*.{ts,tsx,js,jsx,json,html,md}"
+		"format": "prettier --write **/*.{ts,tsx,js,jsx,json,html,md}"
 	},
 	"author": "Artiom Tretjakovas",
 	"license": "MIT",
