@@ -9,47 +9,47 @@ import { mergeFiles } from '../utils/mergeFiles';
 const banFiles = ['aqu.template.js'];
 
 export const copyTemplate = async (
-    from: string,
-    to: string,
-    options: TemplateInitializationOptions,
-    args: Record<string, unknown>,
+	from: string,
+	to: string,
+	options: TemplateInitializationOptions,
+	args: Record<string, unknown>,
 ) => {
-    await ensureDir(to);
+	await ensureDir(to);
 
-    const { filesToMergePaths = [], templateFilePaths = [] } = options;
+	const { filesToMergePaths = [], templateFilePaths = [] } = options;
 
-    const templateFiles = await readdir(from);
-    const existingFiles = await readdir(to);
+	const templateFiles = await readdir(from);
+	const existingFiles = await readdir(to);
 
-    const isDirs = await Promise.all(
-        templateFiles.map((file) => stat(join(from, file)).then((fileStats) => fileStats.isDirectory())),
-    );
+	const isDirs = await Promise.all(
+		templateFiles.map((file) => stat(join(from, file)).then((fileStats) => fileStats.isDirectory())),
+	);
 
-    await Promise.all(
-        templateFiles.map(async (templateFile, index) => {
-            if (banFiles.includes(templateFile)) return;
+	await Promise.all(
+		templateFiles.map(async (templateFile, index) => {
+			if (banFiles.includes(templateFile)) return;
 
-            const resolvedPath = resolve(to, templateFile);
+			const resolvedPath = resolve(to, templateFile);
 
-            if (isDirs[index]) {
-                await copyTemplate(join(from, templateFile), join(to, templateFile), options, args);
-            } else if (existingFiles.includes(templateFile) && filesToMergePaths.includes(resolvedPath)) {
-                const file = await mergeFiles(join(to, templateFile), join(from, templateFile));
+			if (isDirs[index]) {
+				await copyTemplate(join(from, templateFile), join(to, templateFile), options, args);
+			} else if (existingFiles.includes(templateFile) && filesToMergePaths.includes(resolvedPath)) {
+				const file = await mergeFiles(join(to, templateFile), join(from, templateFile));
 
-                let contents = JSON.stringify(file, null, 2);
+				let contents = JSON.stringify(file, null, 2);
 
-                if (templateFilePaths.includes(resolvedPath)) {
-                    contents = insertArgs(contents, args);
-                }
+				if (templateFilePaths.includes(resolvedPath)) {
+					contents = insertArgs(contents, args);
+				}
 
-                await writeFile(join(to, templateFile), contents);
-            } else if (templateFilePaths.includes(resolvedPath)) {
-                const contents = await readFile(join(from, templateFile));
+				await writeFile(join(to, templateFile), contents);
+			} else if (templateFilePaths.includes(resolvedPath)) {
+				const contents = await readFile(join(from, templateFile));
 
-                await writeFile(join(to, templateFile), insertArgs(contents.toString(), args));
-            } else {
-                await copy(join(from, templateFile), join(to, templateFile));
-            }
-        }),
-    );
+				await writeFile(join(to, templateFile), insertArgs(contents.toString(), args));
+			} else {
+				await copy(join(from, templateFile), join(to, templateFile));
+			}
+		}),
+	);
 };

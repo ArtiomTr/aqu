@@ -1,3 +1,3 @@
 export default {
-    input: "hello",
+	input: 'hello',
 };

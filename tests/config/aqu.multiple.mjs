@@ -1,8 +1,8 @@
 export default [
-    {
-        input: "hello",
-    },
-    {
-        input: "2",
-    },
+	{
+		input: 'hello',
+	},
+	{
+		input: '2',
+	},
 ];

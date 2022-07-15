@@ -66,32 +66,32 @@ main();
 `;
 
 export const buildEslintConfig: Linter.Config = {
-    root: false,
-    env: {
-        node: true,
-    },
-    rules: {
-        'no-console': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-    },
+	root: false,
+	env: {
+		node: true,
+	},
+	rules: {
+		'no-console': 'off',
+		'@typescript-eslint/no-var-requires': 'off',
+	},
 };
 
 export const ejectBuild = async (configs: VerifiedAquOptions[], skipAllWarnings?: boolean) => {
-    if (!skipAllWarnings) {
-        const result = await prompt({
-            type: 'confirm',
-            message: insertArgs(ejectWarn, {
-                script: 'build',
-            }),
-            name: 'confirm',
-        });
+	if (!skipAllWarnings) {
+		const result = await prompt({
+			type: 'confirm',
+			message: insertArgs(ejectWarn, {
+				script: 'build',
+			}),
+			name: 'confirm',
+		});
 
-        if (!result.confirm) {
-            return;
-        }
-    }
+		if (!result.confirm) {
+			return;
+		}
+	}
 
-    await ejectNewScript('./scripts/build.js', buildScriptSource, configs, skipAllWarnings);
-    await ejectPackageScript('build', 'aqu build', 'node ./scripts/build.js', skipAllWarnings);
-    await lowPriorityWriteFile(appResolve('./scripts/.eslintrc'), JSON.stringify(buildEslintConfig, null, 2));
+	await ejectNewScript('./scripts/build.js', buildScriptSource, configs, skipAllWarnings);
+	await ejectPackageScript('build', 'aqu build', 'node ./scripts/build.js', skipAllWarnings);
+	await lowPriorityWriteFile(appResolve('./scripts/.eslintrc'), JSON.stringify(buildEslintConfig, null, 2));
 };
