@@ -41,16 +41,16 @@ This package highly inspired by [TSDX](https://github.com/formium/tsdx), [Microb
 
 ## ✨ Features <a name="features"></a>
 
--   One dependency for your code bundling 📦
--   Supports vanilla JS, [TypeScript](https://github.com/microsoft/TypeScript#readme) and [React](https://github.com/facebook/react/#readme) ⚛
--   No dealing with configurations (automatically generates CJS and esm outputs) ⚙
--   Easy project creation, build, management 🔧
--   Supports different package managers - [npm](https://github.com/npm/cli#readme), [yarn](https://github.com/yarnpkg/berry#readme) and [pnpm](https://github.com/pnpm/pnpm#readme) 🚀
--   Fast, optimized builds thanks to [esbuild](https://github.com/evanw/esbuild#readme) ⏩
--   Generates types, using common emit or [dts bundle](https://github.com/timocov/dts-bundle-generator#readme)
--   Supports tree shaking 🗑
--   Automatically configures [ESLint](https://github.com/eslint/eslint#readme), [Prettier](https://github.com/prettier/prettier#readme), [Jest](https://github.com/facebook/jest#readme) 📃
--   Multiple entries and outputs 🤹‍♂️
+- One dependency for your code bundling 📦
+- Supports vanilla JS, [TypeScript](https://github.com/microsoft/TypeScript#readme) and [React](https://github.com/facebook/react/#readme) ⚛
+- No dealing with configurations (automatically generates CJS and esm outputs) ⚙
+- Easy project creation, build, management 🔧
+- Supports different package managers - [npm](https://github.com/npm/cli#readme), [yarn](https://github.com/yarnpkg/berry#readme) and [pnpm](https://github.com/pnpm/pnpm#readme) 🚀
+- Fast, optimized builds thanks to [esbuild](https://github.com/evanw/esbuild#readme) ⏩
+- Generates types, using common emit or [dts bundle](https://github.com/timocov/dts-bundle-generator#readme)
+- Supports tree shaking 🗑
+- Automatically configures [ESLint](https://github.com/eslint/eslint#readme), [Prettier](https://github.com/prettier/prettier#readme), [Jest](https://github.com/facebook/jest#readme) 📃
+- Multiple entries and outputs 🤹‍♂️
 
 ## 🔨 Installation <a name="installation"></a>
 
@@ -133,19 +133,19 @@ Default **aqu** configuration:
 
 ```js
 var defaultConfig = {
-    format: ['cjs', 'esm'], // will generate multiple outputs: one for cjs and one for esm
-    cjsMode: 'mixed', // will generate separate files for development and production
-    outdir: 'dist', // default output directory
-    declaration: 'bundle', // will bundle declarations using https://github.com/timocov/dts-bundle-generator
-    externalNodeModules: true, // automatically will mark all node_modules as external
-    tsconfig: 'tsconfig.json', // default path to tsconfig
-    incremental: true, // will build incrementally
-    buildOptions: {}, // custom esbuild options
-    watchOptions: {
-        // chokidar watch options
-        ignored: ['node_modules/**', 'dist/**', 'build/**', 'out/**'], // by default, will ignore those folders
-        followSymlinks: false, // will not follow symlinks
-    },
+	format: ['cjs', 'esm'], // will generate multiple outputs: one for cjs and one for esm
+	cjsMode: 'mixed', // will generate separate files for development and production
+	outdir: 'dist', // default output directory
+	declaration: 'bundle', // will bundle declarations using https://github.com/timocov/dts-bundle-generator
+	externalNodeModules: true, // automatically will mark all node_modules as external
+	tsconfig: 'tsconfig.json', // default path to tsconfig
+	incremental: true, // will build incrementally
+	buildOptions: {}, // custom esbuild options
+	watchOptions: {
+		// chokidar watch options
+		ignored: ['node_modules/**', 'dist/**', 'build/**', 'out/**'], // by default, will ignore those folders
+		followSymlinks: false, // will not follow symlinks
+	},
 };
 ```
 
@@ -177,17 +177,17 @@ Configuration file can export one configuration, as well as array of configurati
 
 // this works
 module.exports = {
-    input: './asdf.js',
+	input: './asdf.js',
 };
 
 // as well as this
 module.exports = [
-    {
-        input: './asdf.js',
-    },
-    {
-        input: './hello.js',
-    },
+	{
+		input: './asdf.js',
+	},
+	{
+		input: './hello.js',
+	},
 ];
 ```
 
@@ -344,11 +344,11 @@ yarn publish
 
 ## Related
 
--   [ESBuild](https://github.com/evanw/esbuild#readme) - An extremely fast JavaScript bundler
--   [DTS Bundle generator](https://github.com/timocov/dts-bundle-generator) - Tool to generate a single bundle of dts
--   [Microbundle](https://github.com/developit/microbundle) - Zero-configuration bundler for tiny JS libs, powered by Rollup.
--   [TSDX](https://github.com/formium/tsdx) - Zero-config TypeScript package development
--   [Create React Library](https://github.com/transitive-bullshit/create-react-library#readme) - CLI for easily bootstrapping modern react libraries
+- [ESBuild](https://github.com/evanw/esbuild#readme) - An extremely fast JavaScript bundler
+- [DTS Bundle generator](https://github.com/timocov/dts-bundle-generator) - Tool to generate a single bundle of dts
+- [Microbundle](https://github.com/developit/microbundle) - Zero-configuration bundler for tiny JS libs, powered by Rollup.
+- [TSDX](https://github.com/formium/tsdx) - Zero-config TypeScript package development
+- [Create React Library](https://github.com/transitive-bullshit/create-react-library#readme) - CLI for easily bootstrapping modern react libraries
 
 ## License
 

@@ -1,3 +1,3 @@
 module.exports = {
-    input: "hello",
+	input: 'hello',
 };

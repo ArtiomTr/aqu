@@ -10,40 +10,40 @@ import { insertArgs } from '../utils/insertArgs';
 import { writeFileWithWarning } from '../utils/writeFileWithWarning';
 
 export const ejectNewScript = async (
-    path: string,
-    text: string,
-    configs: VerifiedAquOptions[],
-    skipWarning?: boolean,
+	path: string,
+	text: string,
+	configs: VerifiedAquOptions[],
+	skipWarning?: boolean,
 ) => {
-    const buildConfigs = flatten(await Promise.all(configs.map((config) => createBuildOptions(config))));
+	const buildConfigs = flatten(await Promise.all(configs.map((config) => createBuildOptions(config))));
 
-    buildConfigs.map((config) => {
-        config.plugins = config.plugins?.map((plugin) =>
-            plugin.name === 'node-resolve' ? ('${nodeResolve}' as unknown as Plugin) : plugin,
-        );
-        delete config.logLevel;
-    });
+	buildConfigs.map((config) => {
+		config.plugins = config.plugins?.map((plugin) =>
+			plugin.name === 'node-resolve' ? ('${nodeResolve}' as unknown as Plugin) : plugin,
+		);
+		delete config.logLevel;
+	});
 
-    const newText = insertArgs(text, {
-        configs: insertArgs(
-            JSON.stringify(
-                buildConfigs,
-                (key, value) => {
-                    if (['outdir', 'outfile', 'tsconfig'].includes(key)) {
-                        return relative(appDir, value);
-                    }
-                    if (key === 'entryPoints') {
-                        return value.map((entrypoint: string) => relative(appDir, entrypoint));
-                    }
-                    return value;
-                },
-                2,
-            ).replace(/"\$\{nodeResolve\}"/g, '${nodeResolve}'),
-            {
-                nodeResolve: 'nodeResolveExternal',
-            },
-        ),
-    });
+	const newText = insertArgs(text, {
+		configs: insertArgs(
+			JSON.stringify(
+				buildConfigs,
+				(key, value) => {
+					if (['outdir', 'outfile', 'tsconfig'].includes(key)) {
+						return relative(appDir, value);
+					}
+					if (key === 'entryPoints') {
+						return value.map((entrypoint: string) => relative(appDir, entrypoint));
+					}
+					return value;
+				},
+				2,
+			).replace(/"\$\{nodeResolve\}"/g, '${nodeResolve}'),
+			{
+				nodeResolve: 'nodeResolveExternal',
+			},
+		),
+	});
 
-    await writeFileWithWarning(path, newText, skipWarning);
+	await writeFileWithWarning(path, newText, skipWarning);
 };
