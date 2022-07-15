@@ -12,12 +12,9 @@ if(process.env.NODE_ENV === 'production') {
 }
 `;
 
-export const createMixedCjsEntrypoint = async (
-  outdir: string,
-  name: string,
-) => {
-  await safeWriteFile(
-    appResolve(outdir, 'index.js'),
-    insertArgs(cjsMixedEntrypoint, { name: getFolderFromPackageName(name) }),
-  );
+export const createMixedCjsEntrypoint = async (outdir: string, name: string) => {
+    await safeWriteFile(
+        appResolve(outdir, 'index.js'),
+        insertArgs(cjsMixedEntrypoint, { name: getFolderFromPackageName(name) }),
+    );
 };

@@ -13,59 +13,59 @@ import { appResolve } from '../utils/appResolve';
 import { insertArgs } from '../utils/insertArgs';
 
 export const createFromConfig = async (
-  options: CreateOptions,
-  githubUser: string | undefined,
-  availableLicenses: string[],
-  availableTemplates: string[],
+    options: CreateOptions,
+    githubUser: string | undefined,
+    availableLicenses: string[],
+    availableTemplates: string[],
 ) => {
-  await verifyCreateOptions(options, availableLicenses, availableTemplates);
+    await verifyCreateOptions(options, availableLicenses, availableTemplates);
 
-  console.log();
+    console.log();
 
-  const creationProgress = new Progress(
-    insertArgs(steps.creating, {
-      package: chalk.bold.cyan(options.name),
-      template: chalk.cyan(options.template),
-    }),
-  );
-
-  try {
-    await loadTemplate(options, githubUser);
-    await createLicense(
-      options.license,
-      appResolve(getFolderFromPackageName(options.name), 'LICENSE'),
-      options.author,
+    const creationProgress = new Progress(
+        insertArgs(steps.creating, {
+            package: chalk.bold.cyan(options.name),
+            template: chalk.cyan(options.template),
+        }),
     );
-    creationProgress.succeed(
-      insertArgs(steps.creationSuccess, {
-        package: chalk.bold.green(options.name),
-      }),
+
+    try {
+        await loadTemplate(options, githubUser);
+        await createLicense(
+            options.license,
+            appResolve(getFolderFromPackageName(options.name), 'LICENSE'),
+            options.author,
+        );
+        creationProgress.succeed(
+            insertArgs(steps.creationSuccess, {
+                package: chalk.bold.green(options.name),
+            }),
+        );
+    } catch (err) {
+        creationProgress.fail(
+            insertArgs(steps.creationFail, {
+                package: chalk.bold.red(options.name),
+            }),
+        );
+        showSkippedStep(steps.skipInstallDeps);
+        logger.fatal(err);
+    }
+
+    const installProgress = new Progress(steps.installingDeps);
+
+    try {
+        await installDependencies(getFolderFromPackageName(options.name));
+        installProgress.succeed(steps.installDepsSuccess);
+    } catch (err) {
+        installProgress.fail(steps.installDepsFail);
+        logger.fatal(err);
+    }
+
+    console.log(
+        insertArgs(steps.creationFinalize, {
+            package: chalk.bold.cyan(options.name),
+        }),
     );
-  } catch (err) {
-    creationProgress.fail(
-      insertArgs(steps.creationFail, {
-        package: chalk.bold.red(options.name),
-      }),
-    );
-    showSkippedStep(steps.skipInstallDeps);
-    logger.fatal(err);
-  }
 
-  const installProgress = new Progress(steps.installingDeps);
-
-  try {
-    await installDependencies(getFolderFromPackageName(options.name));
-    installProgress.succeed(steps.installDepsSuccess);
-  } catch (err) {
-    installProgress.fail(steps.installDepsFail);
-    logger.fatal(err);
-  }
-
-  console.log(
-    insertArgs(steps.creationFinalize, {
-      package: chalk.bold.cyan(options.name),
-    }),
-  );
-
-  console.log();
+    console.log();
 };
