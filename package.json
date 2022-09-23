@@ -5,6 +5,16 @@
 	"bin": {
 		"aqu": "dist/aqu.js"
 	},
+	"author": "Artiom Tretjakovas",
+	"license": "MIT",
+	"homepage": "https://github.com/ArtiomTr/aqu#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ArtiomTr/aqu.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ArtiomTr/aqu/issues"
+	},
 	"files": [
 		"dist",
 		"licenses"
@@ -28,16 +38,6 @@
 		"test": "jest",
 		"release": "np",
 		"format": "prettier --write **/*.{ts,tsx,js,jsx,json,html,md}"
-	},
-	"author": "Artiom Tretjakovas",
-	"license": "MIT",
-	"homepage": "https://github.com/ArtiomTr/aqu#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ArtiomTr/aqu.git"
-	},
-	"bugs": {
-		"url": "https://github.com/ArtiomTr/aqu/issues"
 	},
 	"dependencies": {
 		"@babel/preset-env": "^7.12.17",
