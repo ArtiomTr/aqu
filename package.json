@@ -55,7 +55,7 @@
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-simple-import-sort": "^8.0.0",
-		"execa": "^6.1.0",
+		"execa": "4.1.0",
 		"fs-extra": "^10.1.0",
 		"github-username": "^7.0.0",
 		"inquirer": "7.3.3",
