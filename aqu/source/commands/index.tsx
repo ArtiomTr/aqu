@@ -2,6 +2,8 @@ import {Box, Text} from 'ink';
 import React from 'react';
 import zod from 'zod';
 
+import {paths} from '../envPaths.js';
+
 export const options = zod.object({
 	name: zod.string().default('Stranger').describe('Name'),
 });
@@ -21,6 +23,7 @@ export default function Index({options}: Props) {
 		>
 			<Text>
 				Hello, <Text color="green">{options.name}</Text>
+				{JSON.stringify(paths)}
 			</Text>
 		</Box>
 	);
