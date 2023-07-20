@@ -49,7 +49,7 @@
 		"chalk": "^4.1.0",
 		"chokidar": "^3.5.3",
 		"commander": "^9.4.0",
-		"dts-bundle-generator": "^6.13.0",
+		"dts-bundle-generator": "^8.0.1",
 		"esbuild": "^0.15.9",
 		"eslint": "^8.23.1",
 		"eslint-config-prettier": "^8.5.0",
@@ -66,7 +66,7 @@
 		"prettier": "^2.7.1",
 		"rimraf": "^3.0.2",
 		"ts-jest": "^29.0.1",
-		"typescript": "^4.8.3",
+		"typescript": "^5.1.6",
 		"webpack-merge": "^5.8.0",
 		"yup": "^0.32.11"
 	},
@@ -86,6 +86,7 @@
 		"zxpp": "^0.2.1"
 	},
 	"engines": {
-		"node": "^10.12.0 || >=12.0.0"
-	}
+		"node": ">=16"
+	},
+	"packageManager": "pnpm@8.6.9"
 }
